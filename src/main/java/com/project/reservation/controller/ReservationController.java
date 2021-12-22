@@ -1,4 +1,4 @@
-package com.project.reservation;
+package com.project.reservation.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
