@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>관리자 페이지</title>
+
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
+    <link th:href="@{/css/reservationMovie.css}" rel="stylesheet">
+
+
+    <th:block layout:fragment="css">
+        <style>
+        .title_txt {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+            color: #bd2130;
+        }
+    </style>
+    </th:block>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1 class="logoimg"><img class="logoimg" src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png" alt="BigData" width="155" height="80"></h1>
+    <div class="gnb">
+        <h2 class="blind">관리자메뉴</h2>
+        <ul class="nav">
+            <li><a href="/admin/main">매출 현황</a></li>
+            <li><a href="/admin/member">회원 관리</a></li>
+            <li><a href="/admin/movie">영화 관리</a></li>
+            <li><a href="/admin/schedule">상영 스케줄 관리</a></li>
+            <li><a href="/admin/event">이벤트 관리</a></li>
+            <li><a href="/">영화 고객사이트</a></li>
+        </ul>
+    </div>
+</div>
+
+
+    <h2 class="title_txt"> 회원 관리 페이지 입니다</h2>
+
+
+
+</body>
+</html>
