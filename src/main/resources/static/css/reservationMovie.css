@@ -1,0 +1,302 @@
+@charset "utf-8";
+.reserve-wrap {
+    margin-bottom: 120px;
+}
+
+.ticket-title {
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 80px 0;
+}
+
+
+/* 영화 예매정보 */
+
+.ticket-info-area {
+    background: #000;
+}
+
+.ticket-info {
+    overflow: hidden;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 25px 0;
+    color: #fff;
+}
+
+.ticket-info li {
+    float: left;
+    width: 23%;
+    padding-left: 2%;
+    min-height: 122px;
+    font-size: 16px;
+    border-right: 1px solid #8b8b8b;
+    box-shadow: 1px 0 0 #41434a;
+}
+
+.ticket-info li:first-child {
+    padding: 0;
+}
+
+.ticket-info li:last-child {
+    border: 0px;
+    box-shadow: 0px 0 0;
+    text-align: right;
+}
+
+.ticket-movie-poster {
+    display: inline-block;
+    width: 80px;
+}
+
+.ticket-movie {
+    display: inline-block;
+    max-width: 172px;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+.ticket-info-title {
+    font-size: 18px;
+    color: #e6d3b5;
+}
+
+.ticket-price {
+    color: #e34545;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* 영화예매 본문내용 */
+
+.box-step {
+    overflow: hidden;
+    width: 100%;
+    margin: 50px 0;
+    border: 1px solid #d6d6d6;
+    border-top: none;
+    font-size: 15px;
+    background: #f5f5f5;
+}
+
+.box-step dl {
+    width: 25%;
+    float: left;
+    border-top: 1px solid #000;
+}
+
+.box-step>dl>dt {
+    padding: 18px 30px;
+    border-bottom: 1px solid #d6d6d6;
+    background: #fff;
+    color: #000;
+    font-size: 17px;
+}
+
+.box-step>dl>dd {
+    height: 220px;
+    padding: 19px 30px;
+    border-left: 1px solid #e0e0e0;
+    overflow-y: auto;
+}
+
+.box-step dl:first-child dd {
+    border-left: 0px;
+}
+
+.round {
+    display: inline-block;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.choice-list {
+    position: relative;
+}
+
+.choice-list li button {
+    width: 100%;
+    padding: 15px 0;
+    padding-left: 15px;
+    font-size: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.active {
+    background: #000;
+    color: #fff;
+}
+
+.choice-list li button:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+/* 영화관선택 */
+
+.cinema-choice-list>li>button {
+    width: 30%;
+}
+
+.choice-list-detail {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: 60%;
+    z-index: 100;
+}
+
+
+/* 관람일 */
+
+.date_choice .choice-list {
+    display: none;
+}
+
+
+/* 관람시간 */
+
+.time_choice .choice-list {
+    display: none;
+}
+
+
+/* 좌석 */
+
+.seat_choice .seat-choice-content {
+    display: none;
+}
+
+.select-message {
+    margin-top: 94px;
+    color: #999;
+    text-align: center;
+}
+
+.remain-seat {
+    font-size: 16px;
+}
+
+.remain-seat::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-top: -1px;
+    margin-right: 6px;
+    vertical-align: middle;
+    background: #000;
+}
+
+.select-person-area {
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 10px 10px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.select-title {
+    float: left;
+    line-height: 34px;
+}
+
+.select-person {
+    float: right;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.select-caption {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #000;
+}
+
+.all-seats {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.all-seats>li>button {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    background: #848484;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.all-seats>li>button.selected {
+    background: #b60000;
+}
+
+.all-seats>li>span {
+    margin-right: 5px;
+    color: #d23a3a;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.completed {
+    background: #d2d2d2 url(/resources/img/bg_disabled.gif) 50% 50% no-repeat !important;
+    text-indent: -9999px;
+    cursor: default;
+}
+
+.screen {
+    text-align: center;
+    background: #f5f5f5;
+    padding: 60px 0;
+}
+
+.screen-title {
+    color: #d0d0d0;
+    font-size: 80px;
+}
+
+.screen-stage {
+    display: none;
+    font-size: 18px;
+    background: #bebdbd;
+    color: #e5e5e5;
+    padding: 10px 202px;
+}
+
+.reserve-note {
+    margin: 50px 0;
+    border: 1px solid #d6d6d6;
+}
+
+.precautions {
+    padding: 20px 0 20px 12px;
+    background: #dfdfdf;
+    font-size: 16px;
+}
+
+.precautions-content {
+    padding: 20px;
+    font-size: 14px;
+}
+
+.reserve-rule {
+    margin-top: 20px;
+}
+
+.payment-area {
+    text-align: center;
+}
