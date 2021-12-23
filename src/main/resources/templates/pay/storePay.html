@@ -4,15 +4,110 @@
       layout:decorate="~{layouts/layout1}">
 <head>
     <title>결제</title>
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+        $(document).ready(function(){
+
+        });
+    </script>
+
+    </th:block>
 </head>
 <div layout:fragment="content">
 
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
+    <div class="container">
 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-md-8">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                기프티콘
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+
+                                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+                                <label class="btn btn-secondary" for="option1">Checked</label>
+
+                                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                                <label class="btn btn-secondary" for="option2">Radio</label>
+
+                                <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                                <label class="btn btn-secondary" for="option3">Disabled</label>
+
+                                <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+                                <label class="btn btn-secondary" for="option4">Radio</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                                포인트
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                <div class="mb-3 row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                                    </div>
+                                </div>
+
+                                <form class="row g-3">
+                                    <div class="col-auto">
+                                        <label for="staticEmail2" class="visually-hidden">Email</label>
+                                        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+                                    </div>
+                                    <div class="col-auto">
+                                        <label for="inputPassword2" class="visually-hidden">Password</label>
+                                        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            항상 포인트 전액 사용
+                                        </label>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                                결제수단
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        네이버 페이
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                최종결제
+            </div>
+        </div>
+    </div>
 </div>
 </html>
