@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="reservation")
+@RequestMapping(value="/reservation")
 public class ReservationController {
 
     @GetMapping(value = "/choiceMovie")
