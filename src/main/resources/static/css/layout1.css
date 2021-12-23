@@ -16,8 +16,10 @@ body {
     text-align: center;
 }
 .content{
-    margin-bottom:100px;
+/*    margin-bottom:100px;
     margin-top: 50px;
     margin-left: 200px;
-    margin-right: 200px;
+    margin-right: 200px;*/
+    margin:0 auto;
+    margin-top: 50px;
 }
