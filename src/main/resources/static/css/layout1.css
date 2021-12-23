@@ -23,3 +23,17 @@ body {
     margin:0 auto;
     margin-top: 50px;
 }
+
+.fixed-bottom {
+    position: fixed;
+    right: 220px;
+    bottom: 80px;
+    left: 0;
+    z-index: 1030;
+}
+
+@media (max-width: 768px) {
+    .fixed-bottom {
+    display:none;
+    }
+}
