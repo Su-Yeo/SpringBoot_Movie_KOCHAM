@@ -60,11 +60,11 @@
 
 .ticket-info-title {
     font-size: 18px;
-    color: #e6d3b5;
+    color: #e4b535;
 }
 
 .ticket-price {
-    color: #e34545;
+    color: #bf0f0f;
     font-size: 24px;
     font-weight: bold;
 }
@@ -137,12 +137,14 @@
 .active:not(.nav-link){
     background: #000;
     color: #fff;
+    border-radius: 8px;
 }
 
 
 .choice-list li button:hover {
     background: #000;
     color: #fff;
+    border-radius: 8px;
 }
 
 
@@ -403,7 +405,7 @@ blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
 input,select,textarea {vertical-align:middle}
 button {border:0 none;background-color:transparent;cursor:pointer}
 body {background:#fff}
-th,td,input,select,textarea{font-size:12px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333} /* color 디자인에 따라 변경*/
+th,td,select,textarea{font-size:12px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333} /* color 디자인에 따라 변경*/
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:none}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
@@ -418,6 +420,17 @@ font-size:12px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림
 
 
 
+
+.join-submit:hover{
+    border-radius: 8px;
+    margin-top:5px;
+
+
+    color : #e4b535 !important;
+    transition: all 0.5s ease;
+
+}
+
 .join-button {
 font-size:18px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333
   display: inline-block;
@@ -430,7 +443,9 @@ font-size:18px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림
 }
 
 .join-submit {
-  background: #666;
+border-radius: 8px;
+    background-color : #000;
+
   color: #fff;
   margin-right: 10px;
 }

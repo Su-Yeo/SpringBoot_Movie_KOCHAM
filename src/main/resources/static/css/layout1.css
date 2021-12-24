@@ -6,6 +6,26 @@ html {
 body {
     min-height: 100%;
 }
+
+.modal{
+
+  top: 200px!important;
+
+}
+.modal .btn{
+
+   background-color: black !important;
+
+}
+
+
+
+.navbar {
+    background-color: black !important;
+}
+.btn-dark{
+    background-color: black !important;
+}
 .footer {
     position: absolute;
     left: 0;
@@ -38,7 +58,12 @@ body {
     }
 }
 
+nav :hover{
 
+    color : #bf0f0f !important;
+    transition: all 0.9s ease;
+
+}
 nav.navbar div div ul li:after {
 border-radius: 8px;
   position: absolute;
@@ -66,10 +91,9 @@ nav.navbar div div ul li:hover {
   color: #fff;
   z-index: 1;
 
-
-      padding-left: 10px;
-      border-left: 2px ;
-      transition: all 0.3s ease;
+  padding-left: 10px;
+  border-left: 2px ;
+  transition: all 0.3s ease;
 
 
 }
@@ -85,15 +109,15 @@ nav.navbar div div ul li:hover:after {
 @-webkit-keyframes fill {
   0% {
     width: 0%;
-    height: 1px;
+    height: 2px;
   }
   50% {
     width: 100%;
-    height: 1px;
+    height: 1.5px;
   }
   100% {
     width: 100%;
-    height: 100%;
+    height: 1px;
     background: #730a0a;
   }
 }

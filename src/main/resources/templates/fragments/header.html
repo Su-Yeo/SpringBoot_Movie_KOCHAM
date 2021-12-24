@@ -11,23 +11,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="#" th:href="@{/member/new}">영화</a>
+                        <a class="nav-link text-white" th:href="@{/movie/main}">영화</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="#">극장</a>
+                        <a class="nav-link text-white" th:href="@{/theater/main}">극장</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link active text-white" aria-current="page" th:href="@{/reservation/choiceMovie}" >예매</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" onclick="location.href='/store/main'" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             스토어
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" th:href="@{/store/main}">Action</a></li>
+                            <li><a class="dropdown-item" th:href="@{/store/main}">Another action</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" th:href="@{/store/main}">Something else here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -38,8 +38,9 @@
                     <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="location.href='/admin/main'" >관리자페이지 진입(임시)</button>
                     <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >관리자 메뉴</button>
                     <!-- Button trigger modal -->
-                    <button type="button" style="color:white; background-color: #212529; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</button>
-                    <a href="/join"  style="color:white; background-color:#212529; border : none; margin-left: 20px; margin-right: 20px; text-decoration:none; " >회원가입</a>
+                    <button class="btn btn-dark" type="button" style="color:white; background-color: #212529; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</button>
+
+                    <a class="btn btn-dark" th:href="@{/member/signup}"  style="color:white; background-color:#212529; border : none; margin-left: 20px; margin-right: 20px; text-decoration:none; " >회원가입</a>
                 </div>
 
                 <form class="d-flex">
