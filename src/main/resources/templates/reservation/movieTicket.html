@@ -8,8 +8,12 @@
 
     <th:block layout:fragment="css">
     <link th:href="@{/css/reservationMovie.css}" rel="stylesheet">
+    <style>
+        .footer {
+        position: relative;
+        }
+    </style>
     </th:block>
-
     <th:block layout:fragment="script">
 
         <script th:inline="javascript">
@@ -268,6 +272,11 @@
         });
         });
 
+
+
+
+
+
          </script>
 
     </th:block>
@@ -503,13 +512,15 @@
                     </li>
                     <li>&nbsp; &nbsp;· 현장예매 : 영화상영시간 전까지 취소 및 환불 가능.</li>
                 </ul>
-            </div>
-        </div>
-        <div class="payment-area">
-            <button id="payment" class="join-submit join-button">결제</button>
-        </div>
-    </div>
 
+            </div>
+
+        </div>
+
+    </div>
+    <div class="payment-area">
+        <button id="payment" class="join-submit join-button">결제</button>
+    </div>
 </div>
 
 </div>

@@ -8,7 +8,7 @@
     text-align: center;
     font-size: 30px;
     font-weight: 500;
-    padding: 80px 0;
+    padding: 30px 0;
 }
 
 
@@ -130,10 +130,15 @@
     text-align: left;
 }
 
-.active {
+/*.active:not(nav){
+    background: #000;
+    color: #fff;
+}*/
+.active:not(.nav-link){
     background: #000;
     color: #fff;
 }
+
 
 .choice-list li button:hover {
     background: #000;
@@ -278,6 +283,7 @@
 }
 
 .reserve-note {
+
     margin: 50px 0;
     border: 1px solid #d6d6d6;
 }
@@ -389,15 +395,15 @@ img {
 
 
 /* reset */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea {margin:0;padding:0}
 fieldset,img {border:0 none}
 dl,ul,ol,menu,li {list-style:none}
 blockquote, q {quotes: none}
 blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
-input,select,textarea,button {vertical-align:middle}
+input,select,textarea {vertical-align:middle}
 button {border:0 none;background-color:transparent;cursor:pointer}
 body {background:#fff}
-th,td,input,select,textarea,button {font-size:12px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333} /* color 디자인에 따라 변경*/
+th,td,input,select,textarea{font-size:12px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333} /* color 디자인에 따라 변경*/
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:none}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
@@ -405,3 +411,63 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 #container{
 font-size:12px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333
 }
+
+
+
+/*결제버튼*/
+
+
+
+.join-button {
+font-size:18px;line-height:1.5;font-family:'Noto Sans KR','돋움',Dotum,'굴림',Gulim, AppleGothic, Sans-serif;color:#333
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #666;
+}
+
+.join-submit {
+  background: #666;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.join-button-wrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.error-message {
+  display: block;
+  font-size: 12px;
+  color: red;
+}
+
+
+
+
+
+/*
+#navbarSupportedContent ul li:hover{
+padding-left: 5px;
+
+      transition: all 0.3s ease;
+
+background: red;
+
+
+
+  z-index: 1;
+
+
+
+
+}
+*/
+
+/**/
+
+
