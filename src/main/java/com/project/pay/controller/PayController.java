@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PayController {
 
     @GetMapping(value = "/store")
-    public String startHome(){
+    public String getStore(){
         return "pay/storePay";
+    }
+
+    @GetMapping(value = "/gifticon")
+    public String getGifticon(){
+        return "pay/gifticon";
     }
 }
