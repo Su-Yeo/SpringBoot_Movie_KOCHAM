@@ -19,7 +19,16 @@
     <th:block layout:fragment="script"></th:block>
     <th:block layout:fragment="css"></th:block>
 
+<style>
+    .adminbutton {
+    padding: 30px;
+    font-size: 20px;
+}
 
+    .adminbutton:hover{
+        color:#ed3124 !important;
+    }
+</style>
 </head>
 <body>
 
@@ -35,17 +44,16 @@
 
 <div class="offcanvas offcanvas-start bg-dark text-white" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">관리자 메뉴</h5>
+        <h4 class="offcanvas-title" id="offcanvasScrollingLabel">관리자 메뉴</h4>
         <button type="button" class="btn-close text-reset" style="background-color: white;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="list-group">
-            <li class="list-group-item bg-dark text-white"><a href="/admin/main">매출 현황</a></li>
-            <li class="list-group-item bg-dark text-white"><a href="/admin/member">회원 관리</a></li>
-            <li class="list-group-item bg-dark text-white"><a href="/admin/movie">영화 관리</a></li>
-            <li class="list-group-item bg-dark text-white"><a href="/admin/schedule">상영 스케줄 관리</a></li>
-            <li class="list-group-item bg-dark text-white"><a href="/admin/event">이벤트 관리</a></li>
-        </ul>
+        <div class="list-group">
+            <button type="button" class="list-group-item bg-dark text-white adminbutton" onclick="location.href='/admin/main'">매출 현황</button>
+            <button type="button" class="list-group-item bg-dark text-white adminbutton" onclick="location.href='/admin/member'">회원 관리</button>
+            <button type="button" class="list-group-item bg-dark text-white adminbutton" onclick="location.href='/admin/movie'">상영 스케줄 관리</button>
+            <button type="button" class="list-group-item bg-dark text-white adminbutton" onclick="location.href='/admin/event'">이벤트 관리</button>
+        </div>
     </div>
 </div>
 
