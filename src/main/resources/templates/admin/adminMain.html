@@ -1,33 +1,12 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      >
+      layout:decorate="~{layouts/layout2}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>관리자 페이지</title>
-    <link class="include" rel="stylesheet" type="text/css" href="jquery.jqplot.min.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/dist/jquery.jqplot.min.css" />
-    <script type="text/javascript" src="/resources/dist/excanvas.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/jquery.jqplot.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.barRenderer.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.pointLabels.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.canvasTextRenderer.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.canvasAxisTickRenderer.min"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.canvasGridRenderer.min"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.highlighter.js"></script>
-    <script type="text/javascript" src="/resources/dist/plugins/jqplot.pointLabels.js"></script>
-
-    <link th:href="@{/css/admin.css}" rel="stylesheet">
-    <link th:href="@{/css/reservationMovie.css}" rel="stylesheet">
+    <title>MovieEventMain</title>
 </head>
-
 <body>
+<div layout:fragment="content">
 
 <div class="header">
     <h1 class="logoimg"><img class="logoimg" src="https://img.cgv.co.kr/R2014/images/common/logo/logoRed.png" alt="BigData" width="155" height="80"></h1>
@@ -174,7 +153,7 @@
       </script>
 </th:block>
 
-
+</div>
 </body>
 
 </html>
