@@ -1,8 +1,22 @@
+.offcanvas{
+    width: 250px;
+
+}
+.adminbutton {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.adminbutton:hover{
+    color:#ed3124 !important;
+}
+
+
 body{
     font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     font-weight: 600;
     background-color:rgba(0, 0, 0, 0.007);
-    padding-left:220px;
+
   }
 
   .header{
@@ -173,7 +187,7 @@ body{
 
 /*영화 스케줄 관리 페이지*/
 .movie-list-board-cinema{
-  line-height: 1.6em;  /* 以꾧컙寃� */
+  line-height: 1.6em;
   width: 1150px;
   margin: 120px auto;
   text-align: center;
