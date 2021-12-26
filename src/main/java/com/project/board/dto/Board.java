@@ -1,13 +1,18 @@
 package com.project.board.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-public class BoardFormDto {
+@Entity
+@Data
+public class Board {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long board_num; //이벤트 게시물 고유번호
     private String board_title; //이벤트 게시물 제목
     private LocalDateTime board_start_date; //이벤트 시작날짜

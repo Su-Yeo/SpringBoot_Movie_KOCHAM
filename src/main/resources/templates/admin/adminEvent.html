@@ -44,7 +44,7 @@
         <form th:action="@{/board/write}" th:object="${board}" method="post">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">이벤트 제목</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="board_title">
+            <input type="text" class="form-control" placeholder="제목 입력" aria-label="Username" aria-describedby="basic-addon1" name="board_title">
         </div>
         <div class="row">
             <div class="col col-md-auto center">
@@ -71,7 +71,7 @@
             <input type="text" class="form-control" id="thumbnail-url" aria-describedby="basic-addon3" name="board_thumbnail">
         </div>
         <div>
-        <button type="button" class="btn btn-dark" style="float: right;">발행</button>
+        <button type="submit" class="btn btn-dark" style="float: right;">발행</button>
         </div>
         </form>
     </div>
