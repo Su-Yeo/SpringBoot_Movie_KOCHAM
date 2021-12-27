@@ -5,16 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.UpdateTimestamp;
-import sun.util.calendar.LocalGregorianCalendar;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="schedule")
+@Table(name="reservation")
 @Getter
 @Setter
 @ToString
-public class Schedule {
+public class Reservation {
 
         @Id
         @Column(name="schedule_num")
@@ -26,9 +25,9 @@ public class Schedule {
         @JoinColumn(name = "theater_area_num", referencedColumnName = "theater_area_num")
         private int theater_area_num;
 
-        @Column
+        @Column(nullable=false)
         @UpdateTimestamp
-        private LocalDateTime scheduleDate;
+        private LocalDateTime schedule_date = LocalDateTime.now();
 
         @Column(nullable = false, length = 11)
         private int scheduleStart;
