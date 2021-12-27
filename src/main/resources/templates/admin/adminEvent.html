@@ -4,15 +4,76 @@
       layout:decorate="~{layouts/layout2}">
 <head>
     <title>MovieEventMain</title>
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+        .container {
+            padding-top: 60px;
+        }
+          .center {
+              text-align: center;
+        }
+        .row {
+            padding: 20px;
+        }
+        .input-group.mb-3 {
+            padding-top: 10px;
+        }
+        </style>
+    </th:block>
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+
+<!--        <script th:inline="javascript">-->
+<!--        $(document).ready(function(){-->
+<!--        document.getElementById('start').value = new Date().toISOString().substring(0, 10);-->
+<!--        document.getElementById('end').value = new Date().toISOString().substring(0, 10);-->
+<!--        });-->
+<!--        </script>-->
+
+    </th:block>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="container">
         <!-내용 추가-->
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">http://www.cgv.co.kr/culture-event/event/</span>
+        <div class="grid">
+            <div class="g-col-4"><h3>이벤트 게시판 글쓰기</h3></div>
         </div>
+
+        <form th:action="@{/board/write}" th:object="${board}" method="post">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">이벤트 제목</span>
+            <input type="text" class="form-control" placeholder="제목 입력" aria-label="Username" aria-describedby="basic-addon1" name="board_title">
+        </div>
+        <div class="row">
+            <div class="col col-md-auto center">
+                <label for="start">Start date:</label>
+
+                <input type="date" id="start" name="board_start_date">
+            </div>
+            <div class="col col-md-auto align-self-center center">
+                ~
+            </div>
+            <div class="col col-md-auto center">
+                <label for="start">End date:</label>
+
+                <input type="date" id="end" name="board_end_date">
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="event-content">이벤트 내용 url</span>
+            <input type="text" class="form-control" id="content-url" aria-describedby="basic-addon3" name="board_image">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="event-thumbnail">이벤트 썸네일 url</span>
+            <input type="text" class="form-control" id="thumbnail-url" aria-describedby="basic-addon3" name="board_thumbnail">
+        </div>
+        <div>
+        <button type="submit" class="btn btn-dark" style="float: right;">발행</button>
+        </div>
+        </form>
     </div>
 </div>
 </body>

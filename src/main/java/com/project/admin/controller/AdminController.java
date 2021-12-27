@@ -1,8 +1,10 @@
 package com.project.admin.controller;
 
+import com.project.board.dto.Board;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -35,7 +37,7 @@ public class AdminController {
     }
 
     @GetMapping(value = "/event") //이벤트
-    public String adminEvent( Model model){
+    public String adminEvent(@ModelAttribute Board board){
 
         return "admin/adminEvent";
     }
