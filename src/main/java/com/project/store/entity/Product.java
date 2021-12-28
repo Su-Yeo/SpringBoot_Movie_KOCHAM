@@ -1,8 +1,8 @@
-package com.project.member.entity;
+package com.project.store.entity;
 
 
-import com.project.member.constant.ItemSellStatus;
-import com.project.member.constant.ProductTypeStatus;
+import com.project.store.constant.ItemSellStatus;
+import com.project.store.constant.ProductTypeStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
