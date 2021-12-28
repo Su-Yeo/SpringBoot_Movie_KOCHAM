@@ -117,19 +117,20 @@
         <h1>게시물 목록 보기</h1>
         <table class="InfoTable">
             <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
+                <th>스케줄 번호</th>
+                <th>영화 번호</th>
+                <th>상영 시작 시간</th>
+                <th>상영 종료 시간</th>
             </tr>
 
             <tbody>
-            <tr th:each="list : ${list}" onMouseover="this.style.background='#46D2D2';" onmouseout="this.style.background='white';">
-                <td><span th:text="${list.schedule_num}"></span>${list.schedule_num}</td>
-                <td style="text-align:left;"><a id="hypertext" th:href="@{'/adminSchedule/detailView?schedule_num=' + ${list.schedule_num}}" onMouseover='this.style.textDecoration="underline"'
-                                                onmouseout="this.style.textDecoration='none';"><span th:text="${list.movie_num}"></span></a></td>
-                <td><span th:text="${list.schedule_start}">${list.schedule_start}</span></td>
-                <td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>
+            <tr th:each="list : ${scheduleList}" >
+                <td><span th:text="${list.schedule_num}"></span></td>
+                <td style="text-align:left;"><a id="hypertext" th:href="@{'/adminSchedule/detailView?schedule_num=' + ${list.schedule_num}}">
+                <span th:text="${list.movie_num}"></span></a></td>
+                <td><span th:text="${list.schedule_start}"></span></td>
+                <td><span th:text="${list.schedule_end}"></span></td>
+                <!--<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>-->
             </tr>
             </tbody>
 

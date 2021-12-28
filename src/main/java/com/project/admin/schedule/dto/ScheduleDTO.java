@@ -12,31 +12,26 @@ import java.sql.Date;
 @Setter
 @ToString
 @NoArgsConstructor
+
 public class ScheduleDTO {
+    private Long schedule_num;
     private int movie_num =0;
     private int theater_area_num =0;
 
-    private Date schedule_start;
-    private Date schedule_end;
+    private int schedule_start=0;
+    private int schedule_end=0;
     private int schedule_cost =9000;
-    private LocalDateTime schedule_date = LocalDateTime.now();
+
+    private Date schedule_date ;
 
     private String file_name="";
     private long file_size=1;
 
-    /*public ScheduleDTO(int movie_num, int theater_area_num, Date schedule_start, Date schedule_end, int schedule_cost, LocalDateTime schedule_date, String file_name, long file_size) {
-        this.movie_num = movie_num;
-        this.theater_area_num = theater_area_num;
-        this.schedule_start = schedule_start;
-        this.schedule_end = schedule_end;
-        this.schedule_cost = schedule_cost;
-        this.schedule_date = schedule_date;
-        this.file_name = file_name;
-        this.file_size = file_size;
-    }*/
+
 
     public Schedule toEntity( ) {
         return Schedule.builder()
+            .schedule_date(schedule_date)
             .movie_num(movie_num)
             .theater_area_num(theater_area_num)
             .schedule_start(schedule_start)
@@ -47,6 +42,7 @@ public class ScheduleDTO {
             .build();
     }
     public ScheduleDTO(Schedule schedule) {
+        this.schedule_num=schedule.getSchedule_num();
         this.movie_num = schedule.getMovie_num();
         this.theater_area_num = schedule.getTheater_area_num();
         this.schedule_start = schedule.getSchedule_start();
@@ -54,6 +50,7 @@ public class ScheduleDTO {
         this.schedule_cost = schedule.getSchedule_cost();
         this.file_name = schedule.getFile_name();
         this.file_size = schedule.getFile_size();
+        this.schedule_date = schedule.getSchedule_date();
 
     }
 }

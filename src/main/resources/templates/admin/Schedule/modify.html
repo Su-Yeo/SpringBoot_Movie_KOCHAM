@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layouts/layout2}">
 <head>
     <title>MovieMain</title>
+
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+
+
+$(document).ready(function(){
+
+	$("#btn_write").click(function(){
+
+
+
+		$("#WriteForm").attr("action", "/adminSchedule/modify").submit();
+
+	}) //End of $("btn_write")
+
+}) //End of $(document).ready(function)
+
+
+
+
+
+        </script>
+    </th:block>
+
+
 </head>
 <body>
 <div layout:fragment="content">
@@ -15,12 +41,30 @@
     <br>
 
     <form class="ModifyForm" name="ModifyForm" method="POST">
+        <h4>
 
-        <input type="text" id="schedule_start" name="schedule_start" th:value="${list.schedule_start}" >
-        <input type="text" id="movie_num" name="movie_num" th:value="${list.movie_num}" >
-        <input type="hidden" name="schedule_num" th:value="${list.schedule_num}">
-        <textarea id="mcontent" cols="100" row="500" name="mcontent" th:text="${list.mcontent}"></textarea>
+        스케줄 번호 : <span name="schedule_num" th:text="${list.schedule_num}"></span>
+        <br>
+        상영 일자 : <input type="text" id="schedule_date" name="schedule_date" th:value="${list.schedule_date}" >
+        <br>
+        영화 시작 시간 : <input type="text" id="schedule_start" name="schedule_start" th:value="${list.schedule_start}" >
+        <br>
+        상영 종료 시간 : <input type="text" id="schedule_end" name="schedule_end" th:value="${list.schedule_end}" >
+        <br>
+        상영관 번호 : <input type="text" id="theater_area_num " name="theater_area_num " th:value="${list.theater_area_num }" >
+        <br>
+        영화 번호 : <input type="text" id="movie_num" name="movie_num" th:value="${list.movie_num}" >
+        <br>
+        영화 티켓 비용 : <input type="text" id="schedule_cost " name="schedule_cost " th:value="${list.schedule_cost }" >
+        <br>
+        파일 사이즈 : <input type="text" id="file_size" name="file_size" th:value="${list.file_size}" >
+        <br>
+        파일 이름 :<input type="text" id="file_name" name="file_name" th:value="${list.file_name}" >
+        <br>
+        <!--<textarea id="mcontent" cols="100" row="500" name="mcontent" th:text="${list.mcontent}"></textarea>-->
         <button class="btn_modify" id="btn_modify">수정</button>
+
+        </h4>
     </form>
 
 </div>

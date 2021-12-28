@@ -4,6 +4,36 @@
       layout:decorate="~{layouts/layout2}">
 <head>
     <title>MovieMain</title>
+
+
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+
+
+$(document).ready(function(){
+	/*<![CDATA[*/
+	$("#btn_modify").click(function(){
+
+			location.href="/adminSchedule/modify?schedule_num=[[${list.schedule_num}]]" ;
+
+	}) //End of $("btn_modify")
+
+	$("#btn_delete").click(function(){
+		if(confirm("정말로 삭제하시겠습니까?") == true)
+			location.href="/adminSchedule/delete?schedule_num=[[${list.schedule_num}]]";
+    }) //End of $("btn_delete")
+
+}
+
+
+
+
+
+        </script>
+    </th:block>
+
+
 </head>
 <body>
 <div layout:fragment="content">
@@ -12,30 +42,20 @@
     <h1>게시물 내용 보기</h1>
     <br>
     <div class="boardView">
-        <div class="schedule_start">이름 : <span th:text="${list.schedule_start}"></span></div>
-        <div class="movie_num">제목 : <span th:text="${list.movie_num}"></span></div>
-        <div class="mregdate">날짜 : <span th:text="${#temporals.format(list.mregdate, 'yyyy-MM-dd')}"></span></div>
+        <div class="schedule_start">상영 시작 시간 : <span th:text="${list.schedule_start}"></span></div>
+        <div class="movie_num">영화 번호 : <span th:text="${list.movie_num}"></span></div>
+        <!--<div class="mregdate">날짜 : <span th:text="${#temporals.format(list.mregdate, 'yyyy-MM-dd')}"></span></div>
         <div class="textArea"><pre th:text="${list.mcontent}"></pre></div>
-        <div class="filename">파일명 : <a href="javascript:fileDownload()"><span th:text="${list.filename}"></span></a></div>
-        <center><div><button class="btn_modify" id="btn_modify">수정</button>
-            <button class="btn_delete" id="btn_delete">삭제</button></div></center>
+        <div class="filename">파일명 : <a href="javascript:fileDownload()"><span th:text="${list.filename}"></span></a></div>-->
+        <center><div>
+            <a th:href="@{'/adminSchedule/modify?schedule_num=' + ${list.schedule_num}}">
+                <button class="btn_modify" id="btn_modify">수정</button></a>
+            <a  th:href="@{'/adminSchedule/delete?schedule_num=' + ${list.schedule_num}}">
+                <button class="btn_delete" id="btn_delete">삭제</button></a>
+        </div></center>
     </div>
 
-    <div class="right">
 
-        <p id="replyNotice">댓글을 작성해 주세요</p>
-        <form id="formReply" name="formReply" method="POST">
-            작성자 : <input type="text" id="schedule_start" name="schedule_start"><br>
-            <textarea id='mreplycontent' name='mreplycontent' cols='80' rows='5' maxlength='150' placeholder='글자수:150자 이내'></textarea><br>
-            <input type="hidden" name="schedule_num" th:value="${list.schedule_num}">
-        </form>
-        <button id="btn_mreply">댓글등록</button>
-        <hr>
-
-        <div id="replyList" style="width:100%; height:600px; overflow:auto;">
-            <div id="replyListView"></div>
-        </div><!-- replyList End  -->
-    </div>
 
 </div>
 </body>

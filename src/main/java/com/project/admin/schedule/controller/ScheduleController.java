@@ -1,5 +1,5 @@
 
-package com.project.admin.schedule;
+package com.project.admin.schedule.controller;
 
 
 import com.project.admin.schedule.dto.ScheduleDTO;
@@ -60,56 +60,77 @@ public class ScheduleController {
     }*/
     @PostMapping(value ="/Register")
     public String postScheduleRegister(ScheduleDTO scheduleDTO) throws Exception {
-        System.out.println(scheduleDTO.toString());
+      /*  System.out.println(scheduleDTO.toString());
         Schedule schedule = scheduleDTO.toEntity();
         System.out.println(schedule.toString());
 
-        Schedule saved = scheduleRepository.save(schedule);
+        Schedule saved = scheduleRepository.save(scheduleDTO.toEntity());
 
-        service.save(scheduleDTO);
 
         System.out.println(saved.toString());
-        return "admin/Schedule/list";
+*/
+        service.save(scheduleDTO);
+
+
+        return "redirect:../adminSchedule/list";
     }
 
     //상영정보 게시판 보기
-    @GetMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(Model model) throws Exception {
 
         List<ScheduleDTO> list = service.findAll();
+        System.out.println(list.toString()+"###################################");
+        /*List<ScheduleDTO> list = scheduleRepository.findAll(scheduleDTO.toEntity());*/
 
-        model.addAttribute("list", list);
+        model.addAttribute("scheduleList", list);
 
 
         return "admin/Schedule/list";
 
     }
+    /*//상영정보 게시판 보기
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public String postList(Model model) throws Exception {
+
+        List<ScheduleDTO> list = service.findAll();
+        System.out.println(list.toString()+"###################################");
+        *//*List<ScheduleDTO> list = scheduleRepository.findAll(scheduleDTO.toEntity());*//*
+
+        model.addAttribute("scheduleList", list);
+
+
+        return "admin/Schedule/list";
+
+    }*/
 
     //상영정보 게시판 내용 보기
     @RequestMapping(value = "/detailView", method = RequestMethod.GET)
-    public void getMView(Model model, @RequestParam(name="schedule_num", required=false) Long schedule_num, RedirectAttributes rttr) throws Exception {
+    public String getMView(Model model, @RequestParam(name="schedule_num", required=false) Long schedule_num, RedirectAttributes rttr) throws Exception {
 
         ScheduleDTO list = service.getView(schedule_num);
         model.addAttribute("list", list);
+        return "admin/Schedule/detailView";
     }
 
     //미니 게시판 내용 수정
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
-    public void getMModify(Model model, @RequestParam(name="schedule_num", required=false) Long schedule_num) throws Exception {
+    public String getMModify(Model model, @RequestParam(name="schedule_num", required=false) Long schedule_num) throws Exception {
 
         ScheduleDTO list = service.getView(schedule_num);
 
         model.addAttribute("list", list);
+        return "admin/Schedule/modify";
 
     }
 
     //미니 게시판 내용 수정
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public String postMModify(ScheduleDTO boardDTO, @RequestParam(name="schedule_num", required=false) Long schedule_num) throws Exception {
+    public String postMModify(ScheduleDTO dto, @RequestParam(name="schedule_num", required=false) Long schedule_num) throws Exception {
 
-        service.update(schedule_num, boardDTO);
+        service.update(schedule_num, dto);
 
-        return "redirect:/admin/Schedule/detailView?schedule_num=" + Long.toString(schedule_num);
+        return "redirect:/adminSchedule/detailView?schedule_num=" + Long.toString(schedule_num);
 
     }
 
@@ -118,7 +139,7 @@ public class ScheduleController {
     public String postDelete(Model model, @RequestParam(name="schedule_num", required=false) Long schedule_num) throws Exception {
 
         service.delete(schedule_num);
-        return "redirect:/admin/Schedule/list";
+        return "redirect:/adminSchedule/list";
 
     }
 
