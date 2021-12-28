@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieMain</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+
+
+    <h1>게시물 수정</h1>
+    <br>
+
+    <form class="ModifyForm" name="ModifyForm" method="POST">
+
+        <input type="text" id="schedule_start" name="schedule_start" th:value="${list.schedule_start}" >
+        <input type="text" id="movie_num" name="movie_num" th:value="${list.movie_num}" >
+        <input type="hidden" name="schedule_num" th:value="${list.schedule_num}">
+        <textarea id="mcontent" cols="100" row="500" name="mcontent" th:text="${list.mcontent}"></textarea>
+        <button class="btn_modify" id="btn_modify">수정</button>
+    </form>
+
+</div>
+</body>
+</html>

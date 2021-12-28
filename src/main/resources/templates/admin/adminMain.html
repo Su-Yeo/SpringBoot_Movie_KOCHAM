@@ -4,6 +4,14 @@
       layout:decorate="~{layouts/layout2}">
 <head>
     <title>MovieMain</title>
+    <th:block layout:fragment="css">
+        <link th:href="@{/css/admin.css}" rel="stylesheet">
+        <style>
+        .footer {
+        position: relative;
+        }
+    </style>
+    </th:block>
 </head>
 
 <body>

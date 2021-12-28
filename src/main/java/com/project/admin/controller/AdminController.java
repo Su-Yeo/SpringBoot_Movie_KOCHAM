@@ -17,11 +17,6 @@ public class AdminController {
         return "admin/adminMain";
     }
 
-    @GetMapping(value = "/schedule") //상영스케줄 관리
-    public String adminSchedule( Model model){
-
-        return "admin/adminSchedule";
-    }
 
 
     @GetMapping(value = "/member") //회원
