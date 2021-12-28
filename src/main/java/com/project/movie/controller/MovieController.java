@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MovieController {
 
     @GetMapping(value = "/main")
-    public String memberForm(Model model){
+    public String movieForm(Model model){
 
         return "movie/movieForm";
+    }
+    @GetMapping(value = "/detail")
+    public String detailPage(Model model){
+        return "movie/detailPage";
     }
 }
