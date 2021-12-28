@@ -1,3 +1,4 @@
+/*
 package com.project.reservation.entity;
 
 import javax.persistence.*;
@@ -41,3 +42,4 @@ public class Reservation {
 
 
     }
+*/

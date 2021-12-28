@@ -9,7 +9,7 @@
 
         <script th:inline="javascript">
 
-<!--
+
 $(document).ready(function(){
 
 	$("#btn_write").click(function(){
@@ -21,7 +21,7 @@ $(document).ready(function(){
 	}) //End of $("btn_write")
 
 }) //End of $(document).ready(function)
--->
+
 
 
 
@@ -44,7 +44,7 @@ $(document).ready(function(){
             </p>
         </div>
 
-        <form id="WriteForm" class="WriteForm" action="/adminSchedule/Register" method="post" >
+        <form id="WriteForm" class="WriteForm"  method="post" >
 
             <table class="movie_book_table">
 
@@ -90,17 +90,38 @@ $(document).ready(function(){
 
                 <div class="row">
                     <div class="col col-md-auto center">
-                        <label for="start">Start date:</label>
+                        <label for="start">관람일:</label>
 
-                        <input type="date" id="start" name="schedule_start">
+                        <input type="date" id="start" name="schedule_date">
                     </div>
-                    <div class="col col-md-auto align-self-center center">
-                        ~
+                   <div class="col col-md-auto center">
+                        <label for="startTime">관람 시간:</label>
+
+                        <input type="datetime" id="startTime"name="schedule_start">
                     </div>
+
+                    <!--<div class="container">
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker3'>
+                                        <label for="startTime">관람 시간:</label>
+                                        <input type='text' class="form-control" id="startTime" name="schedule_start"/>
+                                        <span class="input-group-addon">
+                                       <span class="glyphicon glyphicon-time"></span>
+                                       </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+
                     <div class="col col-md-auto center">
-                        <label for="start">End date:</label>
+                        <label for="endTime">종료 시간:</label>
 
-                        <input type="date" id="end" name="schedule_end">
+                        <input  type="datetime" id="endTime" name="schedule_end">
                     </div>
                     <!--<div style="overflow:hidden;">
                         <div class="form-group">
@@ -116,7 +137,7 @@ $(document).ready(function(){
             </table>
 
             <div>
-                <button class="btn btn-dark" type="submit" id="btn_write" style="float: right;">발행</button>
+                <button class="btn btn-dark"  id="btn_write" style="float: right;">발행</button>
             </div>
         </form>
     </div>

@@ -1,3 +1,4 @@
+/*
 package com.project.reservation.repository;
 
 import com.project.reservation.entity.Reservation;
@@ -8,3 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
 }
+*/
