@@ -1,9 +1,9 @@
 
-package com.project.board.repository.schedule.service;
+package com.project.admin.schedule.service;
 
-import com.project.board.repository.schedule.dto.ScheduleDTO;
-import com.project.board.repository.schedule.entity.Schedule;
-import com.project.board.repository.schedule.repository.ScheduleRepository;
+import com.project.admin.schedule.dto.ScheduleDTO;
+import com.project.admin.schedule.entity.Schedule;
+import com.project.admin.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

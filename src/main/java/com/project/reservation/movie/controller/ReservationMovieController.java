@@ -1,7 +1,7 @@
 package com.project.reservation.movie.controller;
 
-import com.project.board.repository.schedule.repository.ScheduleRepository;
-import com.project.board.repository.schedule.service.ScheduleService;
+import com.project.admin.schedule.repository.ScheduleRepository;
+import com.project.admin.schedule.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
