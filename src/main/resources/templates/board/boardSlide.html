@@ -16,8 +16,10 @@
                 margin-top: 100px;
                 margin-bottom: 80px;
             }
-            .col-md-auto {
+           .col-md-auto {
                 margin: 9px;
+                display: inline-block;
+                padding: 10px;
             }
             .card {
              width: 18rem;
@@ -111,46 +113,18 @@
 <!--1번째 이벤트 card 줄-->
     <div id="EventCard">
     <div class="container">
-        <div class="row justify-content-md-center">
+        <div class="row justify-content-md">
+            <div th:each="board:${boards}" style="display: contents;">
             <div class="col-md-auto">
                 <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33672/16394459685190.jpg" class="card-img-top" alt="...">
+                    <img th:src="${board.board_thumbnail}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h6 class="card-title">[스파이더맨: 노 웨이 홈] 개봉작 사용설명서</h6>
-                        <p class="card-text">2021.12.14~2022.01.09</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
+                        <h6 style="height: 50px; overflow: hidden" class="card-title" th:text="${board.board_title}">[스파이더맨: 노 웨이 홈] 개봉작 사용설명서</h6>
+                        <p class="card-text" th:text="${board.board_start_date}== null? '&nbsp;': |${board.board_start_date}~${board.board_end_date}|">2021.12.14~2022.01.09</p>
+                        <a href="#" th:href="@{/board/content(board_num=${board.board_num})}" class="btn btn-dark">이벤트 보기</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33701/16399713475320.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">[스파이더맨: 노 웨이 홈] 스페셜 리미티드 포스터</h6>
-                        <p class="card-text">2021.12.20~2021.12.31</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33686/16396375587150.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">[매트릭스: 리저렉션] 4DX 리미티드 포스터</h6>
-                        <p class="card-text">2021.12.16~2022.01.02</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/30717/16383161979540.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">[이달의 아이스콘] 12월 라인업보고 쿠폰 GET!</h6>
-                        <p class="card-text">2021.12.01~2021.12.31</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -158,57 +132,11 @@
 
 <!--2번째 이벤트 card 줄-->
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33447/16365993268590.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">예매 오픈 알림 서비스</h6>
-                        &nbsp;
-                        <p class="card-text"></p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/32617/16255558327200.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">IMAX WORLD TRAVEL</h6>
-                        <p class="card-text">2021.07.06~2022.01.02</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33630/16388594323000.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">시즌스페셜 베리베리티 런칭</h6>
-                        <p class="card-text">2021.12.07~2021.12.31</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="card">
-                    <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33503/16372861864770.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title">2022 CGV 캘린더 론칭!!</h6>
-                        <p class="card-text">2021.11.19~2021.12.31</p>
-                        <a href="#" class="btn btn-dark">이벤트 보기</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <p style="margin-bottom:50px"></p>
         <div class="d-grid gap-2">
             <button class="btn btn-dark" type="button">더보기</button>
         </div>
     </div>
     </div>
-<!--    <div style="cursor:pointer; text-align: right;" onclick="window.scrollTo(0,0);" class="fixed-bottom"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">-->
-<!--        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>-->
-<!--    </svg></div>-->
 </div>
 </html>

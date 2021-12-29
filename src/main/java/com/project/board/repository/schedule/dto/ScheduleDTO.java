@@ -1,10 +1,9 @@
 
-package com.project.admin.schedule.dto;
+package com.project.board.repository.schedule.dto;
 
-import com.project.admin.schedule.entity.Schedule;
+import com.project.board.repository.schedule.entity.Schedule;
 import lombok.*;
 
-import java.time.LocalDateTime;
 import java.sql.Date;
 
 
