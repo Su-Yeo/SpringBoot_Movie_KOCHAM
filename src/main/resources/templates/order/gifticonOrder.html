@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <title>결제</title>
+    <th:block layout:fragment="css">
+        <style>
+            .svg-wrapper {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                margin: 0 auto;
+                text-align: center;
+            }
+        </style>
+    </th:block>
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).ready(function(){
+                $('input[type="checkbox"][name="gift_check"]').click(function(){
+                    if($(this).prop('checked')){
+                        $('input[type="checkbox"][name="gift_check"]').prop('checked',false);
+                        $(this).prop('checked',true);
+                    }
+                });
+            });
+        </script>
+    </th:block>
+</head>
+<div layout:fragment="content">
+
+    <div class="container">
+        <form action="#" th:action="@{/order/pay}" th:object="${orderPay}" method="post">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-bottom:200px;">
+                <div class="col-md-8">
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-heading">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                    주문상품
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                <div class="accordion-body">
+
+                                    <div class="card mb-3" style="max-width: 540px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33672/16394459685190.jpg" class="img-fluid rounded-start" alt="...">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">상품명</h5>
+                                                    <input type="hidden" value="상품명" name="product_name">
+                                                    <input type="hidden" name="product_num" value="1">
+                                                    <p class="card-text">10,000원</p>
+                                                    <p class="card-text"><small class="text-muted">설명</small></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                    기프티콘
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                <div class="accordion-body">
+                                    <div style="display:inline-block;" th:each="gifticon : ${gifticons}">
+                                        <input type="checkbox" class="btn-check" th:id="${gifticon.gift_num}" th:value="${gifticon.gift_num}" name="gift_check" autocomplete="off">
+                                        <label class="btn btn-outline-dark" th:for="${gifticon.gift_num}">
+                                            <div class="row">
+                                                <div class="col-md-auto">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"fill="currentColor" class="bi bi-ticket-perforated svg-wrapper" viewBox="0 0 16 16">
+                                                        <path d="M4 4.85v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Z"/>
+                                                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13ZM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9V4.5Z"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <span th:text="${gifticon.product_name}">영화 기프티콘</span><br>
+                                                    <span><small class="text-muted" th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">2022.10.20 까지</small></span>
+                                                    <input type="hidden" name="order_discount" value="1000">
+                                                    <input type="hidden" name="gift_num" value="1">
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                                    포인트
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                                <div class="accordion-body">
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-2 col-form-label">포인트 잔액</label>
+                                        <div class="col-sm-10">
+                                            <label class="col-sm-2 col-form-label">100p</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-auto">
+                                            <input type="text" class="form-control" id="staticEmail" name="order_minus_point" value="100">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-primary mb-3">전액사용</button>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                항상 포인트 전액 사용
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                                    결제수단
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                                <div class="accordion-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            네이버 페이
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <ol class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">상품금액</div>
+                                <div class="fw-bold">10,000</div>
+                                <input type="hidden" name="order_origin_price" value="1">
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">할인금액</div>
+                                <div class="fw-bold">1,000</div>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">결제금액</div>
+                                <div class="fw-bold">9,000</div>
+                                <input type="hidden" name="order_total_price" value="9000">
+                                <input type="hidden" name="order_plus_point" value="100">
+                                <input type="hidden" name="order_type" value="movie">
+                                <input type="hidden" name="order_to_id" value="2">
+                                <input type="hidden" name="order_num_group" value="1">
+                                <input type="hidden" name="member_id" value="1">
+                            </div>
+                        </li>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="btn btn-outline-primary" th:href="@{/}">취소</a>
+                            <button type="submit" class="btn btn-primary" th:href="@{/order/pay}">결제</button>
+                        </div>
+                    </ol>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>
