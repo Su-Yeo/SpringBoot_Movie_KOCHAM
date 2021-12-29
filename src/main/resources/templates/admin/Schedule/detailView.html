@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout2}">
 <head>
-    <title>MovieMain</title>
+    <title>MovieSchedule</title>
 
 
     <th:block layout:fragment="script">
@@ -39,19 +39,83 @@ $(document).ready(function(){
 <div layout:fragment="content">
 
 
-    <h1>게시물 내용 보기</h1>
+    <h1>스케줄 상세 페이지</h1>
     <br>
-    <div class="boardView">
-        <div class="schedule_start">상영 시작 시간 : <span th:text="${list.schedule_start}"></span></div>
-        <div class="movie_num">영화 번호 : <span th:text="${list.movie_num}"></span></div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col" class="text-white bg-dark">구분</th>
+            <th scope="col" class="text-white bg-dark">내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" >스케줄 번호 </th>
+            <td><span th:text="${list.schedule_num}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">상영 일자 </th>
+            <td class="table-active"><span th:text="${list.schedule_date}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >영화 시작 시간 </th>
+            <td><span th:text="${list.schedule_start}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">상영 종료 시간 </th>
+            <td class="table-active"><span th:text="${list.schedule_end}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >상영관 번호 </th>
+            <td><span th:text="${list.theater_area_num}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">영화 번호 </th>
+            <td class="table-active"><span th:text="${list.movie_num}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >영화 티켓 비용 </th>
+            <td><span th:text="${list.schedule_cost}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">파일 사이즈 </th>
+            <td class="table-active"><span th:text="${list.file_size}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >파일 이름 </th>
+            <td><span th:text="${list.file_name}"></span></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
         <!--<div class="mregdate">날짜 : <span th:text="${#temporals.format(list.mregdate, 'yyyy-MM-dd')}"></span></div>
         <div class="textArea"><pre th:text="${list.mcontent}"></pre></div>
         <div class="filename">파일명 : <a href="javascript:fileDownload()"><span th:text="${list.filename}"></span></a></div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <center><div>
+            <a th:href="@{/adminSchedule/list}">
+                <button class="btn btn-outline-dark  " id="btn_list">스케줄 목록</button></a>
             <a th:href="@{'/adminSchedule/modify?schedule_num=' + ${list.schedule_num}}">
-                <button class="btn_modify" id="btn_modify">수정</button></a>
+                <button class="btn btn-outline-success" id="btn_modify">수정</button></a>
             <a  th:href="@{'/adminSchedule/delete?schedule_num=' + ${list.schedule_num}}">
-                <button class="btn_delete" id="btn_delete">삭제</button></a>
+                <button class="btn btn-outline-danger" id="btn_delete">삭제</button></a>
         </div></center>
     </div>
 

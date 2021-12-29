@@ -114,7 +114,7 @@
 
 
 
-        <h1>게시물 목록 보기</h1>
+       <!-- <h1>스케줄 관리 페이지</h1>
         <table class="InfoTable">
             <tr>
                 <th>스케줄 번호</th>
@@ -130,12 +130,41 @@
                 <span th:text="${list.movie_num}"></span></a></td>
                 <td><span th:text="${list.schedule_start}"></span></td>
                 <td><span th:text="${list.schedule_end}"></span></td>
-                <!--<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>-->
+                &lt;!&ndash;<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>&ndash;&gt;
             </tr>
             </tbody>
 
+        </table>-->
+        <h1>스케줄 목록 페이지</h1>
+        <br>
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col" class="text-white bg-dark">스케줄 번호</th>
+                <th scope="col" class="text-white bg-dark">영화 번호</th>
+                <th scope="col" class="text-white bg-dark">상영 시작 시간</th>
+                <th scope="col" class="text-white bg-dark">상영 종료 시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list : ${scheduleList}" class="table-secondary">
+                <td ><span th:text="${list.schedule_num}"></span></td>
+                <td  style="text-align:left;"><a id="hypertext" th:href="@{'/adminSchedule/detailView?schedule_num=' + ${list.schedule_num}}">
+                    <span th:text="${list.movie_num}"></span></a></td>
+                <td ><span th:text="${list.schedule_start}"></span></td>
+                <td > <span th:text="${list.schedule_end}"></span></td>
+                <!--<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>-->
+            </tr>
+            </tbody>
         </table>
-        <p style="text-align: center">[ <a href="/adminSchedule/Register">스케줄 등록</a> ]</p>
+
+
+
+        <div class="col text-center">
+        <a th:href="@{/adminSchedule/Register}">
+            <button class="btn btn-outline-dark" id="btn_list">스케줄 등록</button></a>
+        </div>
     </div>
 
 

@@ -1,10 +1,12 @@
 
-package com.project.admin.schedule.dto;
+package com.project.reservation.movie.dto;
 
-import com.project.admin.schedule.entity.Schedule;
-import lombok.*;
+import com.project.reservation.movie.entity.ReservationMovie;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.time.LocalDateTime;
 import java.sql.Date;
 
 
@@ -13,7 +15,7 @@ import java.sql.Date;
 @ToString
 @NoArgsConstructor
 
-public class ScheduleDTO {
+public class ReservationMovieDTO {
     private Long schedule_num;
     private int movie_num =0;
     private int theater_area_num =0;
@@ -29,8 +31,8 @@ public class ScheduleDTO {
 
 
 
-    public Schedule toEntity( ) {
-        return Schedule.builder()
+    public ReservationMovie toEntity( ) {
+        return ReservationMovie.builder()
             .schedule_date(schedule_date)
             .movie_num(movie_num)
             .theater_area_num(theater_area_num)
@@ -41,7 +43,7 @@ public class ScheduleDTO {
             .file_size(file_size)
             .build();
     }
-    public ScheduleDTO(Schedule schedule) {
+    public ReservationMovieDTO(ReservationMovie schedule) {
         this.schedule_num=schedule.getSchedule_num();
         this.movie_num = schedule.getMovie_num();
         this.theater_area_num = schedule.getTheater_area_num();

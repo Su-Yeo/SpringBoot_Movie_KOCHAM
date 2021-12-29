@@ -3,68 +3,74 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layouts/layout2}">
 <head>
-    <title>MovieMain</title>
-
-    <th:block layout:fragment="script">
-
-        <script th:inline="javascript">
-
-
-$(document).ready(function(){
-
-	$("#btn_write").click(function(){
-
-
-
-		$("#WriteForm").attr("action", "/adminSchedule/modify").submit();
-
-	}) //End of $("btn_write")
-
-}) //End of $(document).ready(function)
-
-
-
-
-
-        </script>
-    </th:block>
-
+    <title>MovieSchedule</title>
 
 </head>
 <body>
 <div layout:fragment="content">
 
 
-
-
-    <h1>게시물 수정</h1>
+    <h1>스케줄 수정</h1>
     <br>
 
     <form class="ModifyForm" name="ModifyForm" method="POST">
-        <h4>
 
-        스케줄 번호 : <span name="schedule_num" th:text="${list.schedule_num}"></span>
-        <br>
-        상영 일자 : <input type="text" id="schedule_date" name="schedule_date" th:value="${list.schedule_date}" >
-        <br>
-        영화 시작 시간 : <input type="text" id="schedule_start" name="schedule_start" th:value="${list.schedule_start}" >
-        <br>
-        상영 종료 시간 : <input type="text" id="schedule_end" name="schedule_end" th:value="${list.schedule_end}" >
-        <br>
-        상영관 번호 : <input type="text" id="theater_area_num " name="theater_area_num " th:value="${list.theater_area_num }" >
-        <br>
-        영화 번호 : <input type="text" id="movie_num" name="movie_num" th:value="${list.movie_num}" >
-        <br>
-        영화 티켓 비용 : <input type="text" id="schedule_cost " name="schedule_cost " th:value="${list.schedule_cost }" >
-        <br>
-        파일 사이즈 : <input type="text" id="file_size" name="file_size" th:value="${list.file_size}" >
-        <br>
-        파일 이름 :<input type="text" id="file_name" name="file_name" th:value="${list.file_name}" >
-        <br>
-        <!--<textarea id="mcontent" cols="100" row="500" name="mcontent" th:text="${list.mcontent}"></textarea>-->
-        <button class="btn_modify" id="btn_modify">수정</button>
 
-        </h4>
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-white bg-dark">구분</th>
+                    <th scope="col" class="text-white bg-dark">내용</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" >스케줄 번호 </th>
+                    <td><span th:text="${list.schedule_num}"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">상영 일자 </th>
+                    <td class="table-active"> <input type="text" id="schedule_date" name="schedule_date" th:value="${list.schedule_date}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >영화 시작 시간 </th>
+                    <td><input type="text" id="schedule_start" name="schedule_start" th:value="${list.schedule_start}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">상영 종료 시간 </th>
+                    <td class="table-active"><input type="text" id="schedule_end" name="schedule_end" th:value="${list.schedule_end}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >상영관 번호 </th>
+                    <td><input type="text" id="theater_area_num " name="theater_area_num " th:value="${list.theater_area_num }" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">영화 번호 </th>
+                    <td class="table-active"><input type="text" id="movie_num" name="movie_num" th:value="${list.movie_num}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >영화 티켓 비용 </th>
+                    <td><input type="text" id="schedule_cost " name="schedule_cost " th:value="${list.schedule_cost }" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">파일 사이즈 </th>
+                    <td class="table-active"> <input type="text" id="file_size" name="file_size" th:value="${list.file_size}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >파일 이름 </th>
+                    <td><input type="text" id="file_name" name="file_name" th:value="${list.file_name}" ></td>
+                </tr>
+
+                </tbody>
+            </table>
+        <div class="col text-center">
+            <button  id="btn_modify" type="submit" class="btn btn-outline-dark  ">수정 완료</button>
+        </div>
+
+
+
     </form>
 
 </div>
