@@ -1,9 +1,9 @@
 
-package com.project.admin.schedule.service;
+package com.project.board.repository.schedule.service;
 
-import com.project.admin.schedule.dto.ScheduleDTO;
-import com.project.admin.schedule.entity.Schedule;
-import com.project.admin.schedule.repository.ScheduleRepository;
+import com.project.board.repository.schedule.dto.ScheduleDTO;
+import com.project.board.repository.schedule.entity.Schedule;
+import com.project.board.repository.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 import java.util.stream.Collectors;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 
 @Service
 @RequiredArgsConstructor//클래스 내에 final로 선언된 모든 멤버에 대한 생성자를 생성

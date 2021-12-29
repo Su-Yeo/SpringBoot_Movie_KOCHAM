@@ -17,8 +17,6 @@ public class AdminController {
         return "admin/adminMain";
     }
 
-
-
     @GetMapping(value = "/member") //회원
     public String adminMember( Model model){
 
@@ -32,11 +30,8 @@ public class AdminController {
     }
 
     @GetMapping(value = "/event") //이벤트
-    public String adminEvent(@ModelAttribute Board board){
-
+    public String adminEvent(Model model){
+        model.addAttribute("board", new Board());
         return "admin/adminEvent";
     }
-
-
-
 }

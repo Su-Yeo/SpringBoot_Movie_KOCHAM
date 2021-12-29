@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <title>MovieEventContent</title>
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css">
+    </th:block>
+
+    </head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div th:object="${board}" class="text-center" style="margin-bottom: 150px;">
+            <div class="row">
+                <div class="col-md-5" th:text="${board.board_title}">이벤트 제목</div>
+                <div class="col-md-2 offset-md-3" th:text="${board.board_start_date}== null? '&nbsp;': |${board.board_start_date}~${board.board_end_date}|">2021-12-23~2022-01-15</div>
+            </div>
+            <img th:src="${board.board_image}" class="img-fluid" style="padding-top: 20px;" alt="...">
+        </div>
+    </div>
+</div>
+</body>
+</html>

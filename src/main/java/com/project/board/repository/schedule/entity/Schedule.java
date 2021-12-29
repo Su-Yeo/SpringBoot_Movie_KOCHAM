@@ -1,4 +1,4 @@
-package com.project.admin.schedule.entity;
+package com.project.board.repository.schedule.entity;
 
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
