@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -23,9 +24,9 @@ public class BoardService {
     private BoardRepository boardRepository;
 
     public List<Board> boardList(){
-        //List<Board> boards = boardRepository.findAll(Sort.by(Sort.Direction.DESC,"board_num"));
+        //Sort sort = Sort.by(Sort.Direction.DESC, "board_num");
         List<Board> boards = boardRepository.findAll();
-        return boards;
+        return boards; //.stream().map(Board::new).collect(Collectors.toList());
     }
 
     public Board saveBoard(Board board) {

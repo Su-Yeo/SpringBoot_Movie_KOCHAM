@@ -6,12 +6,26 @@
     <title>MovieEventContent</title>
     <!-- 사용자 CSS 추가 -->
     <th:block layout:fragment="css">
+        <style>
+        #udbutton{
+                    margin-top: 170px;
+                    margin-right: 280px;
+                    text-align: right;
+                }
+
+            @media (max-width: 768px) {
+                #udbutton{
+                    display:none;
+                }
+            }
+        </style>
     </th:block>
 
     </head>
 <body>
 <div layout:fragment="content">
     <div class="container">
+        <div id="udbutton" class="fixed-top"><button type="button" class="btn btn-outline-primary">수정</button> <button type="button" class="btn btn-outline-danger">삭제</button></div>
         <div th:object="${board}" class="text-center" style="margin-bottom: 150px;">
             <div class="row">
                 <div class="col-md-5" th:text="${board.board_title}">이벤트 제목</div>
