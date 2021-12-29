@@ -26,7 +26,7 @@ public class OrderController { //주문 결제
 
     @GetMapping(value = "/store") //임시
     public String getStore(){
-        return "pay/storePay";
+        return "order/storePay";
     }
 
     @GetMapping(value = "/gifticon") //임시
