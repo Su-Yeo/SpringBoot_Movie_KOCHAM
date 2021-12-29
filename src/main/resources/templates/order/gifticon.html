@@ -22,7 +22,7 @@
 
     <div class="container">
         <h2>영화관람권</h2>
-        <h5>ㅓㅓㅓ</h5>
+        <h5><span th:text="${#lists.size(gifticons)}"></span></h5>
         <br>
         <table class="table">
             <thead class="table-light">
@@ -34,22 +34,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+            <tr th:each="gifticon : ${gifticons}">
+                <th scope="row" th:text="${gifticon.gift_num}"></th>
+                <td th:text="${gifticon.product_name}">Mark</td>
+                <td th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">Otto</td>
+                <td th:text="${gifticon.order_from_id}">@mdo</td>
             </tr>
             </tbody>
         </table>
