@@ -55,7 +55,9 @@ public class ItemController {
             return "admin/adminItemNew";
         }
 
-        return "redirect:/admin/adminItemNew"; // 4. 상품 등록이 정삭적으로 작동 되었다면 메인 페이지로 이동합니다.
+        return "redirect:/admin/item/new"; // 4. 상품 등록이 정삭적으로 작동 되었다면 메인 페이지로 이동합니다.
+
+
     }
 
     @GetMapping(value = "/admin/item/{itemId}")
@@ -92,7 +94,7 @@ public class ItemController {
             return "admin/adminItemNew";
         }
 
-        return "redirect:/admin/adminItemNew";
+        return "redirect:/admin/items";
     }
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"}) //272p 1. value에 상품관리 화면 진입시 URL에 페이지 번호가 없는 경우와 페이지 번호가 있는 경우 2가지를 매핑
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
@@ -117,6 +119,6 @@ public class ItemController {
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
-        return "admin/adminItemDtl";
+        return "store/itemDtl";
     }
 }

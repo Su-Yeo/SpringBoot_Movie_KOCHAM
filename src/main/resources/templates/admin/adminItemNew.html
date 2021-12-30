@@ -129,7 +129,7 @@
         <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center"><!--상품의 아이디가 있는 경우 수정 로직을 호출하는 버튼을 보여준다.-->
             <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit" class="btn btn-primary">수정</button>
         </div>
-        <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
     </form>
 
