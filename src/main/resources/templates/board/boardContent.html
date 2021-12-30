@@ -25,7 +25,31 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <div id="udbutton" class="fixed-top"><button type="button" class="btn btn-outline-primary">수정</button> <button type="button" class="btn btn-outline-danger">삭제</button></div>
+        <div id="udbutton" class="fixed-top">
+            <a class="btn btn-outline-primary" th:href="@{/board/modify(board_num=${board.board_num})}">수정</a>
+<!--            <a class="btn btn-outline-danger" th:href="@{/board/delete(board_num=${board.board_num})}">삭제</a></div>-->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            삭제
+        </button>
+    </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">이벤트 게시물을 삭제하시겠습니까?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" th:href="@{/board/delete(board_num=${board.board_num})}">삭제하기</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div th:object="${board}" class="text-center" style="margin-bottom: 150px;">
             <div class="row">
                 <div class="col-md-5" th:text="${board.board_title}">이벤트 제목</div>
