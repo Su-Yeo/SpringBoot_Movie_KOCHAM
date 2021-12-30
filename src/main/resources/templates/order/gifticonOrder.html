@@ -19,11 +19,62 @@
     <th:block layout:fragment="script">
         <script th:inline="javascript">
             $(document).ready(function(){
-                $('input[type="checkbox"][name="gift_check"]').click(function(){
+                var discount = 0; //총 할인 금액 변수
+                var gifticon = 0; //기프티콘 할인 금액
+                var point = 0; //포인트 할인 금액
+
+                $('input[type="checkbox"][name="gift_check"]').click(function(){ //기프티콘 체크
                     if($(this).prop('checked')){
+                        //기프티콘 1개만 선택 처리
                         $('input[type="checkbox"][name="gift_check"]').prop('checked',false);
                         $(this).prop('checked',true);
+
+                        //할인 처리
+                        gifticon = parseInt($('#discount'+$(this).val()).val());
+                        discount = gifticon+point;
+                        $('#total_discount').text(discount);
+
+                        //결제 금액 처리
+                        var totalPrice = parseInt($('#origin_price').val())-discount;
+                        if(totalPrice<0){
+                            alert('할인금액 초과');
+                            $('input[type="checkbox"][name="gift_check"]').prop('checked',false);
+                            gifticon = 0;
+                            discount = 0;
+                            totalPrice = $('#origin_price').val();
+                            $('#total_discount').text(discount);
+                        }
+                        $('#total_price').text(totalPrice);
                     }
+                });
+
+                $('#btn_point').click(function(){ //포인트 전액 사용
+                     $('#txt_point').val($('#lbl_point').text());
+                });
+
+                $('#txt_point').focus(function(){//포인트 입력값 초기화
+                    $('#txt_point').val('');
+                });
+
+                $('#txt_point').change(function(){ //포인트 변경시 포인트 값 처리
+                    if(parseInt($('#lbl_point').text())<$('#txt_point').val()){
+                        $('#txt_point').val($('#lbl_point').text());
+                    }
+
+                    //포인트 할인 처리
+                    point=parseInt($('#txt_point').val());
+                    if(parseInt($('#origin_price').val())-(gifticon+point)<0){
+                        alert('할인금액 초과');
+                        $('#txt_point').val(0);
+                    }else{
+                        point=parseInt($('#txt_point').val());
+                        discount = gifticon+point;
+                        $('#total_discount').text(discount);
+                    }
+
+                    //결제 금액 처리
+                    var totalPrice = parseInt($('#origin_price').val())-discount;
+                    $('#total_price').text(totalPrice);
                 });
             });
         </script>
@@ -74,8 +125,8 @@
                             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                                 <div class="accordion-body">
                                     <div style="display:inline-block;" th:each="gifticon : ${gifticons}">
-                                        <input type="checkbox" class="btn-check" th:id="${gifticon.gift_num}" th:value="${gifticon.gift_num}" name="gift_check" autocomplete="off">
-                                        <label class="btn btn-outline-dark" th:for="${gifticon.gift_num}">
+                                        <input type="checkbox" class="btn-check" th:id="${gifticon.giftNum}" th:value="${gifticon.giftNum}" name="gift_check" autocomplete="off">
+                                        <label class="btn btn-outline-dark" th:for="${gifticon.giftNum}" style="margin-bottom: 5px;">
                                             <div class="row">
                                                 <div class="col-md-auto">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"fill="currentColor" class="bi bi-ticket-perforated svg-wrapper" viewBox="0 0 16 16">
@@ -86,8 +137,8 @@
                                                 <div class="col-md-auto">
                                                     <span th:text="${gifticon.product_name}">영화 기프티콘</span><br>
                                                     <span><small class="text-muted" th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">2022.10.20 까지</small></span>
-                                                    <input type="hidden" name="order_discount" value="1000">
-                                                    <input type="hidden" name="gift_num" value="1">
+                                                    <input type="hidden" name="order_discount" th:id="|discount${gifticon.giftNum}|" th:value="${gifticon.product_price}">
+                                                    <input type="hidden" name="giftNum" value="1">
                                                 </div>
                                             </div>
                                         </label>
@@ -106,16 +157,16 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-2 col-form-label">포인트 잔액</label>
                                         <div class="col-sm-10">
-                                            <label class="col-sm-2 col-form-label">100p</label>
+                                            <label class="col-sm-1 col-form-label" id="lbl_point" style="text-align: right; padding-right: 5px;">100</label>p
                                         </div>
                                     </div>
 
                                     <div class="row g-3">
                                         <div class="col-auto">
-                                            <input type="text" class="form-control" id="staticEmail" name="order_minus_point" value="100">
+                                            <input type="number" class="form-control" id="txt_point" name="order_minus_point" min=0; max=100; value="0">
                                         </div>
                                         <div class="col-auto">
-                                            <button type="button" class="btn btn-primary mb-3">전액사용</button>
+                                            <button type="button" class="btn btn-primary mb-3" id="btn_point">전액사용</button>
                                         </div>
 
                                         <div class="form-check">
@@ -154,19 +205,19 @@
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">상품금액</div>
                                 <div class="fw-bold">10,000</div>
-                                <input type="hidden" name="order_origin_price" value="1">
+                                <input type="hidden" id="origin_price" name="order_origin_price" value="10000">
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">할인금액</div>
-                                <div class="fw-bold">1,000</div>
+                                <div class="fw-bold" id="total_discount">1,000</div>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">결제금액</div>
-                                <div class="fw-bold">9,000</div>
+                                <div class="fw-bold" id="total_price">9,000</div>
                                 <input type="hidden" name="order_total_price" value="9000">
                                 <input type="hidden" name="order_plus_point" value="100">
                                 <input type="hidden" name="order_type" value="movie">
