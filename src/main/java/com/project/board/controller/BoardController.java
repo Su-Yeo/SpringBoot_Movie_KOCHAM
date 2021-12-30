@@ -1,5 +1,6 @@
 package com.project.board.controller;
 
+import com.project.admin.schedule.dto.ScheduleDTO;
 import com.project.board.dto.Board;
 import com.project.board.repository.BoardRepository;
 import com.project.board.service.BoardService;
@@ -35,5 +36,29 @@ public class BoardController {
     public String writeEvent(@ModelAttribute Board board){
         boardService.saveBoard(board);
         return "redirect:/board/main";
+    }
+
+    //이벤트 게시판 내용 수정
+    @GetMapping(value = "/modify")
+    public String getMModify(Model model, @RequestParam(name="board_num", required=false) Long board_num) throws Exception {
+        Board board = boardService.boardContent(board_num);
+        model.addAttribute("board", board);
+        return "admin/adminEvent";
+    }
+
+    //이벤트 게시판 내용 수정
+    @PostMapping(value = "/modify")
+    public String postMModify(@ModelAttribute Board board, @RequestParam(name="board_num", required=false) Long board_num) throws Exception {
+        boardService.updateBoard(board, board_num);
+        return "redirect:/board/main";
+    }
+
+    //이벤트 게시판 내용 삭제
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String postDelete(@RequestParam(name="board_num", required=false) Long board_num) throws Exception {
+
+        boardService.deleteBoard(board_num);
+        return "redirect:/board/main";
+
     }
 }

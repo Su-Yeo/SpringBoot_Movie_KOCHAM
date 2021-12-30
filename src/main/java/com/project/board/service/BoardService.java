@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,16 @@ public class BoardService {
 
     public Board saveBoard(Board board) {
         return boardRepository.save(board);
+    }
+
+    public Board updateBoard(Board board2, Long board_num) {
+        Board board = boardRepository.findById(board_num).orElseThrow(EntityNotFoundException::new);;
+        board.updateBoard(board2.getBoard_title(), board2.getBoard_start_date(), board2.getBoard_end_date(), board2.getBoard_image(), board2.getBoard_thumbnail());
+        return boardRepository.save(board);
+    }
+
+    public void deleteBoard(Long board_num) {
+        boardRepository.deleteById(board_num);
     }
 
     @Transactional(readOnly = true)

@@ -44,13 +44,13 @@
         <form th:action="@{/board/write}" th:object="${board}" method="post">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">이벤트 제목</span>
-            <input type="text" class="form-control" placeholder="제목 입력" aria-label="Username" aria-describedby="basic-addon1" name="board_title">
+            <input th:value="${not #strings.isEmpty(board.board_title)} ? ${board.board_title}:''" type="text" class="form-control" placeholder="제목 입력" aria-label="Username" aria-describedby="basic-addon1" name="board_title">
         </div>
         <div class="row">
             <div class="col col-md-auto center">
                 <label for="start">Start date:</label>
 
-                <input type="date" id="start" name="board_start_date">
+                <input th:value="${not #strings.isEmpty(board.board_start_date)} ? ${board.board_start_date}:''" type="date" id="start" name="board_start_date">
             </div>
             <div class="col col-md-auto align-self-center center">
                 ~
@@ -58,20 +58,26 @@
             <div class="col col-md-auto center">
                 <label for="start">End date:</label>
 
-                <input type="date" id="end" name="board_end_date">
+                <input th:value="${not #strings.isEmpty(board.board_end_date)} ? ${board.board_end_date}:''" type="date" id="end" name="board_end_date">
             </div>
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="event-content">이벤트 내용 url</span>
-            <input type="text" class="form-control" id="content-url" aria-describedby="basic-addon3" name="board_image">
+            <input th:value="${not #strings.isEmpty(board.board_image)} ? ${board.board_image}:''" type="text" class="form-control" id="content-url" aria-describedby="basic-addon3" name="board_image">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="event-thumbnail">이벤트 썸네일 url</span>
-            <input type="text" class="form-control" id="thumbnail-url" aria-describedby="basic-addon3" name="board_thumbnail">
+            <input th:value="${not #strings.isEmpty(board.board_thumbnail)} ? ${board.board_thumbnail}:''" type="text" class="form-control" id="thumbnail-url" aria-describedby="basic-addon3" name="board_thumbnail">
         </div>
         <div>
-        <button type="submit" class="btn btn-dark" style="float: right;">발행</button>
+            <div th:if="${#strings.isEmpty(board.board_num)}" style="text-align: center">
+                <button type="submit" class="btn btn-dark" style="float: right;">발행</button>
+            </div>
+            <div th:if="${not #strings.isEmpty(board.board_num)}" style="text-align: center">
+                <input th:value="${board.board_num}" type="hidden" name="board_num">
+                <button th:formaction="@{/board/modify}" type="submit" class="btn btn-dark" style="float: right;">수정</button>
+            </div>
         </div>
         </form>
     </div>
