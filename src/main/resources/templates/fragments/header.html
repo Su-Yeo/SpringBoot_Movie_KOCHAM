@@ -1,5 +1,6 @@
  <!DOCTYPE html>
-<html xmlns:th=http://www.thymeleaf.org>
+<html xmlns:th=http://www.thymeleaf.org
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div th:fragment="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,12 +36,11 @@
                     </li>
                 </ul>
                 <div class="ligroup">
-                    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="location.href='/admin/main'" >관리자페이지 진입(임시)</button>
-                    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >관리자 메뉴</button>
-                    <!-- Button trigger modal -->
-                    <button class="btn btn-dark" type="button" style="color:white; background-color: #212529; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</button>
+                    <button class="btn btn-dark" type="button" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="location.href='/admin/main'" >관리자페이지 진입(임시)</button>
+                    <button class="btn btn-dark" type="button" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >관리자 메뉴</button>
+                    <button class="btn btn-dark" sec:authorize="isAnonymous()" type="button" data-bs-toggle="offcanvas"  onclick="location.href='/members/login'" >로그인</button>
+                    <button class="btn btn-dark" sec:authorize="isAuthenticated()" type="button" data-bs-toggle="offcanvas"  onclick="location.href='/members/logout'" >로그아웃</button>
 
-                    <a class="btn btn-dark" th:href="@{/member/signup}"  style="color:white; background-color:#212529; border : none; margin-left: 20px; margin-right: 20px; text-decoration:none; " >회원가입</a>
                 </div>
 
                 <form class="d-flex">
