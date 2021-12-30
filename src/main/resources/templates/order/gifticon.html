@@ -6,15 +6,41 @@
     <title>결제</title>
     <th:block layout:fragment="css">
         <style>
-
+            .displayNone{
+                display:none;
+            }
         </style>
     </th:block>
     <!-- 사용자 스크립트 추가 -->
     <th:block layout:fragment="script">
         <script th:inline="javascript">
             $(document).ready(function(){
-
+                $("#btn_more").click(function(){
+                    moreList();
+                })
             });
+
+            function moreList() {
+                $.ajax({
+                    url : "/api/gifticon",
+                    type : "post",
+                    dataType : "json",
+                    data : queryString,
+                    success : replyList,
+                    error : function(data) {
+                                    alert("서버오류 문제로 댓글 등록이 실패 했습니다. 잠시 후 다시 시도해주시기 바랍니다.");
+                                    return false;
+                            }
+                }); //End of ajax
+            }
+
+            function replyList(list){
+                var result = "";
+                $.each(list, function(index,item){
+                        result += "번호 : " + item["giftNum"];
+                })
+                $("#replyList").html(result);
+            }
         </script>
     </th:block>
 </head>
@@ -22,7 +48,7 @@
 
     <div class="container">
         <h2>영화관람권</h2>
-        <h5><span th:text="${#lists.size(gifticons)}"></span></h5>
+        <h5><span th:text="${gifticons.totalElements}"></span></h5>
         <br>
         <table class="table">
             <thead class="table-light">
@@ -35,13 +61,18 @@
             </thead>
             <tbody>
             <tr th:each="gifticon : ${gifticons}">
-                <th scope="row" th:text="${gifticon.gift_num}"></th>
+                <th scope="row" th:text="${gifticon.giftNum}"></th>
                 <td th:text="${gifticon.product_name}">Mark</td>
                 <td th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">Otto</td>
                 <td th:text="${gifticon.order_from_id}">@mdo</td>
             </tr>
             </tbody>
         </table>
+        <div th:each="i: ${#numbers.sequence(startPage, endPage)}" th:classappend="${gifticons.totalPages == gifticons.pageable.pageNumber+1}?'container'">
+           <a href="#" class="btn btn-outline-primary" th:classappend="${i == gifticons.pageable.pageNumber+1}?'disabled'" th:href="@{/gifticon/list(page=${i-1})}" th:text="${i}">more</a>
+<!--            <button id="btn_more" class="btn btn-outline-primary">more</button>-->
+        </div>
+        <div id="replyList"></div>
     </div>
 </div>
 </html>
