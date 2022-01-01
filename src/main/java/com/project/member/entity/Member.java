@@ -23,6 +23,8 @@ public class Member {
     private String email;
     private String password;
     private String address;
+    @Column(name="member_point", columnDefinition = "integer default 0")
+    private int point; //적립금
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -32,6 +34,7 @@ public class Member {
         member.setEmail(memberFormDto.getEmail());
         member.setEmail(memberFormDto.getEmail());
         member.setAddress(memberFormDto.getAddress());
+        member.setPoint(memberFormDto.getPoint());
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
         member.setRole(Role.ADMIN);

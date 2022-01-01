@@ -15,9 +15,10 @@ import java.time.LocalDateTime;
 public class OrderDTO { //주문 결제 테이블
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long order_num; //판매코드
-    private String member_id; //아이디(구매자)
+    @Column(nullable = false, name = "order_num")
+    private Long orderNum; //판매코드
+    @Column(nullable = false, name = "member_id")
+    private String memberId; //아이디(구매자)
     private String product_name; //상품명
     private Long product_num; //상품코드(스토어/영화)
     private int order_total_price; //가격
