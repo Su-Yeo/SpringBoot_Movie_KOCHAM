@@ -18,7 +18,7 @@ public class OrderDTO { //주문 결제 테이블
     @Column(nullable = false, name = "order_num")
     private Long orderNum; //판매코드
     @Column(nullable = false, name = "member_id")
-    private String memberId; //아이디(구매자)
+    private Long memberId; //아이디(구매자)
     private String product_name; //상품명
     private Long product_num; //상품코드(스토어/영화)
     private int order_total_price; //가격

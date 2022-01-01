@@ -6,9 +6,7 @@
     <title>결제</title>
     <th:block layout:fragment="css">
         <style>
-            .displayNone{
-                display:none;
-            }
+
         </style>
     </th:block>
     <!-- 사용자 스크립트 추가 -->
@@ -21,24 +19,26 @@
 <div layout:fragment="content">
 
     <div class="container">
-        <h2>영화관람권</h2>
-        <h5><span th:text="${gifticons.totalElements}"></span></h5>
+        <h2>기프티콘</h2>
+        <h5>남은 기프티콘 : <span th:text="${gifticons.totalElements}"></span>개</h5>
         <br>
-        <table class="table">
+        <table class="table" style="text-align: center;">
             <thead class="table-light">
             <tr>
-                <th scope="col"></th>
+                <th scope="col">기프티콘번호</th>
                 <th scope="col">관람권명</th>
                 <th scope="col">유효기간</th>
+                <th scope="col">금액</th>
                 <th scope="col">보내신분</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="gifticon : ${gifticons}">
-                <th scope="row" th:text="${gifticon.giftNum}"></th>
-                <td th:text="${gifticon.product_name}">Mark</td>
-                <td th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">Otto</td>
-<!--                <td th:text="${gifticon.order_from_id}">@mdo</td>-->
+                <th scope="row" th:text="${#numbers.formatInteger(gifticon.giftNum,7)}">번호</th>
+                <td th:text="${gifticon.product_name}">관람권명</td>
+                <td th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">유효기간</td>
+                <td th:text="${#numbers.formatInteger(gifticon.product_price,1,'COMMA')}">0</td>
+                <td th:text="${gifticon.order_from_id}">보내신분</td>
             </tr>
             </tbody>
         </table>

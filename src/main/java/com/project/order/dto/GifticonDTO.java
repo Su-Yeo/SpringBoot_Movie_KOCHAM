@@ -31,4 +31,17 @@ public class GifticonDTO { //기프티콘 테이블
     private LocalDateTime order_date; //받은 날짜
     @Column(nullable = false)
     private int product_price; //기프티콘금액
+
+    public GifticonDTO() {
+    }
+
+    public GifticonDTO(Long memberId, Long product_num, String product_name, String order_from_id, LocalDateTime gift_exp, LocalDateTime order_date, int product_price) {
+        this.memberId = memberId;
+        this.product_num = product_num;
+        this.product_name = product_name;
+        this.order_from_id = order_from_id;
+        this.gift_exp = gift_exp;
+        this.order_date = order_date;
+        this.product_price = product_price;
+    }
 }

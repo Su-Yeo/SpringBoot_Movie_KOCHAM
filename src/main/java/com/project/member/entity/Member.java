@@ -24,7 +24,7 @@ public class Member {
     private String password;
     private String address;
     @Column(name="member_point", columnDefinition = "integer default 0")
-    private int point; //적립금
+    private Integer point; //적립금
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -40,6 +40,15 @@ public class Member {
         member.setRole(Role.ADMIN);
         return member;
 
+    }
+
+    public void updateMember(MemberFormDto memberFormDto){
+        this.id = memberFormDto.getId();
+        this.name = memberFormDto.getName();
+        this.email = memberFormDto.getEmail();
+        this.password = memberFormDto.getPassword();
+        this.address = memberFormDto.getAddress();
+        this.point = memberFormDto.getPoint();
     }
 
 }

@@ -1,8 +1,10 @@
 package com.project.member.dto;
 
+import com.project.member.entity.Member;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class MemberFormDto {
+
+    private Long id;
 
     @NotBlank(message = "이름은 필수 입력 값입니다.")
     private String name;
@@ -27,4 +31,10 @@ public class MemberFormDto {
 
     private int point; //적립금
 
+
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    public static MemberFormDto of(Member member) {
+        return modelMapper.map(member,MemberFormDto.class);
+    }
 }
