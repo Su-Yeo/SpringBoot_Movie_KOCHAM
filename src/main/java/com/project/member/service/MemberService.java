@@ -1,5 +1,6 @@
 package com.project.member.service;
 
+import com.project.member.dto.MemberFormDto;
 import com.project.member.entity.Member;
 import com.project.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,11 @@ public class MemberService implements UserDetailsService {
         if(findMember != null){
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
+    }
+
+    public Member getMember(String email) {
+        Member findMember = memberRepository.findByEmail(email);
+        return findMember;
     }
 
     @Override

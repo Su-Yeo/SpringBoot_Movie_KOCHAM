@@ -22,59 +22,90 @@
                 var discount = 0; //총 할인 금액 변수
                 var gifticon = 0; //기프티콘 할인 금액
                 var point = 0; //포인트 할인 금액
+                totalPrice(); //결제 금액 처리
 
-                $('input[type="checkbox"][name="gift_check"]').click(function(){ //기프티콘 체크
+                //기프티콘 체크
+                $('input[type="checkbox"][name="giftNum"]').click(function(){
                     if($(this).prop('checked')){
                         //기프티콘 1개만 선택 처리
-                        $('input[type="checkbox"][name="gift_check"]').prop('checked',false);
+                        $('input[type="checkbox"][name="giftNum"]').prop('checked',false);
                         $(this).prop('checked',true);
 
                         //할인 처리
                         gifticon = parseInt($('#discount'+$(this).val()).val());
-                        discount = gifticon+point;
-                        $('#total_discount').text(discount);
-
-                        //결제 금액 처리
-                        var totalPrice = parseInt($('#origin_price').val())-discount;
-                        if(totalPrice<0){
+                        if(parseInt(/*[[${item.price}]]*/)-(gifticon+point)<0){
                             alert('할인금액 초과');
-                            $('input[type="checkbox"][name="gift_check"]').prop('checked',false);
+                            $('input[type="checkbox"][name="giftNum"]').prop('checked',false);
                             gifticon = 0;
-                            discount = 0;
-                            totalPrice = $('#origin_price').val();
+                            discount=point;
+                            totalPrice = parseInt(/*[[${item.price}]]*/)-point;
+                            $('#total_discount').text(discount);
+                        }else{
+                            discount = gifticon+point;
                             $('#total_discount').text(discount);
                         }
-                        $('#total_price').text(totalPrice);
+
+                        //기프티콘 할인 금액
+                        $('input[name=order_discount]').attr('value',gifticon);
+
+                        //결제 금액 처리
+                        totalPrice();
                     }
                 });
 
+                //포인트 변경시 포인트 값 처리
+                function pointChange(){
+                    if($('#txt_point').val() == ""){
+                        point=0;
+                    }else{
+                        point=parseInt($('#txt_point').val());
+                    }
+
+                    if(parseInt($('#lbl_point').text())<point){
+                        $('#txt_point').val($('#lbl_point').text());
+                    }
+
+                    //포인트 할인 처리
+                    if(parseInt(/*[[${item.price}]]*/)-(gifticon+point)<0){
+                        alert('할인금액 초과');
+                        $('#txt_point').val(0);
+                        point = 0;
+                        discount=gifticon;
+                        totalPrice = parseInt(/*[[${item.price}]]*/)-gifticon;
+                        $('#total_discount').text(discount);
+                    }else{
+                        discount = gifticon+point;
+                        $('#total_discount').text(discount);
+                    }
+
+                    //포인트 차감
+                    $('input[name=order_minus_point]').attr('value',point);
+
+                    //결제 금액 처리
+                    totalPrice();
+                }
+
+                //결제 금액 처리
+                function totalPrice(){
+                    var totalPrice = parseInt(/*[[${item.price}]]*/)-discount;
+                    $('#total_price').text(totalPrice);
+                    //총 결제 금액
+                    $('input[name=order_total_price]').attr('value',totalPrice);
+                    //적립 포인트
+                    $('input[name=order_plus_point]').attr('value',totalPrice*0.1);
+                }
+
                 $('#btn_point').click(function(){ //포인트 전액 사용
                      $('#txt_point').val($('#lbl_point').text());
+                     pointChange();
                 });
 
                 $('#txt_point').focus(function(){//포인트 입력값 초기화
                     $('#txt_point').val('');
                 });
 
-                $('#txt_point').change(function(){ //포인트 변경시 포인트 값 처리
-                    if(parseInt($('#lbl_point').text())<$('#txt_point').val()){
-                        $('#txt_point').val($('#lbl_point').text());
-                    }
-
-                    //포인트 할인 처리
-                    point=parseInt($('#txt_point').val());
-                    if(parseInt($('#origin_price').val())-(gifticon+point)<0){
-                        alert('할인금액 초과');
-                        $('#txt_point').val(0);
-                    }else{
-                        point=parseInt($('#txt_point').val());
-                        discount = gifticon+point;
-                        $('#total_discount').text(discount);
-                    }
-
-                    //결제 금액 처리
-                    var totalPrice = parseInt($('#origin_price').val())-discount;
-                    $('#total_price').text(totalPrice);
+                $('#txt_point').on("change keyup paste", function() { //포인트 변경시 포인트 값 처리
+                    pointChange();
                 });
             });
         </script>
@@ -99,15 +130,15 @@
                                     <div class="card mb-3" style="max-width: 540px;">
                                         <div class="row g-0">
                                             <div class="col-md-4">
-                                                <img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33672/16394459685190.jpg" class="img-fluid rounded-start" alt="...">
+                                                <img th:src="${item.imgUrl}" class="img-fluid rounded-start" th:alt="${item.itemNm}">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">상품명</h5>
-                                                    <input type="hidden" value="상품명" name="product_name">
-                                                    <input type="hidden" name="product_num" value="1">
-                                                    <p class="card-text">10,000원</p>
-                                                    <p class="card-text"><small class="text-muted">설명</small></p>
+                                                    <h5 class="card-title" th:text="${item.itemNm}">상품명</h5>
+                                                    <input type="hidden" th:value="${item.itemNm}" name="product_name">
+                                                    <input type="hidden" th:value="${item.id}" name="product_num">
+                                                    <p class="card-text" th:text="|${#numbers.formatInteger(item.price,1,'COMMA')}원|">0원</p>
+                                                    <p class="card-text"><small class="text-muted" th:text="${item.itemDetail}">설명</small></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +156,7 @@
                             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                                 <div class="accordion-body">
                                     <div style="display:inline-block;" th:each="gifticon : ${gifticons}">
-                                        <input type="checkbox" class="btn-check" th:id="${gifticon.giftNum}" th:value="${gifticon.giftNum}" name="gift_check" autocomplete="off">
+                                        <input type="checkbox" class="btn-check" th:id="${gifticon.giftNum}" th:value="${gifticon.giftNum}" name="giftNum" autocomplete="off">
                                         <label class="btn btn-outline-dark" th:for="${gifticon.giftNum}" style="margin-bottom: 5px;">
                                             <div class="row">
                                                 <div class="col-md-auto">
@@ -138,7 +169,7 @@
                                                     <span th:text="${gifticon.product_name}">영화 기프티콘</span><br>
                                                     <span><small class="text-muted" th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">2022.10.20 까지</small></span>
                                                     <input type="hidden" name="order_discount" th:id="|discount${gifticon.giftNum}|" th:value="${gifticon.product_price}">
-                                                    <input type="hidden" name="giftNum" value="1">
+<!--                                                    <input type="hidden" name="giftNum" th:value="${gifticon.giftNum}">-->
                                                 </div>
                                             </div>
                                         </label>
@@ -157,7 +188,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-2 col-form-label">포인트 잔액</label>
                                         <div class="col-sm-10">
-                                            <label class="col-sm-1 col-form-label" id="lbl_point" style="text-align: right; padding-right: 5px;">100</label>p
+                                            <label class="col-sm-1 col-form-label" id="lbl_point" style="text-align: right; padding-right: 5px;" th:text="${member.point}">0</label>p
                                         </div>
                                     </div>
 
@@ -204,30 +235,30 @@
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">상품금액</div>
-                                <div class="fw-bold">10,000</div>
-                                <input type="hidden" id="origin_price" name="order_origin_price" value="10000">
+                                <div class="fw-bold" th:text="${#numbers.formatInteger(item.price,1,'COMMA')}">0</div>
+                                <input type="hidden" id="origin_price" name="order_origin_price" th:value="${item.price}">
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">할인금액</div>
-                                <div class="fw-bold" id="total_discount">1,000</div>
+                                <div class="fw-bold" id="total_discount">0</div>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">결제금액</div>
-                                <div class="fw-bold" id="total_price">9,000</div>
-                                <input type="hidden" name="order_total_price" value="9000">
+                                <div class="fw-bold" id="total_price" th:text="${#numbers.formatInteger(item.price,1,'COMMA')}">0</div>
+                                <input type="hidden" name="order_total_price" th:value="${item.price}">
                                 <input type="hidden" name="order_plus_point" value="100">
                                 <input type="hidden" name="order_type" value="movie">
                                 <input type="hidden" name="order_to_id" value="2">
                                 <input type="hidden" name="order_num_group" value="1">
-                                <input type="hidden" name="member_id" value="1">
+                                <input type="hidden" name="memberId" th:value="${member.id}">
                             </div>
                         </li>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a type="button" class="btn btn-outline-primary" th:href="@{/}">취소</a>
+                            <a type="button" class="btn btn-outline-primary" th:href="'/item/' +${item.id}">취소</a>
                             <button type="submit" class="btn btn-primary" th:href="@{/order/pay}">결제</button>
                         </div>
                     </ol>

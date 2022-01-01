@@ -17,8 +17,8 @@ public class GifticonDTO { //기프티콘 테이블
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column(nullable = false, name="gift_num")
     private Long giftNum; //기프티콘코드
-    @Column(nullable = false)
-    private String member_id; //아이디(구매자)
+    @Column(nullable = false, name = "member_id")
+    private Long memberId; //아이디(구매자)
     @Column(nullable = false)
     private Long product_num; //상품코드
     @Column(nullable = false)
