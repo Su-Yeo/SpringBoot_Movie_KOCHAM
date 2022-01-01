@@ -5,29 +5,7 @@
 <head>
     <title>MovieSchedule</title>
 
-    <th:block layout:fragment="script">
 
-        <script th:inline="javascript">
-
-
-$(document).ready(function(){
-
-	$("#btn_write").click(function(){
-
-
-
-		$("#WriteForm").attr("action", "/adminSchedule/Register").submit();
-
-	}) //End of $("btn_write")
-
-}) //End of $(document).ready(function)
-
-
-
-
-
-        </script>
-    </th:block>
 
 
 </head>
@@ -44,7 +22,7 @@ $(document).ready(function(){
             </p>
         </div>
 
-        <form id="WriteForm" class="WriteForm"  method="post" >
+        <form id="WriteForm" class="WriteForm"  th:action = "@{/adminSchedule/Register}" method="post" >
 
             <table class="movie_book_table">
 
@@ -137,7 +115,7 @@ $(document).ready(function(){
             </table>
 
             <div>
-                <button class="btn btn-dark"  id="btn_write" style="float: right;">발행</button>
+                <button class="btn btn-dark"  type="submit" id="btn_write" style="float: right;">발행</button>
             </div>
         </form>
     </div>

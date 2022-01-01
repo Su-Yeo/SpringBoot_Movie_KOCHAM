@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //메인페이지. 회원 관련 URL, 상품페이지, 상품 이미지 불러오는 경로등 설정
 
                 .mvcMatchers("/admin/**").hasRole("ADMIN") //3. admin 경로는 ADMIN Rile 만 접근 가능하도록 설정
+                .mvcMatchers("/adminSchedule/**").hasRole("ADMIN") //3. admin 경로는 ADMIN Rile 만 접근 가능하도록 설정
                 .anyRequest().authenticated() //4. 위의 2,3을 제외한 모든 경로는 인증을 요구한다.
         ;
         http.exceptionHandling()

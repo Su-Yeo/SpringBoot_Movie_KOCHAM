@@ -13,7 +13,7 @@
     <h1>스케줄 수정</h1>
     <br>
 
-    <form class="ModifyForm" name="ModifyForm" method="POST">
+    <form class="ModifyForm" name="ModifyForm" th:action ="@{'/adminSchedule/modify?schedule_num=' + ${list.schedule_num}}" method="POST">
 
 
 
