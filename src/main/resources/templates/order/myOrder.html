@@ -36,7 +36,7 @@
             </thead>
             <tbody>
             <tr th:each="order : ${orders}">
-                <th scope="row" th:text="${order.order_num}"></th>
+                <th scope="row" th:text="${order.orderNum}">0</th>
                 <td th:text="${order.product_name}">Mark</td>
                 <td th:text="${#temporals.format(order.order_date, 'yyyy-MM-dd')}">Otto</td>
                 <td th:text="${order.order_total_price}">@mdo</td>
