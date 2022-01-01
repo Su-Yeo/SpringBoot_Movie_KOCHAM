@@ -22,7 +22,7 @@
 
     <div class="container">
         <h2>구매내역</h2>
-        <h5><span th:text="${#lists.size(orders)}"></span></h5>
+        <h5>구매 건수 : <span th:text="${orders.totalElements}"></span></h5>
         <br>
         <table class="table">
             <thead class="table-light">
@@ -44,6 +44,24 @@
             </tr>
             </tbody>
         </table>
+
+        <!-- 페이징 -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${1 == orders.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#"
+                       th:href="@{/order/list(page=${orders.pageable.pageNumber - 1})}"
+                       tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item" th:classappend="${i == orders.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                    <a class="page-link" href="#" th:href="@{/order/list(page=${i - 1})}" th:text="${i}">1</a>
+                </li>
+                <li class="page-item" th:classappend="${orders.totalPages == orders.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#" th:href="@{/order/list(page=${orders.pageable.pageNumber + 1})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+
     </div>
 </div>
 </html>

@@ -16,5 +16,6 @@ public class ItemDto {
     private String sellStatCd;
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
-    private String imgUrl;
+    private String imgUrl; //이미지 경로
+    private Integer count; //상품 수량
 }

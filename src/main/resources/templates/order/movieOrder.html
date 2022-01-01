@@ -127,14 +127,14 @@
 <div layout:fragment="content">
 
     <div class="container">
-        <form action="#" th:action="@{/order/storePay}" th:object="${orderPay}" method="post">
+        <form action="#" th:action="@{/order/moviePay}" th:object="${orderPay}" method="post">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-bottom:200px;">
                 <div class="col-md-8">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-heading">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse" aria-expanded="true" aria-controls="panelsStayOpen-collapse">
-                                    주문상품
+                                    영화예매
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapse" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading">
@@ -147,7 +147,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h5 class="card-title" th:text="${item.itemNm}">상품명</h5>
+                                                    <h5 class="card-title" th:text="${item.itemNm}">스파이더맨</h5>
                                                     <input type="hidden" th:value="${item.itemNm}" name="product_name">
                                                     <input type="hidden" th:value="${item.id}" name="product_num">
                                                     <p class="card-text" th:text="|${#numbers.formatInteger(item.price,1,'COMMA')}원|">0원</p>
@@ -183,7 +183,7 @@
                                                     <span name="order_discount" th:text="${#numbers.formatInteger(gifticon.product_price,1,'COMMA')}">0</span><br>
                                                     <span><small class="text-muted" th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">2022.10.20 까지</small></span>
                                                     <input type="hidden" name="order_discount" th:id="|discount${gifticon.giftNum}|" th:value="${gifticon.product_price}">
-<!--                                                    <input type="hidden" name="giftNum" th:value="${gifticon.giftNum}">-->
+                                                    <input type="hidden" name="giftNum" th:value="${gifticon.giftNum}">
                                                 </div>
                                             </div>
                                         </label>
