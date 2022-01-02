@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value="/theater")
-public class TheaterController {
+public class TheateController {
 
     @GetMapping(value = "/main")
     public String memberForm(Model model){
