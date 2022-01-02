@@ -34,4 +34,10 @@ public class AdminController {
         model.addAttribute("board", new Board());
         return "admin/adminEvent";
     }
+
+    @GetMapping(value = "/team") // 팀 구성원
+    public String teamMember(Model model){
+
+        return "admin/teamMember";
+    }
 }

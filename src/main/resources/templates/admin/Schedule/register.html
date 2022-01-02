@@ -24,24 +24,24 @@
 
         <form id="WriteForm" class="WriteForm"  th:action = "@{/adminSchedule/Register}" method="post" >
 
-            <table class="movie_book_table">
+            <table class="table">
 
                 <thead>
                 <tr>
-                    <th scope="cols"></th>
-                    <th scope="cols"></th>
+                    <th scope="col" class="text-white bg-dark">구분</th>
+                    <th scope="col" class="text-white bg-dark">내용</th>
                 </tr>
                 </thead>
                 <tbody>
 
                 <tr>
-                    <th scope="row" >영화선택</th>
-                    <td colspan="2">
+                    <th scope="row" class="table-active">영화선택</th>
+                    <td colspan="2" class="table-active">
 
                         <select id="movie_num" name="movie_num">
                             <option value="" selected disabled hidden>영화를 선택해주세요</option>
-                            <option var="1" name="movie_num">1</option>
-                            <option var="2" name="movie_num">2</option>
+                            <option value="1" name="movie_num">스파이더맨</option>
+                            <option value="2" name="movie_num">킹스맨</option>
 
                             <th:each th:each="list : ${list}">
                                 <option value="${list.movie_num}">${list.movie_num}</option>
@@ -57,26 +57,46 @@
                     <th scope="row">영화관지정</th>
                     <td><select id="theater_area_num" name="theater_area_num">
                         <option value="" selected disabled hidden>관람지역 선택</option>
-                        <option var="11" name="theater_area_num">11</option>
-                        <option var="22" name="theater_area_num">22</option>
+                        <option value="11" name="theater_area_num">화곡</option>
+                        <option value="22" name="theater_area_num">강남</option>
                         <th:each th:each="list : ${list}">
                             <option value="${list.theater_area_num}">${list.theater_area_num}</option>
                         </th:each>
                     </select></td>
 
                 </tr>
+                <tr>
+                    <th scope="row" class="table-active">상영 일자 </th>
+                    <td class="table-active">
+                        <div class="col col-md-auto center">
+                            <input type="date" id="start" name="schedule_date">
+                        </div>
 
-                <div class="row">
-                    <div class="col col-md-auto center">
-                        <label for="start">관람일:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" >관람 시간 </th>
+                    <td >
+                        <div class="col col-md-auto center">
+                            <input type="datetime" id="startTime"name="schedule_start">
+                        </div>
 
-                        <input type="date" id="start" name="schedule_date">
-                    </div>
-                   <div class="col col-md-auto center">
-                        <label for="startTime">관람 시간:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">종료 시간 </th>
+                    <td class="table-active">
+                        <div class="col col-md-auto center">
+                            <input  type="datetime" id="endTime" name="schedule_end">
+                        </div>
 
-                        <input type="datetime" id="startTime"name="schedule_start">
-                    </div>
+                    </td>
+                </tr>
+
+
+
+
+
 
                     <!--<div class="container">
                         <div class="row">
@@ -96,11 +116,6 @@
 
 
 
-                    <div class="col col-md-auto center">
-                        <label for="endTime">종료 시간:</label>
-
-                        <input  type="datetime" id="endTime" name="schedule_end">
-                    </div>
                     <!--<div style="overflow:hidden;">
                         <div class="form-group">
                             <div class="row">
@@ -110,9 +125,10 @@
                             </div>
                         </div>
                     </div>-->
-                </div>
+
                 </tbody>
             </table>
+
 
             <div>
                 <button class="btn btn-dark"  type="submit" id="btn_write" style="float: right;">발행</button>
