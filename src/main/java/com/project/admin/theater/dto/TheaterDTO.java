@@ -19,6 +19,7 @@ public class TheaterDTO {
     private Long theater_area_num;
     private String theater_name;
     private String theater_loc;
+    private String theater_fullloc;
     private int theater_totalseat;
 
 
@@ -26,6 +27,7 @@ public class TheaterDTO {
         return Theater.builder()
             .theater_name(theater_name)
             .theater_loc(theater_loc)
+                .theater_fullloc(theater_fullloc)
             .theater_area_num(theater_area_num)
                 .theater_totalseat(theater_totalseat)
             .build();
@@ -34,6 +36,7 @@ public class TheaterDTO {
         this.theater_area_num=theater.getTheater_area_num();
         this.theater_name=theater.getTheater_name();
         this.theater_loc=theater.getTheater_loc();
+        this.theater_fullloc=theater.getTheater_fullloc();
         this.theater_totalseat=theater.getTheater_totalseat();
 
     }

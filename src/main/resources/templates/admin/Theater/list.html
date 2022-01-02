@@ -144,6 +144,7 @@
                 <th scope="col" class="text-white bg-dark">극장 번호</th>
                 <th scope="col" class="text-white bg-dark">극장 이름</th>
                 <th scope="col" class="text-white bg-dark">극장 지역</th>
+                <th scope="col" class="text-white bg-dark">극장 주소</th>
                 <th scope="col" class="text-white bg-dark">극장 총 좌석</th>
             </tr>
             </thead>
@@ -153,6 +154,7 @@
                     <span th:text="${list.theater_area_num}"></span></a></td>
                 <td ><span th:text="${list.theater_name}"></span></td>
                 <td ><span th:text="${list.theater_loc}"></span></td>
+                <td ><span th:text="${list.theater_fullloc}"></span></td>
                 <td > <span th:text="${list.theater_totalseat}"></span></td>
                 <!--<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>-->
             </tr>

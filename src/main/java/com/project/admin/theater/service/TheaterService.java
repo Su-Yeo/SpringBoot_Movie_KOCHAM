@@ -55,7 +55,7 @@ public class TheaterService {
             Theater entity = theaterRepository.findById(theater_area_num).orElseThrow(()->new IllegalArgumentException("해당 게시물이 없습니다."));
             /*public void update(int movie_num, int theater_area_num, Date schedule_date,
             int schedule_start, int schedule_end, int schedule_cost, String file_name, long file_size) */
-            entity.update(dto.getTheater_area_num(), dto.getTheater_name(),dto.getTheater_loc(),dto.getTheater_totalseat());
+            entity.update(dto.getTheater_area_num(), dto.getTheater_name(),dto.getTheater_loc(),dto.getTheater_fullloc(),dto.getTheater_totalseat());
             /*entity.update(dto.getMovie_num(), dto.getTheater_area_num(),
                     dto.getSchedule_start(), dto.getSchedule_end(), dto.getschedule_date(), dto.getSchedule_cost(), dto.getFile_name(), dto.getFile_size());*/
 
