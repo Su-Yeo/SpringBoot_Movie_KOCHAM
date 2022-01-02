@@ -2,6 +2,7 @@ package com.project.store.entity;
 
 
 import com.project.store.constant.ItemSellStatus;
+import com.project.store.constant.ItemType;
 import com.project.store.dto.ItemFormDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,12 +39,16 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //상품 판매 상태
 
+    @Enumerated(EnumType.STRING)
+    private ItemType itemType; //상품 타입(FOOD, GIFTICON, GOODS)
+
     public void updateItem(ItemFormDto itemFormDto){
         this.itemNm = itemFormDto.getItemNm();
         this.price = itemFormDto.getPrice();
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+        this.itemType = itemFormDto.getItemType();
     }
 
 }
