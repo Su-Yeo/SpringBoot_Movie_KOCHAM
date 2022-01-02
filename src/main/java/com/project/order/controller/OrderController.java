@@ -38,38 +38,6 @@ public class OrderController { //주문 결제
     @Autowired
     private MemberService memberService;
 
-    @GetMapping(value = "/store") //임시
-    public String getStore(){
-        return "order/storePay";
-    }
-
-    @GetMapping(value = "/gifticon") //임시
-    public String getGifticon(){
-        return "order/gifticon";
-    }
-
-//    @PostMapping(value = "/gifticonOrder") //기프티콘 주문 페이지
-//    public String getGifticonOrder(Model model, ItemDto itemDto, Authentication authentication) {
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-//        Member member = memberService.getMember(userDetails.getUsername());
-//        List<GifticonDTO> gifticons = gifticonService.getGifticonList(member.getId());
-//        model.addAttribute("member",member);
-//        model.addAttribute("gifticons", gifticons);
-//        model.addAttribute("item", itemDto);
-//        model.addAttribute("order",new OrderDTO());
-//        return "order/storeOrder";
-//    }
-
-//    @PostMapping(value="pay") //결제
-//    public String postPay(@ModelAttribute OrderDTO orderPay){
-//        orderService.saveOrder(orderPay);
-//        memberService.setPlusPoint(orderPay.getMemberId(), orderPay.getOrder_plus_point());
-//        if(orderPay.getOrder_minus_point()>0){
-//            memberService.setMinusPoint(orderPay.getMemberId(),orderPay.getOrder_minus_point());
-//        }
-//        return "redirect:/order/list";
-//    }
-
     @PostMapping(value = "/store") //상품 주문 페이지
     public String getStoreOrder(Model model, ItemDto itemDto, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -110,13 +78,14 @@ public class OrderController { //주문 결제
     }
 
     @PostMapping(value="moviePay") //영화결제
-    public String postMoviePay(@ModelAttribute OrderDTO orderPay){
+    public String postMoviePay(@ModelAttribute OrderDTO orderPay, HttpServletRequest request){
         orderService.saveOrder(orderPay);
         memberService.setPlusPoint(orderPay.getMemberId(), orderPay.getOrder_plus_point());
         if(orderPay.getOrder_minus_point()>0){
             memberService.setMinusPoint(orderPay.getMemberId(),orderPay.getOrder_minus_point());
         }
-        gifticonService.deleteGifticon(orderPay.getProduct_num());
+        Long giftNum = Long.valueOf(request.getParameter("giftNum"));
+        gifticonService.deleteGifticon(giftNum);
         return "redirect:/order/list";
     }
 
