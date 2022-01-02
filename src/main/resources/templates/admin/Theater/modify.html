@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieSchedule</title>
+
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <h1>스케줄 수정</h1>
+    <br>
+
+    <form class="ModifyForm" name="ModifyForm" method="POST">
+
+
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-white bg-dark">구분</th>
+                    <th scope="col" class="text-white bg-dark">내용</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" >극장 번호 </th>
+                    <td><span th:text="${list.theater_area_num}"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">극장 이름 </th>
+                    <td class="table-active"> <input type="text" id="theater_name" name="theater_name" th:value="${list.theater_name}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">극장 지역 </th>
+                    <td class="table-active"> <input type="text" id="theater_loc" name="theater_loc" th:value="${list.theater_loc}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">극장 주소 </th>
+                    <td class="table-active"> <input type="text" id="theater_fullloc" name="theater_fullloc" th:value="${list.theater_fullloc}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >극장 총좌석 </th>
+                    <td><input type="text" id="theater_totalseat" name="theater_totalseat" th:value="${list.theater_totalseat}" ></td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        <div class="col text-center">
+            <button  id="btn_modify" type="submit" class="btn btn-outline-dark  ">수정 완료</button>
+        </div>
+
+
+
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieSchedule</title>
+
+
+
+
+</head>
+
+
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <!-내용 추가-->
+        <div class="grid">
+            <div class="g-col-4"><h3>영화 상영 스케줄 등록</h3></div>
+            <p>
+                영화 상영에 필요한 정보를 입력하는 페이지 입니다.<br /> 아래의 사항들을 빠짐없이 선택해 주세요.
+            </p>
+        </div>
+
+        <form id="WriteForm" class="WriteForm"  th:action = "@{/adminTheater/Register}" method="post" >
+
+            <table class="movie_book_table">
+
+                <thead>
+                <tr>
+                    <th scope="cols"></th>
+                    <th scope="cols"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!--<tr th:each="list : ${list}">
+                    <td><span th:text="${list.movie_num}"></span></td>
+                </tr>-->
+
+                <div class="row">
+                    <div class="col col-md-auto center">
+                        <label for="Theater_name">극장 명</label>
+
+                        <input type="text" id="Theater_name" name="Theater_name">
+                    </div>
+                    <div class="col col-md-auto center">
+                        <label for="Theater_loc">극장지역</label>
+                        <input type="text" id="Theater_loc"name="Theater_loc">
+                    </div>
+                    <div class="col col-md-auto center">
+                        <label for="Theater_fullloc">극장주소</label>
+                        <input type="text" id="Theater_fullloc"name="Theater_fullloc">
+                    </div>
+                    <div class="col col-md-auto center">
+                        <label for="Theater_totalseat">총좌석수</label>
+
+                        <input type="text" id="Theater_totalseat"name="Theater_totalseat">
+                    </div>
+
+                    <!--<div style="overflow:hidden;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div id="datetimepicker12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                </tbody>
+            </table>
+
+            <div>
+                <button class="btn btn-dark"  type="submit" id="btn_write" style="float: right;">발행</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>
