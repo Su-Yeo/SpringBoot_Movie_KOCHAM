@@ -19,7 +19,7 @@ public class ScheduleDTO {
 
     private int schedule_start=0;
     private int schedule_end=0;
-    private int schedule_cost =9000;
+    private int schedule_cost =14000;
 
     private Date schedule_date ;
 
