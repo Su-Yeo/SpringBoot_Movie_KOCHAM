@@ -2,6 +2,7 @@ package com.project.store.dto;
 
 
 import com.project.store.constant.ItemSellStatus;
+import com.project.store.constant.ItemType;
 import com.project.store.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +32,8 @@ public class ItemFormDto {
     private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
+
+    private ItemType itemType;
 
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>(); // 234p 1. 상품 저장 후 수정할 때 상품 이미지 정보를 저장하는 리스트 입니다.
 

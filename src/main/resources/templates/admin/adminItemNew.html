@@ -4,10 +4,10 @@
       layout:decorate="~{layouts/layout2}">
 <head>
     <title>ItemNew</title>
-<!-- 사용자 스크립트 추가 -->
-<th:block layout:fragment="script">
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
 
-    <script th:inline="javascript">
+        <script th:inline="javascript">
         $(document).ready(function(){
             var errorMessage = [[${errorMessage}]]; // 240p 1. 상품 등록 시 실패 메시지를 받아서 상품 등록 페이지에 재진입시 alert를 통해서 실패 사유를 보여줍니다.
             if(errorMessage != null){
@@ -37,7 +37,7 @@
 
     </script>
 
-</th:block>
+    </th:block>
 </head>
 
 <!-- 사용자 CSS 추가 -->
@@ -69,6 +69,11 @@
             <select th:field="*{itemSellStatus}" class="custom-select">
                 <option value="SELL">판매중</option>
                 <option value="SOLD_OUT">품절</option>
+            </select>
+            <select th:field="*{itemType}" class="custom-select">
+                <option value="FOOD">음식</option>
+                <option value="GIFTICON">기프티콘</option>
+                <option value="GOODS">굿즈</option>
             </select>
         </div>
 
