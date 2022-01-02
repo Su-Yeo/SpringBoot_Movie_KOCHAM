@@ -26,7 +26,7 @@
             <thead class="table-light">
             <tr>
                 <th scope="col">기프티콘번호</th>
-                <th scope="col">관람권명</th>
+                <th scope="col">기프티콘명</th>
                 <th scope="col">유효기간</th>
                 <th scope="col">금액</th>
                 <th scope="col">보내신분</th>
@@ -35,7 +35,7 @@
             <tbody>
             <tr th:each="gifticon : ${gifticons}">
                 <th scope="row" th:text="${#numbers.formatInteger(gifticon.giftNum,7)}">번호</th>
-                <td th:text="${gifticon.product_name}">관람권명</td>
+                <td th:text="${gifticon.product_name}">이름</td>
                 <td th:text="${#temporals.format(gifticon.gift_exp, 'yyyy-MM-dd')}">유효기간</td>
                 <td th:text="${#numbers.formatInteger(gifticon.product_price,1,'COMMA')}">0</td>
                 <td th:text="${gifticon.order_from_id}">보내신분</td>
