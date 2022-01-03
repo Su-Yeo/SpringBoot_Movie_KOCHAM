@@ -25,46 +25,6 @@
                 var totalPrice = 0; //결제 금액
                 totalPriceChange(); //결제 금액 처리
 
-                //기프티콘 체크
-                $('input[type="checkbox"][name="giftNum"]').click(function(){
-                    if($(this).prop('checked')){
-                        //기프티콘 1개만 선택 처리
-                        $('input[type="checkbox"][name="giftNum"]').prop('checked',false);
-                        $(this).prop('checked',true);
-
-                        //할인 처리
-                        gifticon = parseInt($('#discount'+$(this).val()).val());
-                        if(parseInt(/*[[${item.price}]]*/)-(gifticon+point)<0){
-                            alert('할인금액 초과');
-                            $('input[type="checkbox"][name="giftNum"]').prop('checked',false);
-                            gifticon = 0;
-                            discount=point;
-                            totalPrice = parseInt(/*[[${item.price}]]*/)-point;
-                            $('#total_discount').text(discount);
-                        }else{
-                            discount = gifticon+point;
-                            $('#total_discount').text(discount);
-                        }
-
-                        //기프티콘 할인 금액
-                        $('input[name=order_discount]').attr('value',gifticon);
-
-                        //결제 금액 처리
-                        totalPriceChange();
-                    }else{ //체크해제 시
-                        gifticon = 0;
-                        discount=point;
-                        totalPrice = parseInt(/*[[${item.price}]]*/)-point;
-                        $('#total_discount').text(discount);
-
-                        //기프티콘 할인 금액
-                        $('input[name=order_discount]').attr('value',gifticon);
-
-                        //결제 금액 처리
-                        totalPriceChange();
-                    }
-                });
-
                 //포인트 변경시 포인트 값 처리
                 function pointChange(){
                     if($('#txt_point').val() == ""){

@@ -61,7 +61,6 @@
 
 <div layout:fragment="content" style="margin-left:25%;margin-right:25%">
     <form th:action="@{/order/store}" role="form" method="post" th:object="${itemDto}">
-<!--        <form th:action="@{/order/movie}" role="form" method="post" th:object="${itemDto}">-->
     <input type="hidden" id="itemId" th:value="${item.id}" name="id">
 
     <div class="d-flex">
