@@ -60,8 +60,6 @@ public class OrderController { //주문 결제
         model.addAttribute("movie", reservationMovieDTO);
         model.addAttribute("movieDTO", movieDTO);
         model.addAttribute("order",new OrderDTO());
-        //int price = Integer.parseInt(request.getParameter("price"));
-        //model.addAttribute("price",price);
         return "order/movieOrder";
     }
 
@@ -87,8 +85,10 @@ public class OrderController { //주문 결제
         if(orderPay.getOrder_minus_point()>0){
             memberService.setMinusPoint(orderPay.getMemberId(),orderPay.getOrder_minus_point());
         }
-        Long giftNum = Long.valueOf(request.getParameter("giftNum"));
-        gifticonService.deleteGifticon(giftNum);
+        if (request.getParameter("giftNum") != null){
+            Long giftNum = Long.valueOf(request.getParameter("giftNum"));
+            gifticonService.deleteGifticon(giftNum);
+        }
         return "redirect:/order/list";
     }
 
