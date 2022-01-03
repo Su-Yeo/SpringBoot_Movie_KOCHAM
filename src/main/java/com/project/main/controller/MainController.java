@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping(value = "/")
     public String startHome(){
-        return "startHome";
+        return "movie/movieForm";
     }
 }
