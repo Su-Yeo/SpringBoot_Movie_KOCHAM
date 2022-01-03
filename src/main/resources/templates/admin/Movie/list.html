@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+
+<head>
+    <title>MovieList</title>
+</head>
+
+
+
+<div layout:fragment="content">
+
+    <!--
+    <div class="movie-list-board-cinema">
+        <div class="movie-list-board-title-main">
+            <h3 class="movie-board-title"></h3>
+        </div>
+        <span class="screening-list">영화 상영 리스트 </span>
+        <table class="movie-board-table">
+            <colgroup>
+                <col width="14%" />
+                <col width="40%" />
+                <col width="18%" />
+                <col width="25%" />
+                <col width="13%" />
+            </colgroup>
+            <thead class="thead-movie-board">
+            <tr class="tr">
+                <th style="display: none">SCREENING_NUM</th>
+                <th>NUM</th>
+                <th>TITLE</th>
+                <th>LOCAL</th>
+                <th>MOVIE START TIME</th>
+                <th>DELETE</th>
+            </tr>
+            </thead>
+            <div class="top-menu-wrapper">
+                <div class="search-wrapper">
+                    <select name="movie-search-category">
+                        <option selected disabled hidden>TITLE</option>
+                        &lt;!&ndash;<tr th:each="list : ${list}" onMouseover="this.style.background='#46D2D2';" onmouseout="this.style.background='white';">
+                            <td><span th:text="${list.schedule_num}"></span></td>&ndash;&gt;
+                        &lt;!&ndash;<c:forEach items="${listTitle}" var="listTitle">
+                            <option value="">${listTitle.title}</option>
+                        </c:forEach>&ndash;&gt;
+                       &lt;!&ndash; <option value="">${list.schedule_num}</option>&ndash;&gt;
+                        <option var="제목1">제목1</option>
+                        <option var="제목2">제목2</option>
+
+                    </select>
+                    <select name="movie-search-category">
+                        <option selected disabled hidden>LOCAL</option>
+                        &lt;!&ndash;<c:forEach items="${listCinema}" var="listCinema">
+                            <option value="">${listCinema.local_info_city}
+                                ${listCinema.local_info_dist}</option>
+                        </c:forEach>&ndash;&gt;
+                        <option var="극장1">극장1</option>
+                        <option var="극장2">극장2</option>
+                    </select>
+                    <select name="movie-search-category">
+                        <option selected disabled hidden>MOVIE START TIME</option>
+                        &lt;!&ndash;<c:forEach items="${listStartTime}" var="listStartTime">
+                            <option value="">${listStartTime.movie_start_time}</option>
+                        </c:forEach>&ndash;&gt;
+                        <option var="영화시작시간1">영화시작시간1</option>
+                        <option var="영화시작시간2">영화시작시간2</option>
+                    </select>
+
+                    <button type="submit" class="movie-search-btn" onclick="">
+                        <img src="/resources/img/glass.png">
+                    </button>
+                </div>
+            </div>
+            <tbody class="movie-board-detail">
+           &lt;!&ndash; <c:forEach var="mnlist" items="${list}" varStatus="status">
+                <tr class="trboard">
+                    <td class="screening_num" style="display: none">${mnlist.screening_num}</td>
+                    <td>${status.index+1}</td>
+                    <td class="tdTitle">${mnlist.title}</td>
+                    <td class="tdLocal">${mnlist.local_info_city}
+                        ${mnlist.local_info_dist}</td>
+                    <td class="tdMoviestarttime">${mnlist.movie_start_time}</td>
+                    <td>
+                        <button type="button" class="mypage-btn" value="${mnlist.screening_num}">삭제</button>
+                    </td>
+                </tr>
+            </c:forEach>&ndash;&gt;
+            </tbody>
+        </table>
+        <div class="movie-writing">
+        </div>
+        &lt;!&ndash;버텀부&ndash;&gt;
+        <div class="movie-reg-button-wrapper">
+            <button type="submit" class="movie-register-btn">
+                <a th:href="@{/adminSchedule/Register}">등록</a>
+            </button>
+        </div>
+        <div class="movie-board-bottom">
+            &lt;!&ndash;<c:if test="${pageMaker.prev}">
+                <a href="${path}/MN_Screening_Board/MN_screening_list?page=${pageMaker.startPage-1}&laquo;">
+                </a> </c:if>
+            <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                <a href="${path}/MN_Screening_Board/MN_screening_list?page=${idx}">${idx}</a>
+            </c:forEach>
+            <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                <a href="${path}/MN_Screening_Board/MN_screening_list?page=${pageMaker.endPage+1}">&raquo;</a>
+            </c:if>&ndash;&gt;
+        </div>
+    </div>
+    -->
+
+    <div class="tableDiv">
+
+
+
+        <!-- <h1>스케줄 관리 페이지</h1>
+         <table class="InfoTable">
+             <tr>
+                 <th>스케줄 번호</th>
+                 <th>영화 번호</th>
+                 <th>상영 시작 시간</th>
+                 <th>상영 종료 시간</th>
+             </tr>
+
+             <tbody>
+             <tr th:each="list : ${scheduleList}" >
+                 <td><span th:text="${list.schedule_num}"></span></td>
+                 <td style="text-align:left;"><a id="hypertext" th:href="@{'/adminSchedule/detailView?schedule_num=' + ${list.schedule_num}}">
+                 <span th:text="${list.movie_num}"></span></a></td>
+                 <td><span th:text="${list.schedule_start}"></span></td>
+                 <td><span th:text="${list.schedule_end}"></span></td>
+                 &lt;!&ndash;<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>&ndash;&gt;
+             </tr>
+             </tbody>
+
+         </table>-->
+        <h1>영화 목록 페이지</h1>
+        <br>
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col" class="text-white bg-dark">영화 번호</th>
+                <th scope="col" class="text-white bg-dark">영화 제목</th>
+                <th scope="col" class="text-white bg-dark">영화 개봉일자</th>
+                <th scope="col" class="text-white bg-dark">영화 마감일자</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list : ${MovieList}" class="table-secondary">
+                <td ><span th:text="${list.movie_num}"></span></td>
+                <td style="text-align:left;"><a id="hypertext" th:href="@{'/admin/movie/detailView?movie_num=' + ${list.movie_num}}">
+                    <span th:text="${list.movie_title}"></span></a></td>
+                <td ><span th:text="${list.movie_openningDate}"></span></td>
+                <td > <span th:text="${list.movie_closingDate}"></span></td>
+                <!--<td><span th:text="${#temporals.format(list.schedule_start, 'yyyy-MM-dd')}"></span></td>-->
+            </tr>
+            </tbody>
+        </table>
+
+
+
+        <div class="col text-center">
+            <a th:href="@{/admin/movie/Register}">
+                <button class="btn btn-outline-dark" id="btn_list">영화 등록</button></a>
+        </div>
+    </div>
+
+
+</div>
+</html>

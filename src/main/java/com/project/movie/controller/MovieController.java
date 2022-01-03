@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/movie")
 public class MovieController {
 
+    // 영화 상영작 페이지
     @GetMapping(value = "/main")
     public String movieForm(Model model){
 
         return "movie/movieForm";
     }
+    // 영화 상세정보 페이지
     @GetMapping(value = "/detail")
     public String detailPage(Model model){
+
         return "movie/detailPage";
     }
+
 }

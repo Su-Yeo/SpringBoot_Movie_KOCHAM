@@ -15,6 +15,7 @@
         .fieldError {
             color: #bd2130;
         }
+
     </style>
     </th:block>
 
@@ -28,16 +29,28 @@
                 alert(errorMessage);
             }
         });
+
     </script>
 
-    </th:block>
+        <script>
 
+        </script>
+
+    </th:block>
+    <style>
+                    body {
+        font:1em "맑은 고딕",Cambria,Georgia,sans-serif;
+        }
+
+        img.left{
+        float:left
+        }
+    </style>
 </head>
 <body>
 
 <div layout:fragment="content">
 
-    <!--1번째 영화 card 줄-->
     <div id="detail-Movie">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -45,26 +58,26 @@
                 <b><h1> 상세설명 </h1></b>
                 <hr>
                 <div class="movie-detail-img">
-                <img href="./detail"><img src="https://img.megabox.co.kr/SharedImg/2021/12/16/ixl5QxDVs5Gn8nQN3rslK8BUmgFVklj8_420.jpg" width="300px" height="400px;" class="detail-img-top" alt="..."></img>
-                </div>
-                <div class="movie-detail-info">
-                    <h3 class="info-title"><strong> 스파이더맨 </strong></h3>
-                    <div class="info-data">
-                        <span class="blind">영화 상세 정보</span>
-                        <span class="score"><em>관람평점 : </em><span class="num"> </span> 점</span>
-                        <ul class="da2ta-movie">
-                            <li><span><em>개봉일 : </em> ...</span></li>
-                            <li><span><em>평점 : </em>...</span></li>
-                            <li><span><em>예매율 : </em>...</span></li>
-                            <li><span><em>상영시간 : </em> ... / <span>...</span>분</span></li>
-                            <li><span><em>줄거리 : </em>...</span></li>
-                        </ul>
+                    <img href="./detail"><img src="https://img.megabox.co.kr/SharedImg/2021/12/16/ixl5QxDVs5Gn8nQN3rslK8BUmgFVklj8_420.jpg" width="300px" height="400px;" class="left" alt="...?"></img>
+                    <div class="movie-detail-info">
+                        <h1 class="info-title"><strong>&nbsp; 스파이더맨: 노 웨이 홈</strong></h1><br>
+                        <h5><span><em>&nbsp; 개봉일 </em> 2021.12.15 </span></h5><br>
+                        <h5><span><em>&nbsp; 평점 </em>0.0</span></h5><br>
+                        <h5><span><em>&nbsp; 예매율 </em>0.0</span></h5><br>
+                        <h5><span><em>&nbsp; 상영시간 </em> SF, 액션, 어드벤처 / <span>148</span>분</span></h5><br><br>
+                        &nbsp;<a href="../reservation/choiceMovie" class="btn btn-primary btn-lg">예매</a>
                     </div>
-                    <a href="${path}/movie/screening/booking?movie_num=${movieRead.movie_num}" class="ticketing-btn">예매하기</a>
+                </div>
+                <div class="info-desc">
+                    <br><h5><span><em>줄거리 </em><br>영화 (스파이더맨: 노 웨이 홈)은 정체가 탄로난 스파이더맨 '피터 파커'(톰 홀랜드)가
+문제를 해결하기 위해 '닥터 스트레인지'(베네딕트 컴버배치)의 도움을 받던 중 뜻하지 않게 멀티버스가 열리게 되고, 이를 통해 '닥터 옥토퍼스'(알프리드 몰리나) 등 각기 다른 차원의 숙적들이 나타나며 사상 최악의 위기를 맞게 되는 이야기를 그린 마블 액션 블록버스터.
+                    </span></h5>
                 </div>
             </div>
+
         </div>
     </div>
+</div>
 </div>
 <!--<jsp:include page="header.jsp" flush="false" />
 &lt;!&ndash; 영화정보 &ndash;&gt;
