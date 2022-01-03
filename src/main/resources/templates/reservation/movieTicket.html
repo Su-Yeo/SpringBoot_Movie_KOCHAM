@@ -174,10 +174,10 @@
 
         for (var j = 0; j < seatCol.length; j++) {
         if (seatCol[j].status === 'f') {
-        seatList += "<button class='completed' value=" + seatCol[j] +
+        seatList += "<button type='button' class='completed' value=" + seatCol[j] +
                     " disabled='disabled'>" + seatCol[j] + "</button>";
         } else {
-        seatList += "<button value=" + seatCol[j] + ">" + seatCol[j] +
+        seatList += "<button type='button' value=" + seatCol[j] + ">" + seatCol[j] +
             "<span class='blind reserve-status'>" + seatCol[j].status + "</span></button>";
         }
         } // inner for
@@ -278,31 +278,36 @@
 
 <div layout:fragment="content">
 
-
     <div id="container">
+        <form th:action="@{/order/movie}" role="form" method="post" th:object="${movie}">
         <h3 class="ticket-title">영화예매</h3>
-        <div class="ticket-info-area">
+        <div class="ticket-info-area" th:object="${movieDTO}">
             <ul class="ticket-info">
-                <li><span class="ticket-movie-poster"> <img th:src="@{/img/poster/spider_man.jpg}">
+                <li><span class="ticket-movie-poster"> <img th:src="@{/img/poster/spider_man.jpg}" name="imgUrl">
           </span>
                     <div class="ticket-movie">
                         <div class="ticket-info-title">영화</div>
                         <!--<div>${movieRead.title}</div>-->
                         <div>스파이더맨 : 노 웨이 홈</div>
+                        <input type="hidden" value="1" name="ticket_num">
+                        <input type="hidden" value="스파이더맨 : 노 웨이 홈" name="movieName">
                     </div>
                 </li>
                 <li>
                     <div class="ticket-info-title">관람일시</div>
                     <div id="txtDate"></div>
                     <div id="txtTime"></div>
+                    <input type="hidden" value="2022-01-03" name="schedule_date">
                 </li>
                 <li>
                     <div class="ticket-info-title">선택좌석</div>
                     <div id=seatInfo></div>
+                    <input type="hidden" value="10" name="seat_num">
                 </li>
                 <li>
                     <div class="ticket-info-title">총 결제금액</div>
                     <div class="ticket-price"><span>0</span>원</div>
+                    <input type="hidden" value="14000" name="moviePrice">
                 </li>
             </ul>
         </div>
@@ -329,33 +334,35 @@
                                 <button class="active">서울</button>
                                 <ul class="choice-list-detail on">
                                     <li>
-                                        <button>강남</button>
+                                        <button type="button">강남</button>
                                     </li>
                                     <li>
-                                        <button>홍대</button>
+                                        <button type="button">홍대</button>
                                     </li>
                                     <li>
-                                        <button>화곡</button>
+                                        <button type="button">화곡</button>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <button>경기도</button>
+                                <button type="button">경기도</button>
                                 <ul class="choice-list-detail">
                                     <li>
-                                        <button>수원</button>
+                                        <button type="button">수원</button>
                                     </li>
                                     <li>
-                                        <button>평택</button>
+                                        <button type="button">평택</button>
                                     </li>
                                     <li>
-                                        <button>안양</button>
+                                        <button type="button">안양</button>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </dd>
                 </dl>
+                <input type="hidden" value="서울" name="theater_city">
+                <input type="hidden" value="화곡점" name="theater_loc">
                 <!--<dl class="date_choice">
                     <dt>
                         <span class="round">STEP 2</span> 관람일 선택
@@ -372,15 +379,15 @@
                     <dd>
                         <ul class="choice-list" id="listDate">
                             <li>
-                                <button>2022년 01월03일 월요일</button>
+                                <button type="button">2022년 01월03일 월요일</button>
                                 <input type="hidden" value="20220103">
                             </li>
                             <li>
-                                <button>2022년 01월05일 수요일</button>
+                                <button type="button">2022년 01월05일 수요일</button>
                                 <input type="hidden" value="20220105">
                             </li>
                             <li>
-                                <button>2022년 01월06일 목요일</button>
+                                <button type="button">2022년 01월06일 목요일</button>
                                 <input type="hidden" value="20220106">
                             </li>
                         </ul>
@@ -407,9 +414,9 @@
                         <!-- 선택 날짜에 관한 관람시간 리스트 -->
                         <ul class="choice-list" id="timeList">
                             <li>
-                                <button class="">1회 10:00 (시네마1관)</button>
-                                <button class="">2회 12:00 (시네마2관)</button>
-                                <button class="">6회 19:00 (시네마7관)</button>
+                                <button type="button" class="">1회 10:00 (시네마1관)</button>
+                                <button type="button" class="">2회 12:00 (시네마2관)</button>
+                                <button type="button" class="">6회 19:00 (시네마7관)</button>
                                 <input type="hidden" id="listTime_itemscheduleseq" value="0000102554">
                                 <input type="hidden" id="listTime_seattemplateseq" value="0000001698">
                                 <input type="hidden" id="listTime_ticketingIntYn" value="Y">
@@ -418,6 +425,7 @@
                         <!--  선택 전  -->
                     </dd>
                 </dl>
+                <input type="hidden" value="2회 12:00 (시네마2관)" name="theater_name">
                 <!--<dl class="seat_choice">
                     <dt>
                         <span class="round">STEP 4</span> 좌석 및 잔여석 확인
@@ -512,9 +520,9 @@
             </div>
 
         </div>
-        <form  th:action = "@{/order/movie}" method="post" >
+<!--        <form  th:action = "@{/order/movie}" method="post" >-->
         <div class="payment-area">
-            <button id="payment"  class="join-submit join-button">결제</button>
+            <button id="payment" type="submit" class="join-submit join-button">결제</button>
         </div>
         </form>
     </div>

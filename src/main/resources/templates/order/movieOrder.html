@@ -34,12 +34,12 @@
 
                         //할인 처리
                         gifticon = parseInt($('#discount'+$(this).val()).val());
-                        if(parseInt(/*[[${item.price}]]*/)-(gifticon+point)<0){
+                        if(parseInt(/*[[${movieDTO.moviePrice}]]*/)-(gifticon+point)<0){
                             alert('할인금액 초과');
                             $('input[type="checkbox"][name="giftNum"]').prop('checked',false);
                             gifticon = 0;
                             discount=point;
-                            totalPrice = parseInt(/*[[${item.price}]]*/)-point;
+                            totalPrice = parseInt(/*[[${movieDTO.moviePrice}]]*/)-point;
                             $('#total_discount').text(discount);
                         }else{
                             discount = gifticon+point;
@@ -54,7 +54,7 @@
                     }else{ //체크해제 시
                         gifticon = 0;
                         discount=point;
-                        totalPrice = parseInt(/*[[${item.price}]]*/)-point;
+                        totalPrice = parseInt(/*[[${movieDTO.moviePrice}]]*/)-point;
                         $('#total_discount').text(discount);
 
                         //기프티콘 할인 금액
@@ -78,12 +78,12 @@
                     }
 
                     //포인트 할인 처리
-                    if(parseInt(/*[[${item.price}]]*/)-(gifticon+point)<0){
+                    if(parseInt(/*[[${movieDTO.moviePrice}]]*/)-(gifticon+point)<0){
                         alert('할인금액 초과');
                         $('#txt_point').val(0);
                         point = 0;
                         discount=gifticon;
-                        totalPrice = parseInt(/*[[${item.price}]]*/)-gifticon;
+                        totalPrice = parseInt(/*[[${movieDTO.moviePrice}]]*/)-gifticon;
                         $('#total_discount').text(discount);
                     }else{
                         discount = gifticon+point;
@@ -99,7 +99,7 @@
 
                 //결제 금액 처리
                 function totalPriceChange(){
-                    totalPrice = parseInt(/*[[${item.price}]]*/)-discount;
+                    totalPrice = parseInt(/*[[${movieDTO.moviePrice}]]*/)-discount;
                     $('#total_price').text(totalPrice);
                     //총 결제 금액
                     $('input[name=order_total_price]').attr('value',totalPrice);
@@ -143,15 +143,18 @@
                                     <div class="card mb-3" style="max-width: 540px;">
                                         <div class="row g-0">
                                             <div class="col-md-4">
-                                                <img th:src="${item.imgUrl}" class="img-fluid rounded-start" th:alt="${item.itemNm}" style="overflow: hidden; width: 100%; height: 100%;">
+                                                <img class="img-fluid rounded-start" src="http://localhost:8080/img/poster/spider_man.jpg" style="overflow: hidden; width: 100%; height: 100%;">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h5 class="card-title" th:text="${item.itemNm}">스파이더맨</h5>
-                                                    <input type="hidden" th:value="${item.itemNm}" name="product_name">
-                                                    <input type="hidden" th:value="${item.id}" name="product_num">
-                                                    <p class="card-text" th:text="|${#numbers.formatInteger(item.price,1,'COMMA')}원|">0원</p>
-                                                    <p class="card-text"><small class="text-muted" th:text="${item.itemDetail}">설명</small></p>
+                                                    <h5 class="card-title">스파이더맨</h5>
+                                                    <input type="hidden" th:value="${movieDTO.movieName}" name="product_name">
+                                                    <input type="hidden" th:value="${movie.ticket_num}" name="product_num">
+                                                   <p class="card-text" th:text="|${#numbers.formatInteger(movieDTO.moviePrice,1,'COMMA')}원|">0원</p>
+                                                    <p class="card-text"><small class="text-muted" th:text="${movie.schedule_date}">설명</small><br>
+                                                    <small class="text-muted" th:text="${movie.theater_name}">설명</small><br>
+                                                    <small class="text-muted" th:text="|좌석 : G${movie.seat_num}|">설명</small><br>
+                                                    <small class="text-muted" th:text="|${movie.theater_city} ${movie.theater_loc}|">설명</small></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -249,8 +252,8 @@
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">상품금액</div>
-                                <div class="fw-bold" th:text="${#numbers.formatInteger(item.price,1,'COMMA')}">0</div>
-                                <input type="hidden" id="origin_price" name="order_origin_price" th:value="${item.price}">
+                                <div class="fw-bold" th:text="${#numbers.formatInteger(movieDTO.moviePrice,1,'COMMA')}">0</div>
+                                <input type="hidden" id="origin_price" name="order_origin_price" th:value="${movieDTO.moviePrice}">
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -262,8 +265,8 @@
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">결제금액</div>
-                                <div class="fw-bold" id="total_price" th:text="${#numbers.formatInteger(item.price,1,'COMMA')}">0</div>
-                                <input type="hidden" name="order_total_price" th:value="${item.price}">
+                                <div class="fw-bold" id="total_price" th:text="${#numbers.formatInteger(movieDTO.moviePrice,1,'COMMA')}">0</div>
+                                <input type="hidden" name="order_total_price" th:value="${movieDTO.moviePrice}">
                                 <input type="hidden" name="order_plus_point" value="0">
                                 <input type="hidden" name="order_type" value="movie">
                                 <input type="hidden" name="order_to_id" value="2">
@@ -272,7 +275,7 @@
                             </div>
                         </li>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a type="button" class="btn btn-outline-primary" th:href="'/item/' +${item.id}">취소</a>
+                            <a type="button" class="btn btn-outline-primary" th:href="@{/reservation/choiceMovie}">취소</a>
                             <button type="submit" class="btn btn-primary" th:href="@{/order/pay}">결제</button>
                         </div>
                     </ol>

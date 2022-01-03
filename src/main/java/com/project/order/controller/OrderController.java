@@ -6,6 +6,8 @@ import com.project.order.dto.GifticonDTO;
 import com.project.order.dto.OrderDTO;
 import com.project.order.service.GifticonService;
 import com.project.order.service.OrderService;
+import com.project.reservation.movie.dto.MovieDTO;
+import com.project.reservation.movie.dto.ReservationMovieDTO;
 import com.project.store.dto.ItemDto;
 import com.project.store.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,23 +44,24 @@ public class OrderController { //주문 결제
     public String getStoreOrder(Model model, ItemDto itemDto, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Member member = memberService.getMember(userDetails.getUsername());
-        List<GifticonDTO> gifticons = gifticonService.getGifticonList(member.getId());
         model.addAttribute("member",member);
-        model.addAttribute("gifticons", gifticons);
         model.addAttribute("item", itemDto);
         model.addAttribute("order",new OrderDTO());
         return "order/storeOrder";
     }
 
     @PostMapping(value = "/movie") //영화 주문 페이지
-    public String getMovieOrder(Model model, ItemDto itemDto, Authentication authentication) {
+    public String getMovieOrder(Model model, ReservationMovieDTO reservationMovieDTO, MovieDTO movieDTO, Authentication authentication, HttpServletRequest request) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Member member = memberService.getMember(userDetails.getUsername());
         List<GifticonDTO> gifticons = gifticonService.getGifticonList(member.getId());
         model.addAttribute("member",member);
         model.addAttribute("gifticons", gifticons);
-        model.addAttribute("item", itemDto);
+        model.addAttribute("movie", reservationMovieDTO);
+        model.addAttribute("movieDTO", movieDTO);
         model.addAttribute("order",new OrderDTO());
+        //int price = Integer.parseInt(request.getParameter("price"));
+        //model.addAttribute("price",price);
         return "order/movieOrder";
     }
 
