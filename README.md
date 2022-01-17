@@ -4,5 +4,5 @@
 DB 생성 코드
 CREATE DATABASE shop DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI;
 
-아직 수정 중 참고 하세요
+참조
 https://blog.naver.com/su_lily/222601900360
