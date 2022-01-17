@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+
+    <title>Team</title>
+
+    <th:block layout:fragment="css">
+        <link th:href="@{/css/reservationMovie.css}" rel="stylesheet">
+        <style>
+        .footer {
+            position: relative;
+        }
+        .col-md-auto {
+            flex: 0 0 auto;
+            width: 220px;
+        }
+
+        .container{
+            padding-top:80px !important;
+        }
+
+
+
+
+    </style>
+
+    </th:block>
+</head>
+
+<div layout:fragment="content">
+
+    <!--1번째 영화 card 줄-->
+    <div id="MovieCard">
+        <center>
+
+            <img th:src="@{/img/bigdata_.jpg}" >
+        </center>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto" width="200px">
+                    <div class="card" >
+                        <img th:src="@{/img/qr/kim_.jpg}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">김한솔</h5>
+                            <p class="card-text">
+                                로그인&회원가입,<br>
+                                상품등록&관리,<br>
+                                스토어페이지
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card" >
+                        <img th:src="@{/img/qr/nam_.jpg}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">남진황</h5>
+                            <p class="card-text">
+                                로고, hover효과,<br>
+                                예매, 스케줄 관리 ,<br> 팀원 소개 페이지
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="card" >
+                        <img th:src="@{/img/qr/yeo_.jpg}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Su-Yeo</h5>
+                           <p class="card-text">
+                               결제 페이지,
+                               기프티콘 내역,
+                               상품 내역,
+                               포인트 적립 및 차감
+
+                           </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card" >
+                        <img th:src="@{/img/qr/oh_.jpg}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">오수민</h5>
+                            <p class="card-text">
+                                극장 페이지,<br>
+                                극장 관리,<br>
+                                좌석 부분
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card" >
+                        <img th:src="@{/img/qr/lee_.jpg}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이선웅</h5>
+                            <p class="card-text">
+                                영화 & 상세설명<br>
+                                영화 등록 및 관리<br>
+                                페이지 구현
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card" >
+                        <img th:src="@{/img/qr/han_.jpg}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">한희주</h5>
+                            <p class="card-text">
+                                영화 웹 사이트<br>
+                                이벤트 등록 및 관리<br>
+                                페이지 구현
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieList</title>
+    <!--
+        <th:block layout:fragment="script">
+
+            <script th:inline="javascript">
+
+
+    $(document).ready(function(){
+
+        $("#btnSave").click(function(){
+
+
+
+            $("#m-r-form").attr("action", "/admin/movie/Register").submit();
+
+        }) //End of $("btnSave")
+
+    }) //End of $(document).ready(function)
+
+
+
+
+
+            </script>
+        </th:block>-->
+
+
+</head>
+
+
+<body>
+<article>
+    <div layout:fragment="content">
+        <div class="container" role="main">
+            <h2>영화 등록</h2>
+            <form name="form" id="m-r-form" role="m-r-form" method="post"  th:action = "@{/admin/movie/Register}">
+                <div class="mb-3">
+                    <label for="movie_title">제목</label>
+                    <input type="text" class="form-control" name="movie_title" id="movie_title" placeholder="제목을 입력해 주세요">
+                </div>
+                <div class="mb-3">
+                    <label for="movie_desc">줄거리</label>
+                    <textarea class="form-control" rows="5" name="movie_desc" id="movie_desc" placeholder="내용을 입력해 주세요" ></textarea>
+                </div>
+                <div class="mb-3">
+                    <label> 영화 이미지</label>
+                    <input type="text" class="form-control" name="movie_image" id="movie_image" placeholder="url을 입력해 주세요">
+                </div>
+                <!--                <div th:if="${#list.isEmpty(MovieDTO.movie_image)}"> &lt;!&ndash; 상품 이미지 정보를 담고 있는 리스트가 비어 있다면 상품을 등록 &ndash;&gt;
+                                    <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}"> &lt;!&ndash;타임리프의 유틸리티 객체 #numbers.sequence(start,and)를 사용하면 반복처리 가능 등록시 이미지 개수는 5개짜기 등록가능하게함.&ndash;&gt;
+                                        <div class="custom-file img-div">
+                                            <input type="file" class="custom-file-input" name="movie_image">
+                                            <label class="custom-file-label" th:text="이미지 + ${num}"></label>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                <!--            <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}"> &lt;!&ndash; 상품 이미지 정보를 담고 있는 리스트가 비어 있다면 상품을 등록 &ndash;&gt;
+                                <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}"> &lt;!&ndash;타임리프의 유틸리티 객체 #numbers.sequence(start,and)를 사용하면 반복처리 가능 등록시 이미지 개수는 5개짜기 등록가능하게함.&ndash;&gt;
+                                    <div class="custom-file img-div">
+                                        <input type="file" class="custom-file-input" name="itemImgFile">
+                                        <label class="custom-file-label" th:text="이미지 + ${num}"></label>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                <div class="col col-md-auto center">
+                    <label for="movie_openningDate">개봉일자</label>
+                    <input type="date" id="movie_openningDate" name="movie_openningDate">
+                </div>
+                <div class="col col-md-auto center">
+                    <label for="movie_closingDate">마감일자</label>
+                    <input type="date" id="movie_closingDate" name="movie_closingDate">
+                </div>
+                <tr>
+                    <th scope="row">시청연령구분</th>
+                    <td><select id="movie_warning" name="movie_warning">
+                        <option value="" selected disabled hidden>구분</option>
+                        <option var="12" name="movie_warning">12</option>
+                        <option var="15" name="movie_warning">15</option>
+                        <th:each th:each="list : ${list}">
+                            <option href="/admin/movie/list" value="${list.movie_warning}">${list.movie_warning}</option>
+                        </th:each>
+                    </select></td>
+                </tr><br>
+                <button type="submit" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+                <button class="btn btn-sm btn-primary" onclick="location.href='../'">목록</button>
+            </form>
+        </div>
+    </div>
+</article>
+
+<!--<div layout:fragment="content">
+    <div class="container">
+        <!-내용 추가&ndash;&gt;
+        <div class="grid">
+            <div class="g-col-4"><h3>영화 리스트 등록</h3></div>
+            <p>
+               영화 리스트 등록 페이지 입니다.<br /> 아래의 사항들을 빠짐없이 선택해 주세요.
+            </p>
+        </div>
+
+        <form id="WriteForm" class="WriteForm"  method="post" >
+
+            <table class="movie_book_table">
+
+                <thead>
+                <tr>
+                    <th scope="cols"></th>
+                    <th scope="cols"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <th scope="row" >영화선택</th>
+                    <td colspan="2">
+
+                        <select id="movie_num" name="movie_num">
+                            <option value="" selected disabled hidden>영화를 선택해주세요</option>
+                            <option var="1" name="movie_num">1</option>
+                            <option var="2" name="movie_num">2</option>
+
+                            <th:each th:each="list : ${list}">
+                                <option value="${list.movie_num}">${list.movie_num}</option>
+                            </th:each>
+
+                        </select>
+                    </td>
+                </tr>
+                &lt;!&ndash;<tr th:each="list : ${list}">
+                    <td><span th:text="${list.movie_num}"></span></td>
+                </tr>&ndash;&gt;
+                <tr>
+                    <th scope="row">영화관지정</th>
+                    <td><select id="theater_area_num" name="theater_area_num">
+                        <option value="" selected disabled hidden>관람지역 선택</option>
+                        <option var="11" name="theater_area_num">11</option>
+                        <option var="22" name="theater_area_num">22</option>
+                        <th:each th:each="list : ${list}">
+                            <option value="${list.theater_area_num}">${list.theater_area_num}</option>
+                        </th:each>
+                    </select></td>
+
+                </tr>
+
+                <div class="row">
+                    <div class="col col-md-auto center">
+                        <label for="start">관람일:</label>
+
+                        <input type="date" id="start" name="schedule_date">
+                    </div>
+                   <div class="col col-md-auto center">
+                        <label for="startTime">관람 시간:</label>
+
+                        <input type="datetime" id="startTime"name="schedule_start">
+                    </div>
+
+                    &lt;!&ndash;<div class="container">
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker3'>
+                                        <label for="startTime">관람 시간:</label>
+                                        <input type='text' class="form-control" id="startTime" name="schedule_start"/>
+                                        <span class="input-group-addon">
+                                       <span class="glyphicon glyphicon-time"></span>
+                                       </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>&ndash;&gt;
+
+
+
+                    <div class="col col-md-auto center">
+                        <label for="endTime">종료 시간:</label>
+
+                        <input  type="datetime" id="endTime" name="schedule_end">
+                    </div>
+                    &lt;!&ndash;<div style="overflow:hidden;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div id="datetimepicker12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>&ndash;&gt;
+                </div>
+                </tbody>
+            </table>
+
+            <div>
+                <button class="btn btn-dark"  id="btn_write" style="float: right;">발행</button>
+            </div>
+        </form>
+    </div>-->
+
+
+
+<!--    <h2 class="title_txt"> 영화 관리 페이지 입니다</h2>
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="movie-img">영화 포스터</label>
+                <input type="text" class="form-control" id="movie-img" placeholder="url을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="content">내용</label>
+                <input type="text" class="form-control" id="content" placeholder="내용을 입력하세요">
+            </div>
+        </form>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-save">등록</button>
+    </div>-->
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieList</title>
+
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <h1>영화 상세정보 수정</h1>
+    <br>
+
+    <form class="ModifyForm" name="ModifyForm" th:action ="@{'/admin/movie/modify?movie_num=' + ${list.movie_num}}" method="POST">
+
+
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-white bg-dark">구분</th>
+                    <th scope="col" class="text-white bg-dark">내용</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" >영화 번호 </th>
+                    <td><span th:text="${list.movie_num}"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">영화 제목 </th>
+                    <td class="table-active"> <input type="text" id="movie_title" name="movie_title" th:value="${list.movie_title}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >영화 개봉일자 </th>
+                    <td><input type="text" id="movie_openningDate" name="movie_openningDate" th:value="${list.movie_openningDate}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">영화 마감일자 </th>
+                    <td class="table-active"><input type="text" id="movie_closingDate" name="movie_closingDate" th:value="${list.movie_closingDate}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >시청연령제한 </th>
+                    <td><input type="text" id="movie_ageClass " name="movie_ageClass " th:value="${list.movie_ageClass }" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">영화 평점 </th>
+                    <td class="table-active"><input type="text" id="movie_grade" name="movie_grade" th:value="${list.movie_grade}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >영화 예매율 </th>
+                    <td><input type="text" id="movie_ratio " name="movie_ratio " th:value="${list.movie_ratio }" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">영화 포스터 </th>
+                    <td class="table-active"> <input type="text" id="movie_image" name="movie_image" th:value="${list.movie_image}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" >줄거리 </th>
+                    <td><input type="text" id="movie_desc" name="movie_desc" th:value="${list.movie_desc}" ></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">러닝타임 </th>
+                    <td class="table-active"><input type="text" id="movie_run" name="movie_run" th:value="${list.movie_run}" ></td>
+                </tr>
+
+                </tbody>
+            </table>
+        <div class="col text-center">
+            <button  id="btn_modify" type="submit" class="btn btn-outline-dark  ">수정 완료</button>
+        </div>
+
+
+
+    </form>
+
+</div>
+</body>
+</html>

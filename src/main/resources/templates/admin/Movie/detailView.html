@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieList</title>
+
+
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+
+
+$(document).ready(function(){
+	/*<![CDATA[*/
+	$("#btn_modify").click(function(){
+
+			location.href="/admin/movie/modify?movie_num=[[${list.movie_num}]]" ;
+
+	}) //End of $("btn_modify")
+
+	$("#btn_delete").click(function(){
+		if(confirm("정말로 삭제하시겠습니까?") == true)
+			location.href="/admin/movie/delete?movie_num=[[${list.movie_num}]]";
+    }) //End of $("btn_delete")
+
+}
+
+
+
+
+
+        </script>
+    </th:block>
+
+
+</head>
+<body>
+<div layout:fragment="content">
+
+
+    <h1>영화정보 상세 페이지</h1>
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col" class="text-white bg-dark">구분</th>
+            <th scope="col" class="text-white bg-dark">내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row" >영화 번호 </th>
+            <td><span th:text="${list.movie_num}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">영화 제목 </th>
+            <td class="table-active"><span th:text="${list.movie_title}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >영화 개봉일자 </th>
+            <td><span th:text="${list.movie_openningDate}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">영화 마감일자 </th>
+            <td class="table-active"><span th:text="${list.movie_closingDate}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >시청연령제한 </th>
+            <td><span th:text="${list.movie_ageClass}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">영화 평점 </th>
+            <td class="table-active"><span th:text="${list.movie_grade}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >영화 예매율 </th>
+            <td><span th:text="${list.movie_ratio}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-active">영화 포스터 </th>
+            <td class="table-active"><span th:text="${list.movie_image}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >줄거리 </th>
+            <td><span th:text="${list.movie_desc}"></span></td>
+        </tr>
+        <tr>
+            <th scope="row" >러닝타임 </th>
+            <td><span th:text="${list.movie_run}"></span></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+        <!--<div class="mregdate">날짜 : <span th:text="${#temporals.format(list.mregdate, 'yyyy-MM-dd')}"></span></div>
+        <div class="textArea"><pre th:text="${list.mcontent}"></pre></div>
+        <div class="filename">파일명 : <a href="javascript:fileDownload()"><span th:text="${list.filename}"></span></a></div>-->
+
+
+        <center><div>
+            <a th:href="@{/admin/movie/list}">
+                <button class="btn btn-outline-dark  " id="btn_list">영화 목록</button></a>
+            <a th:href="@{'/admin/movie/modify?movie_num=' + ${list.movie_num}}">
+                <button class="btn btn-outline-success" id="btn_modify">수정</button></a>
+            <a  th:href="@{'/admin/movie/delete?movie_num=' + ${list.movie_num}}">
+                <button class="btn btn-outline-danger" id="btn_delete">삭제</button></a>
+        </div></center>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+<head>
+    <title>MovieSchedule</title>
+
+
+
+
+</head>
+
+
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <!-내용 추가-->
+        <div class="grid">
+            <div class="g-col-4"><h3>영화 상영 스케줄 등록</h3></div>
+            <p>
+               영화 상영에 필요한 정보를 입력하는 페이지 입니다.<br /> 아래의 사항들을 빠짐없이 선택해 주세요.
+            </p>
+        </div>
+
+        <form id="WriteForm" class="WriteForm"  th:action = "@{/adminSchedule/Register}" method="post" >
+
+            <table class="table">
+
+                <thead>
+                <tr>
+                    <th scope="col" class="text-white bg-dark">구분</th>
+                    <th scope="col" class="text-white bg-dark">내용</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <th scope="row" class="table-active">영화선택</th>
+                    <td colspan="2" class="table-active">
+
+                        <select id="movie_num" name="movie_num">
+                            <option value="" selected disabled hidden>영화를 선택해주세요</option>
+                            <option value="1" name="movie_num">스파이더맨</option>
+                            <option value="2" name="movie_num">킹스맨</option>
+
+                            <th:each th:each="list : ${list}">
+                                <option value="${list.movie_num}">${list.movie_num}</option>
+                            </th:each>
+
+                        </select>
+                    </td>
+                </tr>
+                <!--<tr th:each="list : ${list}">
+                    <td><span th:text="${list.movie_num}"></span></td>
+                </tr>-->
+                <tr>
+                    <th scope="row">영화관지정</th>
+                    <td><select id="theater_area_num" name="theater_area_num">
+                        <option value="" selected disabled hidden>관람지역 선택</option>
+                        <option value="11" name="theater_area_num">화곡</option>
+                        <option value="22" name="theater_area_num">강남</option>
+                        <th:each th:each="list : ${list}">
+                            <option value="${list.theater_area_num}">${list.theater_area_num}</option>
+                        </th:each>
+                    </select></td>
+
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">상영 일자 </th>
+                    <td class="table-active">
+                        <div class="col col-md-auto center">
+                            <input type="date" id="start" name="schedule_date">
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" >관람 시간 </th>
+                    <td >
+                        <div class="col col-md-auto center">
+                            <input type="datetime" id="startTime"name="schedule_start">
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="table-active">종료 시간 </th>
+                    <td class="table-active">
+                        <div class="col col-md-auto center">
+                            <input  type="datetime" id="endTime" name="schedule_end">
+                        </div>
+
+                    </td>
+                </tr>
+
+
+
+
+
+
+                    <!--<div class="container">
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker3'>
+                                        <label for="startTime">관람 시간:</label>
+                                        <input type='text' class="form-control" id="startTime" name="schedule_start"/>
+                                        <span class="input-group-addon">
+                                       <span class="glyphicon glyphicon-time"></span>
+                                       </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+
+                    <!--<div style="overflow:hidden;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div id="datetimepicker12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                </tbody>
+            </table>
+
+
+            <div>
+                <button class="btn btn-dark"  type="submit" id="btn_write" style="float: right;">발행</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

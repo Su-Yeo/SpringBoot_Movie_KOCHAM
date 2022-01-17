@@ -1,0 +1,331 @@
+
+
+
+body{
+    font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-weight: 600;
+    background-color:rgba(0, 0, 0, 0.007);
+
+  }
+
+  .header{
+    position: fixed;
+    width: 220px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding:20px 0;
+    background: #0f0f0f;
+
+  }
+  .nav li a{
+    display: block;
+    padding: 15px 0 10px 12px;
+    font-size: 14px;
+    color:white;
+  }
+  .nav li:hover{
+    background-color:crimson;
+    color: rgb(15, 15, 15);
+  }
+
+  .nav li:active {
+        background-color: #ffffff;
+        color: black;
+}
+
+  .logoimg{
+
+    padding:6px;
+    margin:10px;
+  }
+
+  .personimg{
+    float: right;
+    margin:15px 30px 10px 10px;
+    border: 1px solid red;
+  }
+  .p-img{
+    float: right;
+    margin:0px 30px 10px 10px;
+    width: 40px;
+    height: 40px;
+    padding: 10px 0px 10px 1800px;
+    border-bottom: solid 1px gray;
+
+  }
+
+/*Movie manager page */
+
+
+
+
+.container{
+  /* border: 5px solid black ; */
+  margin: 50px 10px 10px 250px;
+}
+
+.content-cover {
+  overflow: hidden;
+  height: 800px;
+  text-align: center;
+  /*margin: 0 auto;
+  width: 1100px;
+  /* border: 1px solid blue; */
+}
+.main-title{
+  display: flex;
+  width: 180px;
+  height: 0px;
+  /* border: 1px solid red; */
+  text-align: center;
+  line-height: 58px;
+  margin-left: 13px;
+}
+.title-icon {
+
+}
+.main-title p {
+  line-height: 0px;
+  font-size: 17px;
+  font-weight: bolder;
+  color: black;
+}
+
+
+.chart-Sales {
+  overflow: hidden;
+  border: 1px solid #e4e3e3;
+  padding: 10px;
+  margin: 10px;
+}
+
+
+.reservation-status {
+  display: block;
+  float: right;
+  width: 450px;
+  border: 1px solid rgba(128, 128, 128, 0.356);
+  border-radius: 0.5em;
+  margin-right: 70px;
+}
+
+.reservation-txt {
+  font-size: 17px;
+  margin: 10px 0 10px 0;
+}
+#chart {
+  float: left;
+  width: 450px;
+  height: 550px;
+}
+.won {
+  display: inline;
+}
+.today {
+  display: inline-block;
+  width: 200px;
+  height: 110px;
+  border: 0.5px solid rgba(128, 128, 128, 0.356);
+  border-radius: 0.5em;
+}
+.month {
+  display: inline-block;
+  border: 0.5px solid rgba(128, 128, 128, 0.356);
+  width: 200px;
+  height: 110px;
+  background-color: rgba(128, 128, 128, 0.089);
+  border-radius: 0.5em;
+}
+.today_txt {
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.356);
+  width: 200px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+}
+.month_txt {
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.356);
+  width: 200px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+}
+.price {
+  line-height: 60px;
+  color: crimson;
+  font-size: 15px;
+}
+.title_txt {
+  line-height: 47px;
+}
+.jqplot-target {
+  margin-left: 50px;
+  position: relative;
+  color: rgba(168, 161, 161, 0.979);
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  background-color: rgb(255, 255, 255);
+  font-size: 1em;
+  border: 0.5px solid rgba(128, 128, 128, 0.356);
+  border-radius: 0.5em;
+}
+
+.jqplot-grid-canvos {
+  background-color: cyan;
+}
+
+/*영화 스케줄 관리 페이지*/
+.movie-list-board-cinema{
+  line-height: 1.6em;
+  width: 1150px;
+  margin: 120px auto;
+  text-align: center;
+
+}
+
+.top-menu-wrapper{
+  text-align: right;
+  vertical-align: middle;
+
+  width: 89%;
+  margin-top: 55px;
+}
+
+.search-wrapper{
+  display: inline-block;
+
+  text-align: right;
+}
+
+.search-wrapper  input {
+  height: 25px;
+  width: 240px;
+}
+.search-wrapper select{
+  height:30px;
+
+  background-color: gray;
+  color: white;
+  border-radius: 7px 7px 7px 7px / 7px 7px 7px 7px;
+   border: none;
+/*   border-style: none; */
+}
+.search-wrapper > button{
+
+  margin-left: -5px;
+
+  border-style: none;
+
+  background-color: rgba(255,255,255, 0.5);
+  line-height: 30px !important;
+
+  width: 30px;
+  height: 33px;
+
+}
+.search-wrapper button > img{
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+
+}
+
+
+
+.screening-list{
+   font-size: 20pt;
+   width:500px;
+   height:50px;
+}
+.thead-movie-board{
+  background-color: rgb(124, 124, 124);
+  color :rgb(243, 243, 243)
+}
+.thead-movie-board tr th{
+
+  border-top: 2px solid gray;
+  background-color: white;
+  color: black;
+
+  height: 40px;
+
+  text-align: left;
+  padding : 6px 0px 6px 10px;
+
+}
+.movie-board-table{
+  table-layout:fixed;
+  width: 80%;
+}
+.movie-board-table, .movie-board-table th, .movie-board-table td{
+
+  margin: 10px auto 0px auto;
+  border-bottom: #d9d9d9 solid 1px;
+  border-collapse: collapse;
+  text-align: left;
+
+  padding : 5px 0px 5px 10px;
+
+ /*  width: 100%; */
+   overflow: hidden;
+  text-overflow: ellipsis;
+ white-space:nowrap;
+
+}
+
+
+
+ .movie-reg-button-wrapper{
+  text-align: right;
+  width: 89%;
+}
+
+.movie-reg-button-wrapper > button{
+
+  border-style: none;
+  background-color: white;
+
+  text-align: center;
+  width: 60px;
+  height: 30px;
+
+  margin-top: 5px;
+  margin-left: 10px;
+
+  background-color: #797979;
+  color: white;
+
+  line-height: 21px !important;
+
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.movie-board-bottom{
+  margin-top: 25px;
+}
+
+.movie-board-bottom > a {
+  border: #e6e6e6 solid 1px;
+  font-size: 14px;
+  color: #201f2d;
+
+  min-width: 26px;
+  margin: 0 5px;
+  padding: 5px;
+
+  text-align: center;
+  line-height: 38px;
+}
+
+.movie-board-bottom a:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+.movie-board-bottom a:active {
+  background-color: rgb(119, 119, 119);
+  color: white;
+}
+/*영화 스케줄 관리 페이지 끝*/

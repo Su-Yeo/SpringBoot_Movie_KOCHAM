@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!--<html lang="en"
+      xmlns:th=""
+      xmlns:jsp="http://www.w3.org/1999/XSL/Transform" xmlns:c="">-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title>상세페이지</title>
+
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+        .fieldError {
+            color: #bd2130;
+        }
+
+    </style>
+    </th:block>
+
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+        $(document).ready(function(){
+            var errorMessage = [[${errorMessage}]];
+            if(errorMessage != null){
+                alert(errorMessage);
+            }
+        });
+
+    </script>
+
+        <script>
+
+        </script>
+
+    </th:block>
+    <style>
+                    body {
+        font:1em "맑은 고딕",Cambria,Georgia,sans-serif;
+        }
+
+        img.left{
+        float:left
+        }
+    </style>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div id="detail-Movie">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <br><br><br>
+                <b><h1> 상세설명 </h1></b>
+                <hr>
+                <div class="movie-detail-img">
+                    <img href="./detail"><img src="https://img.megabox.co.kr/SharedImg/2021/12/16/ixl5QxDVs5Gn8nQN3rslK8BUmgFVklj8_420.jpg" width="300px" height="400px;" class="left" alt="...?"></img>
+                    <div class="movie-detail-info">
+                        <h1 class="info-title"><strong>&nbsp; 스파이더맨: 노 웨이 홈</strong></h1><br>
+                        <h5><span><em>&nbsp; 개봉일 </em> 2021.12.15 </span></h5><br>
+                        <h5><span><em>&nbsp; 평점 </em>0.0</span></h5><br>
+                        <h5><span><em>&nbsp; 예매율 </em>0.0</span></h5><br>
+                        <h5><span><em>&nbsp; 상영시간 </em> SF, 액션, 어드벤처 / <span>148</span>분</span></h5><br><br>
+                        &nbsp;<a href="../reservation/choiceMovie" class="btn btn-primary btn-lg">예매</a>
+                    </div>
+                </div>
+                <div class="info-desc">
+                    <br><h5><span><em>줄거리 </em><br>영화 (스파이더맨: 노 웨이 홈)은 정체가 탄로난 스파이더맨 '피터 파커'(톰 홀랜드)가
+문제를 해결하기 위해 '닥터 스트레인지'(베네딕트 컴버배치)의 도움을 받던 중 뜻하지 않게 멀티버스가 열리게 되고, 이를 통해 '닥터 옥토퍼스'(알프리드 몰리나) 등 각기 다른 차원의 숙적들이 나타나며 사상 최악의 위기를 맞게 되는 이야기를 그린 마블 액션 블록버스터.
+                    </span></h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<!--<jsp:include page="header.jsp" flush="false" />
+&lt;!&ndash; 영화정보 &ndash;&gt;
+<div class="layout-content movie-detail-wrap">
+    <div class="movie-detail">
+        <div class="movie-detail-img">
+            <a href="javascript:void(0);">
+                <img src="<spring:url value='/image/${movieRead.view_name_key}'/>">
+            </a>
+        </div>
+        <div class="movie-detail-info">
+            <h3 class="info-title"><strong>${movieRead.title}</strong></h3>
+            <div class="info-data">
+                <span class="blind">영화 상세 정보</span>
+                <span class="score"><em>관람평점 : </em><span class="num"> </span> 점</span>
+                <ul class="da2ta-movie">
+                    <li><span><em>개봉일 : </em> ${movieRead.opening_day}</span></li>
+                    <li><span><em>감독 : </em>${movieRead.director}</span></li>
+                    <li><span><em>출연진 : </em>${movieRead.actor}</span></li>
+                    <li><span><em>장르 : </em> ${movieRead.movie_genre} / <span>${movieRead.running_time}</span>분</span></li>
+                </ul>
+            </div>
+            <a href="${path}/movie/screening/booking?movie_num=${movieRead.movie_num}" class="ticketing-btn">예매하기</a>
+        </div>
+    </div>
+    <div class="movie-summary-area">
+        <h4 class="summary-title">줄거리</h4>
+        <p class="movie-summary">${movieRead.story}</p>
+    </div>
+    &lt;!&ndash; //영화정보 &ndash;&gt;
+    <c:choose>
+        <c:when test="${!empty login}">
+            &lt;!&ndash; 로그인 성공시 &ndash;&gt;
+            <div class="review-wrap">
+                <div class="review-top">
+                    <h3 class="review-title">평점 및 영화 리뷰</h3>
+                    <p class="review-etc">영화를 관람 후 리뷰를 작성해주세요</p>
+                    <p>${login.name}님</p>
+                    <div class="score-star">
+                        <select name="score" class="score" id="score">
+                            <option value="1" selected>1점</option>
+                            <option value="2">2점</option>
+                            <option value="3">3점</option>
+                            <option value="4">4점</option>
+                            <option value="5">5점</option>
+                        </select>
+                    </div>
+                    <div class="score-textarea">
+              <textarea class="text-comment" id="text-comment" name="comment" title="영화평 입력" cols="30" rows="10"
+                        placeholder="이곳에 댓글을 입력하세요"></textarea>
+                    </div>
+                    <button class="review-btn">입력</button>
+                </div>
+            </div>
+            <div class="review-entry" id="review-entry">
+                <ul class='review-content' id='review-content'>
+                </ul>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div class="review-wrap">
+                <div class="review-top">
+                    <h3 class="review-title">평점 및 영화 리뷰</h3>
+                    <p class="review-etc">영화를 관람 후 리뷰를 작성해주세요</p>
+                </div>
+                <div class="score-area">
+                    <div class="score-star">
+                        <select name="score" class="score">
+                            <option value="1">1점</option>
+                            <option value="2">2점</option>
+                            <option value="3">3점</option>
+                            <option value="4">4점</option>
+                            <option value="5">5점</option>
+                        </select>
+                    </div>
+                    <div class="score-textarea">
+              <textarea class="text-comment " name="comment" title="영화평 입력" cols="30" rows="10" disabled
+                        placeholder="로그인 후 이용바랍니다. "></textarea>
+                    </div>
+                    <button class="review-btn">입력</button>
+                </div>
+            </div>
+
+            <div class="review-entry" id="review-entry">
+                <ul class='review-content' id='review-content'>
+                </ul>
+            </div>
+        </c:otherwise>
+    </c:choose>
+
+</div>
+<jsp:include page="footer.jsp" flush="false" />
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    /*  $(document).ready(function () {
+    	var commentLen = 0;
+      getReply(commentLen);
+
+    }); // (document).ready */
+
+    var movie_num = '${movieRead.movie_num}';
+    var id = '${login.id}';
+
+    var commentLen = 0;
+    //페이지가 뜰때마다 리스트 뿌려주기
+    $(document).ready(function () {
+
+      getReply(commentLen);
+
+    }); // (document).ready
+
+    var movie_num = '${movieRead.movie_num}';
+    var id = '${login.id}';
+
+
+    //댓글 리스트
+    function getReply(commentLen) {
+
+      $.ajax({
+        url: "/comment_list", //요청 URL
+
+        type: "GET", //GET 방식
+
+        data: {
+          "movie_num": movie_num,
+          "id": id
+        },
+
+        success: function (data) { //성공
+          var str = "";
+          var last = 0;
+          if (data.length - commentLen > 0) {
+
+            $.each(data, function (key, value) {
+              if (data.length - commentLen >= 5) {
+                last = 5;
+                console.log("*****data.length  : ", data.length);
+                console.log("*****commentLen  : ", commentLen);
+                console.log("*****last  : ", last);
+
+              } else {
+                last = data.length - commentLen;
+                console.log("*****data.length  : ", data.length);
+                console.log("*****commentLen  : ", commentLen);
+                console.log("*****last  : ", last);
+              } //if -else
+
+              console.log("key", key);
+              console.log("value", value);
+              console.log("*****id ", id);
+
+
+              var $writer = '';
+              $writer += value.name.charAt(0);
+              for (var i = 1; i < value.name.length - 1; i++) {
+                $writer += '*';
+              }
+
+              $writer += value.name.charAt(value.name.length - 1);
+
+              if (value.id == id) {
+
+                str += "<li class = 'lists-item' id='lists-item'>";
+                str += "<div class='review-box' id='review-box'>";
+                str += "<div class='result-score'>";
+                str += "<span>평점 </span><span class='score-num' id = 'score-num'>" + value.score + "</span>";
+                str += "</div>";
+                str += "<p class='review-text-result' id = 'review-text-result'>" + value.comment + "</p>";
+                str += "<div class='review-bottom'>";
+                str += "<span class='review-date'>" + value.regdate + "</span>";
+                str += "<div class='review-btn-area'>";
+                str += "<button class='review-btn-modify'>수정</button>";
+                str += "<button class='review-btn-delete'>삭제 </button>";
+                str += "</div>";
+                str += "</div>";
+                str += "</div>";
+                str += "<div class='review-name'>";
+                str += "<span>" + $writer + "</span>";
+                str += "</div>";
+                str += "</li>";
+              } else {
+                console.log("here");
+                str += "<li class = 'lists-item' id='lists-item'>";
+                str += "<div class='review-box' id='review-box'>";
+                str += "<div class='result-score'>";
+                str += "<span>평점 </span><span class='score-num' id = 'score-num'>" + value.score + "</span>";
+                str += "</div>";
+                str += "<p class='review-text-result' id = 'review-text-result'>" + value.comment + "</p>";
+                str += "<div class='review-bottom'>";
+                str += "<span class='review-date'>" + value.regdate + "</span>";
+
+                str += "</div>";
+                str += "</div>";
+                str += "<div class='review-name'>";
+                str += "<span>" + $writer + "</span>";
+                str += "</div>";
+                str += "</li>";
+
+              } //if-else
+              commentLen++;
+
+              if (data.length - commentLen > 0 && commentLen >= 5) {
+
+
+                console.log("commenLEn!!!");
+
+                console.log("data.length: ", data.length);
+                console.log("commentLen: ", commentLen);
+
+                str += "<div class='moreButtonDiv'><button onclick='getReply(";
+                str += commentLen;
+                str += ")'>더보기</button></div>";
+
+                // if (commentLen >= 5) {
+                //str += "<div id='js-btn-wrap' class='btn-wrap' id='btn-wrap'><a href='javascript:;' class='button'>더보기</a></div>";
+                /* str += "<li onclick='getReply(";
+                str += commentLen;
+                str += ")'>더보기</li>"; */
+
+                return false;
+              } //if
+            }); //each
+          } else {
+            str += "<li>";
+            str += "<div class='review-box' id='review-box'>";
+            str += "<div class='result-score'>";
+            str += "<span> </span><span></span>";
+            str += "</div>";
+            str += "<p class='review-text-result'>등록된 댓글이 없습니다. 댓글을 등록해보세요</p>";
+            str += "<span class='review-date'></span>";
+            str += "</div>";
+            str += "</li>";
+          } //if-else
+
+
+
+          $(".review-content").html(str);
+
+          getAvgScoreResultSelect();
+        }, //success
+        error: function () {
+          console.log("error");
+        } //error
+
+      }); //ajax
+    } //getReply
+
+    function more(commentLen) {
+
+    }
+
+
+
+    //총 평점 값 업데이트
+    function getAvgScoreResultUpdate() {
+
+      $.ajax({
+        url: "/movie_avgScore_Result_update", //요청 URL
+
+        type: "GET", //GET 방식
+
+        data: {
+          "movie_num": movie_num
+        },
+
+        success: function (data) { //업데이트 성공
+          console.log("getAvgScoreResultUpdate success");
+        }, //success
+
+        error: function () {
+          console.log("error");
+        } //error
+
+      }); //ajax
+    } //getAvgScoreResult
+
+
+    //총 평점 불러오기
+    function getAvgScoreResultSelect() {
+
+      $.ajax({
+        url: "/movie_avgScore_Result_select", //요청 URL
+
+        type: "GET", //GET 방식
+
+        data: {
+          "movie_num": movie_num
+        },
+
+        success: function (data) { //성공
+          console.log("movie_avgScore_Result_select success");
+
+
+          console.log("============data : ", data);
+          $(".num").html(data.avg_score);
+
+
+        }, //success
+
+        error: function () {
+          console.log("error");
+        } //error
+
+      }); //ajax
+    } //getAvgScoreResult
+  </script>
+
+<script>
+    var movie_num = '${movieRead.movie_num}';
+    var id = '${login.id}';
+
+    //댓글 삽입
+    $(".review-btn").on("click", function f_reply_insert() {
+
+      var score = $("#score").val();
+      var comment = $("#text-comment").val();
+
+      console.log("score", score);
+      console.log("comment", comment);
+
+      if ($("#text-comment").val().trim() === "") {
+
+        alert("댓글을 입력하세요");
+        $("#text-comment").val("").focus();
+      } else {
+
+        $.ajax({
+          url: "/comment_insert",
+          type: "POST",
+          data: {
+            "id": id,
+            "movie_num": movie_num,
+            "score": score,
+            "comment": comment
+
+          },
+
+          success: function () {
+            console.log("reply_insert success");
+            $("#text-comment").val("");
+            $("#score option:eq(0)").attr("selected", "selected");
+            getReply(commentLen);
+            getAvgScoreResultUpdate();
+            getAvgScoreResultSelect();
+          }, //success
+          error: function () {
+            console.log("error");
+          } //error
+        }) //ajax
+      } //if-else
+    }); //click
+
+
+    //댓글 수정
+    $(document).on("click", ".review-btn-modify", function f_reply_Modify() {
+      console.log("수정버튼 클릭");
+      console.group('-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Reply Identifier -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;');
+      console.debug('*** movie_num:', movie_num);
+      console.debug('*** id:', id);
+      console.groupEnd();
+
+      var mod_score = $(this).parents().siblings('.result-score').children('.score-num').text();
+      var mod_comment = $(this).parents().siblings('.review-text-result').text();
+
+      console.log(mod_score);
+      console.log(mod_comment);
+      str = "";
+      str += "<div class='score-star'>";
+      str += "<select name='modscore' class ='score-modify' id ='score-modify'>";
+      str += "<option value='1' selected>1점</option>";
+      str += "<option value='2'>2점</option>";
+      str += "<option value='3'>3점</option>";
+      str += "<option value='4'>4점</option>";
+      str += "<option value='5'>5점</option>";
+      str += "</select>";
+      str += "</div>";
+      str +=
+        "<textarea class='text-comment-modify' id='text-comment-modify' name='modcomment'cols='30' rows='10'></textarea>";
+      str += "<div class='modify-btn-area'>";
+      str += "<button class='modify-ok-btn'>수정 </button><tr/>";
+      str += "<button class='modify-cancel-btn'>취소 </button>";
+      str += "</div>";
+
+      $(this).parents().parent("#review-box").html(str);
+
+
+      $("#score-modify").val(mod_score);
+      $("#text-comment-modify").val(mod_comment);
+    }); //replyModify click
+  </script>
+
+<script>
+    //댓글 수정 저장
+    var movie_num = '${movieRead.movie_num}';
+    var id = '${login.id}';
+
+    $(document).on("click", ".modify-ok-btn", function f_replyModifyOK() {
+      console.log(" 수정 버튼 클릭");
+
+      var modscore = $('#score-modify').val();
+      var modcomment = $('#text-comment-modify').val();
+
+      $.ajax({
+        url: "/comment_update",
+        type: "POST",
+        data: {
+
+          "id": id,
+          "movie_num": movie_num,
+          "modscore": modscore,
+          "modcomment": modcomment
+        },
+        success: function () {
+          getAvgScoreResultUpdate();
+          getAvgScoreResultSelect();
+          getReply(commentLen);
+
+        }, //success
+        error: function () {
+          console.log("error");
+        } //error
+      }); //ajax
+    });
+  </script>
+<script>
+    var movie_num = '${movieRead.movie_num}';
+    var id = '${login.id}';
+    //댓글 수정 취소
+    $(document).on("click", ".modify-cancel-btn", function f_replyModifyCancel() {
+      console.log(" 수정 취소 버튼 클릭");
+      getAvgScoreResultUpdate();
+      getAvgScoreResultSelect();
+      getReply(commentLen);
+
+    });
+
+    //댓글 삭제
+    $(document).on("click", ".review-btn-delete", function () {
+      console.log("삭제 버튼 클릭");
+
+      var delectConfirm = confirm("댓글을 삭제하시겠습니까?");
+
+      if (delectConfirm) {
+        $.ajax({
+          url: "/comment_delete",
+          type: "POST",
+          data: {
+            "id": id
+          },
+          success: function () {
+            getAvgScoreResultUpdate();
+            getAvgScoreResultSelect();
+            getReply(commentLen);
+
+          }, //success
+          error: function () {
+            console.log("error");
+          } //error
+        }) // ajax
+      } //if
+    }); //replyDelete click
+  </script>
+
+&lt;!&ndash;  더보기  페이징 처리 &ndash;&gt;
+<script>
+    /*   //더보기 버튼 클릭시
+  $(document).on("click", ".btn-wrap", function more () {
+    console.log("더보기 버튼 클릭");
+  }); //더보기 click
+ */
+  </script>
+
+
+<script>
+    //더보기 버튼 클릭시
+    $(window).on('load', function () {
+      console.log("더보기 버튼 클릭");
+      load('#lists-item', '4');
+      $("#js-btn-wrap .button").on("click", function () {
+        load('#lists-item', '4', '#js-btn-wrap .button');
+      })
+    }); //더보기 버튼 클릭?
+
+    function load(id, cnt, bth) {
+      console.log("더보기 함수 진입");
+      var girls_list = id + ".lists-item:not(.on)";
+      console.log("더보기 함수 진입:girls_list", girls_list);
+      var girls_length = $(girls_list).length;
+      console.log("더보기 함수 진입:girls_length", girls_length);
+      var girls_total_cnt;
+      console.log("더보기 함수 진입:girls_total_cnt", girls_total_cnt);
+
+      if (cnt < girls_length) {
+        girls_total_cnt = cnt;
+        console.log("더보기 함수 진입:girls_total_cnt2", girls_total_cnt);
+      } else {
+        girls_total_cnt = girls_length;
+        console.log("더보기 함수 진입:girls_total_cnt3", girls_total_cnt);
+        /* $('.button').hide() */
+      }
+     /* $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("on");*/
+    } //load
+  </script>-->
+
+</body>
+</html>

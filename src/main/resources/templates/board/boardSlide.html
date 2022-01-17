@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <title>MovieEventMain</title>
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+            div#carouselExampleCaptions {
+                width: 70%;
+                margin: 0 auto;
+            }
+            div#EventCard {
+                padding-bottom: 100px;
+                margin-top: 100px;
+                margin-bottom: 80px;
+            }
+           .col-md-auto {
+                margin: 9px;
+                display: inline-block;
+                padding: 10px;
+            }
+            .card {
+             width: 18rem;
+            }
+
+<!--            .fixed-bottom {-->
+<!--                position: fixed;-->
+<!--                right: 220px;-->
+<!--                bottom: 80px;-->
+<!--                left: 0;-->
+<!--                z-index: 1030;-->
+<!--            }-->
+
+          @media (max-width: 768px) {
+            .content{
+                margin:0 auto;
+                margin-top: 0px;
+            }
+            div#carouselExampleCaptions {
+                width: 100%;
+            }
+            div#EventCard {
+                margin-top: 30px;
+            }
+            .card {
+             width: 100%;
+            }
+<!--            .fixed-bottom {-->
+<!--            display:none;-->
+<!--            }-->
+          }
+
+        </style>
+    </th:block>
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+        $(document).ready(function(){
+            var myCarousel = document.querySelector('#carouselExampleCaptions')
+            var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 5000,
+            wrap: true
+        })
+    });
+    </script>
+
+    </th:block>
+
+</head>
+<div layout:fragment="content">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://img.megabox.co.kr/SharedImg/event/2021/04/23/kqDkerZYk73fxHB0qU3hD22hFsEZqfPf.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+<!--                <h5>First slide label</h5>-->
+<!--                <p>Some representative placeholder content for the first slide.</p>-->
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.megabox.co.kr/SharedImg/event/2021/11/22/sunjJib5Q11SzOlLS348YLwmlN4OjNcD.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+<!--                <h5>Second slide label</h5>-->
+<!--                <p>Some representative placeholder content for the second slide.</p>-->
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.megabox.co.kr/SharedImg/event/2021/12/20/KXb3e9utmXLD0zNo1mDC6VZmsXefThi6.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+<!--                <h5>Third slide label</h5>-->
+<!--                <p>Some representative placeholder content for the third slide.</p>-->
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    </div>
+
+<!--1번째 이벤트 card 줄-->
+    <div id="EventCard">
+    <div class="container">
+        <div class="row justify-content-md">
+            <div th:each="board:${boards}" style="display: contents;">
+            <div class="col-md-auto">
+                <div class="card">
+                    <img th:src="${board.board_thumbnail}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 style="height: 50px; overflow: hidden" class="card-title" th:text="${board.board_title}">[스파이더맨: 노 웨이 홈] 개봉작 사용설명서</h6>
+                        <p class="card-text" th:text="${board.board_start_date}== null? '&nbsp;': |${board.board_start_date}~${board.board_end_date}|">2021.12.14~2022.01.09</p>
+                        <a href="#" th:href="@{/board/content(board_num=${board.board_num})}" class="btn btn-dark">이벤트 보기</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    &nbsp;
+
+<!--2번째 이벤트 card 줄-->
+    <div class="container">
+        <p style="margin-bottom:50px"></p>
+        <div class="d-grid gap-2">
+            <button class="btn btn-dark" type="button">더보기</button>
+        </div>
+    </div>
+    </div>
+</div>
+</html>

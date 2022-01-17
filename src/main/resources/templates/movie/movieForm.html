@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+    <title>영화리스트</title>
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+        .fieldError {
+            color: #bd2130;
+        }
+    </style>
+    </th:block>
+
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+        $(document).ready(function(){
+            var errorMessage = [[${errorMessage}]];
+            if(errorMessage != null){
+                alert(errorMessage);
+            }
+        });
+    </script>
+
+    </th:block>
+
+</head>
+
+<div layout:fragment="content">
+
+    <!--1번째 영화 card 줄-->
+    <div id="MovieCard">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <!--                <div class="col-md-auto">
+                                    <div class="card">
+                                        <a href="./detail"><img src="$@{'/admin/movie/detailView?movie_num=' + ${list.movie_num}} {list.movie_image}" class="card-img-top" alt="..."></a>
+                                        &lt;!&ndash;<resource mapping="/image/**" location="file:///C:/test/" />&ndash;&gt;
+                                        <div class="card-body">
+                                            <h3 class="card-title">???</h3>
+                                            <pp class="card-text"> 개봉일 2021.12.15</pp>
+                                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                                        </div>
+                                    </div>
+                                </div>-->
+                <b><h1> 박스오피스 </h1></b>
+                <br>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <a href="./detail" class="movie-detail1"><img src="https://img.megabox.co.kr/SharedImg/2021/12/16/ixl5QxDVs5Gn8nQN3rslK8BUmgFVklj8_420.jpg" class="card-img-top" alt="..."></a>
+                        <div class="card-body">
+                            <h4 class="card-title">스파이더맨: 노 웨이 홈</h4>
+                            <h5><p class="card-text"> 개봉일 2021.12.15</p></h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/14/nJC9jEOHfHvvrbG0A1nnTCa2eUoFYnEY_420.jpg" class="card-img-top" alt="..."></a>
+                        <div class="card-body">
+                            <h4 class="card-title">킹스맨: 퍼스트 에이전트</h4>
+                            <h5><p class="card-text"> 개봉일 2021.12.22</p> </h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/07/DE9SaAwBXRBXWLSf7lRBlWAn51gZxN9A_420.jpg" class="card-img-top" alt="..."></a>
+                        <div class="card-body">
+                            <h4 class="card-title">경관의 피</h4>
+                            <h5><p class="card-text"> 개봉일 2022.01.05</p></h5>
+                            <p class="card-text2">  <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/27/pDRqesCRfSYsiFE6YV7i4dZaVLKXqyYE_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">씽2게더</h4>
+                            <h5><p class="card-text"> 개봉일 2022.01.05</p></h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/10/IfzIFvSnuJV9ZS0W7yfmq89V6hWGKC0s_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">해피 뉴 이어</h4>
+                            <h5><p class="card-text"> 개봉일 2021.12.29</p></h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/10/28/9MuD4DDcuCDn7YyJA5COL51h4GpeN300_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">[볼쇼이 발레 인 시네…</h4>
+                            <h5><p class="card-text"> 개봉일 2022.01.15</p></h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/06/PtdfIijbRiMflLr0iZX6yqQGqsmfxRrM_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">베를린 필하모닉 갈라…</h4>
+                            <h5><p class="card-text"> 개봉일 2022.01.02</p></h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/20/fowb9Ay3B0ZZIzg9v3udcuzYBFw8wwCy_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">드라이브 마이 카</h4>
+                            <h5><p class="card-text"> 개봉일 2021.12.23</p></h5>
+                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/10/IfzIFvSnuJV9ZS0W7yfmq89V6hWGKC0s_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">해피 뉴 이어</h6>
+                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.29</pp>
+                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/09/zmGroljDQtGcKUYrY6xMdhErBIIkcutu_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">매트릭스: 리저렉션</h6>
+                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.22</pp>
+                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/07/Stxl5Vv2YA8wdwdyyGeLhVXWk7DsA2Ba_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">램</h6>
+                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.29</pp>
+                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/20/fowb9Ay3B0ZZIzg9v3udcuzYBFw8wwCy_420.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title">드라이브 마이 카</h6>
+                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.23</pp>
+                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+</html>
