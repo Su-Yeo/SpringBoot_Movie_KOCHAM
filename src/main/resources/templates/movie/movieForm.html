@@ -17,6 +17,31 @@
                 margin-top: 0 auto;
             }
 
+            .layer_wrap.active.layer_movie_trailer {
+                width: 970px;
+            }
+
+            .layer_wrap.active {
+                display: block;
+                position: fixed;
+                z-index: 100;
+                height: auto;
+                border-radius: 10px;
+                background-color: #FFF;
+            }
+
+            .layer_wrap .layer_header .btn-close text-reset {
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                width: 19px;
+                height: 19px;
+                border: none;
+                text-indent: -9999em;
+                background: transparent url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e) center/1em auto no-repeat;
+                outline-color: black;
+            }
+
             div#EventCard {
                 padding-bottom: 100px;
                 margin-top: 100px;
@@ -83,8 +108,16 @@
             <div class="carousel-item">
                 <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/Nail_1920774.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <!--                <h5>Second slide label</h5>-->
-                    <!--                <p>Some representative placeholder content for the second slide.</p>-->
+                    <div id="layerMovieTrailer" class="layer_wrap ty2 layer_movie_trailer active" style="left: 50%; top: 50%; margin-top: -261px; margin-left: -485px;" tabindex="0">
+                        <strong class="hidden">레이어 팝업 시작</strong>
+                        <div class="layer_header">
+                            <button type="button" class="btn-close text-reset" style="background-color: white;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="layer_contents">
+                            <video height="100%" width="100%" controls="" id="vdoPlayer" src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1280720.mp4"></video>
+                        </div>
+                        <strong class="hidden txtTabIndex" tabindex="0">레이어 팝업 끝</strong>
+                    </div>
                 </div>
             </div>
             <div class="carousel-item">
