@@ -2,176 +2,167 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
-
 <head>
-    <title>영화리스트</title>
+    <title>Movie main page</title>
     <!-- 사용자 CSS 추가 -->
     <th:block layout:fragment="css">
         <style>
-        .fieldError {
-            color: #bd2130;
-        }
-    </style>
-    </th:block>
+            div#carouselExampleCaptions {
+                width: 100%;
+                margin: 0 auto;
+            }
 
+            .content {
+                margin: 0 auto;
+                margin-top: 0 auto;
+            }
+
+            .layer_wrap.active.layer_movie_trailer {
+                width: 970px;
+            }
+
+            .layer_wrap.active {
+                display: block;
+                position: fixed;
+                z-index: 100;
+                height: auto;
+                border-radius: 10px;
+                background-color: #FFF;
+            }
+
+            .layer_wrap .layer_header .btn-close text-reset {
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                width: 19px;
+                height: 19px;
+                border: none;
+                text-indent: -9999em;
+                background: transparent url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e) center/1em auto no-repeat;
+                outline-color: black;
+            }
+
+            div#EventCard {
+                padding-bottom: 100px;
+                margin-top: 100px;
+                margin-bottom: 80px;
+            }
+           .col-md-auto {
+                margin: 9px;
+                display: inline-block;
+                padding: 10px;
+            }
+            .card {
+             width: 18rem;
+            }
+
+          @media (max-width: 768px) {
+            .content{
+                margin:0 auto;
+                margin-top: 0px;
+            }
+            div#carouselExampleCaptions {
+                width: 100%;
+            }
+            div#EventCard {
+                margin-top: 30px;
+            }
+            .card {
+             width: 100%;
+            }
+          }
+
+        </style>
+    </th:block>
     <!-- 사용자 스크립트 추가 -->
     <th:block layout:fragment="script">
 
         <script th:inline="javascript">
         $(document).ready(function(){
-            var errorMessage = [[${errorMessage}]];
-            if(errorMessage != null){
-                alert(errorMessage);
-            }
-        });
+            var myCarousel = document.querySelector('#carouselExampleCaptions')
+            var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 5000,
+            wrap: true
+        })
+    });
     </script>
 
     </th:block>
 
 </head>
-
 <div layout:fragment="content">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Pirate/0125/Pirate_1920774.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!--                <h5>First slide label</h5>-->
+                    <!--                <p>Some representative placeholder content for the first slide.</p>-->
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/Nail_1920774.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <div id="layerMovieTrailer" class="layer_wrap ty2 layer_movie_trailer active" style="left: 50%; top: 50%; margin-top: -261px; margin-left: -485px;" tabindex="0">
+                        <strong class="hidden">레이어 팝업 시작</strong>
+                        <div class="layer_header">
+                            <button type="button" class="btn-close text-reset" style="background-color: white;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="layer_contents">
+                            <video height="100%" width="100%" controls="" id="vdoPlayer" src="https://caching2.lottecinema.co.kr/lotte_image/2022/Nail/0126/Nail_1280720.mp4"></video>
+                        </div>
+                        <strong class="hidden txtTabIndex" tabindex="0">레이어 팝업 끝</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://caching2.lottecinema.co.kr/lotte_image/2022/Batman/Batman_1920774.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!--                <h5>Third slide label</h5>-->
+                    <!--                <p>Some representative placeholder content for the third slide.</p>-->
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-    <!--1번째 영화 card 줄-->
-    <div id="MovieCard">
+    <!--1번째 이벤트 card 줄-->
+    <div id="EventCard">
         <div class="container">
-            <div class="row justify-content-md-center">
-                <!--                <div class="col-md-auto">
-                                    <div class="card">
-                                        <a href="./detail"><img src="$@{'/admin/movie/detailView?movie_num=' + ${list.movie_num}} {list.movie_image}" class="card-img-top" alt="..."></a>
-                                        &lt;!&ndash;<resource mapping="/image/**" location="file:///C:/test/" />&ndash;&gt;
-                                        <div class="card-body">
-                                            <h3 class="card-title">???</h3>
-                                            <pp class="card-text"> 개봉일 2021.12.15</pp>
-                                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                                        </div>
-                                    </div>
-                                </div>-->
-                <b><h1> 박스오피스 </h1></b>
-                <br>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <a href="./detail" class="movie-detail1"><img src="https://img.megabox.co.kr/SharedImg/2021/12/16/ixl5QxDVs5Gn8nQN3rslK8BUmgFVklj8_420.jpg" class="card-img-top" alt="..."></a>
-                        <div class="card-body">
-                            <h4 class="card-title">스파이더맨: 노 웨이 홈</h4>
-                            <h5><p class="card-text"> 개봉일 2021.12.15</p></h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
+            <div class="row justify-content-md">
+                <div th:each="board:${boards}" style="display: contents;">
+                    <div class="col-md-auto">
+                        <div class="card">
+                            <img th:src="${board.board_thumbnail}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h6 style="height: 50px; overflow: hidden" class="card-title" th:text="${board.board_title}">[스파이더맨: 노 웨이 홈] 개봉작 사용설명서</h6>
+                                <p class="card-text" th:text="${board.board_start_date}== null? '&nbsp;': |${board.board_start_date}~${board.board_end_date}|">2021.12.14~2022.01.09</p>
+                                <a href="#" th:href="@{/board/content(board_num=${board.board_num})}" class="btn btn-dark">이벤트 보기</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/14/nJC9jEOHfHvvrbG0A1nnTCa2eUoFYnEY_420.jpg" class="card-img-top" alt="..."></a>
-                        <div class="card-body">
-                            <h4 class="card-title">킹스맨: 퍼스트 에이전트</h4>
-                            <h5><p class="card-text"> 개봉일 2021.12.22</p> </h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/07/DE9SaAwBXRBXWLSf7lRBlWAn51gZxN9A_420.jpg" class="card-img-top" alt="..."></a>
-                        <div class="card-body">
-                            <h4 class="card-title">경관의 피</h4>
-                            <h5><p class="card-text"> 개봉일 2022.01.05</p></h5>
-                            <p class="card-text2">  <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/27/pDRqesCRfSYsiFE6YV7i4dZaVLKXqyYE_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">씽2게더</h4>
-                            <h5><p class="card-text"> 개봉일 2022.01.05</p></h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+        &nbsp;
 
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/10/IfzIFvSnuJV9ZS0W7yfmq89V6hWGKC0s_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">해피 뉴 이어</h4>
-                            <h5><p class="card-text"> 개봉일 2021.12.29</p></h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/10/28/9MuD4DDcuCDn7YyJA5COL51h4GpeN300_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">[볼쇼이 발레 인 시네…</h4>
-                            <h5><p class="card-text"> 개봉일 2022.01.15</p></h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/06/PtdfIijbRiMflLr0iZX6yqQGqsmfxRrM_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">베를린 필하모닉 갈라…</h4>
-                            <h5><p class="card-text"> 개봉일 2022.01.02</p></h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/20/fowb9Ay3B0ZZIzg9v3udcuzYBFw8wwCy_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">드라이브 마이 카</h4>
-                            <h5><p class="card-text"> 개봉일 2021.12.23</p></h5>
-                            <p class="card-text2"> <a href="../reservation/choiceMovie" class="btn btn-secondary btn-lg">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--<div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/10/IfzIFvSnuJV9ZS0W7yfmq89V6hWGKC0s_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-title">해피 뉴 이어</h6>
-                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.29</pp>
-                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/09/zmGroljDQtGcKUYrY6xMdhErBIIkcutu_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-title">매트릭스: 리저렉션</h6>
-                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.22</pp>
-                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/07/Stxl5Vv2YA8wdwdyyGeLhVXWk7DsA2Ba_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-title">램</h6>
-                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.29</pp>
-                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <div class="card">
-                        <img src="https://img.megabox.co.kr/SharedImg/2021/12/20/fowb9Ay3B0ZZIzg9v3udcuzYBFw8wwCy_420.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-title">드라이브 마이 카</h6>
-                            <pp class="card-text"> 예매율 ... 개봉일 2021.12.23</pp>
-                            <p class="card-text2"> 평점 ... <a href="#" class="btn btn-secondary">예매</a></p>
-                        </div>
-                    </div>
-                </div>-->
-
+        <!--2번째 이벤트 card 줄-->
+        <div class="container">
+            <p style="margin-bottom:50px"></p>
+            <div class="d-grid gap-2">
+                <button class="btn btn-dark" type="button">더보기</button>
             </div>
         </div>
     </div>
